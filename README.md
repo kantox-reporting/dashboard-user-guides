@@ -16,7 +16,7 @@ Have in mind that:
 	
 	5.- Files posted here are not dynamic, not self service, do not replace any dashboard, arent part of platform.
 
-The base rrot for this repo's pages is:
+The base root for this repo's pages is:
 https://kantox-reporting.github.io/dashboard-user-guides/
 
 THE REPOSITORY IS PUBLIC!!!!!!!!! '''
