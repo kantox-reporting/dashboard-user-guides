@@ -5,6 +5,7 @@ that serve as user guides for the power bi dashboards
 deployed for the client.
 
 Have in mind that:
+
 	1.- No specific client information should be posted here.
 	
 	2.- No access credential should be posted here.
