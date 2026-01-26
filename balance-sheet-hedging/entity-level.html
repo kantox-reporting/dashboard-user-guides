@@ -1,0 +1,1027 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Entity Level - User Guide | Exposure Analytics</title>
+    <style>
+        :root {
+            --kantox-teal: #00A5B5;
+            --kantox-teal-dark: #008A99;
+            --kantox-orange: #F47A20;
+            --kantox-orange-light: #FF9F4A;
+            --text-primary: #2D3748;
+            --text-secondary: #4A5568;
+            --bg-light: #F7FAFC;
+            --bg-card: #FFFFFF;
+            --border-color: #E2E8F0;
+            --success-green: #48BB78;
+            --warning-red: #F56565;
+            --purple-accent: #805AD5;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-light);
+            color: var(--text-primary);
+            line-height: 1.6;
+        }
+
+        /* Header */
+        .header {
+            background: linear-gradient(135deg, var(--kantox-teal) 0%, var(--kantox-teal-dark) 100%);
+            color: white;
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .header-logo {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .header-logo .logo-icon {
+            width: 50px;
+            height: 50px;
+            background: white;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            color: var(--kantox-teal);
+            font-size: 1.5rem;
+        }
+
+        .header h1 {
+            font-size: 2rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .header p {
+            opacity: 0.9;
+            font-size: 1.1rem;
+        }
+
+        .badge {
+            display: inline-block;
+            background: var(--kantox-orange);
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            margin-top: 0.5rem;
+        }
+
+        /* Navigation */
+        .nav-tabs {
+            background: white;
+            padding: 1rem 2rem;
+            border-bottom: 1px solid var(--border-color);
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .nav-tabs a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            transition: all 0.2s;
+        }
+
+        .nav-tabs a:hover, .nav-tabs a.active {
+            background: var(--kantox-teal);
+            color: white;
+        }
+
+        /* Main Content */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        /* Section Styles */
+        .section {
+            background: var(--bg-card);
+            border-radius: 12px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            border: 1px solid var(--border-color);
+        }
+
+        .section-title {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            color: var(--kantox-teal);
+            font-size: 1.4rem;
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.75rem;
+            border-bottom: 2px solid var(--kantox-teal);
+        }
+
+        .section-title .icon {
+            width: 32px;
+            height: 32px;
+            background: var(--kantox-teal);
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1rem;
+        }
+
+        /* KPI Cards */
+        .kpi-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .kpi-card {
+            background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            padding: 1.25rem;
+            border-left: 4px solid var(--kantox-teal);
+        }
+
+        .kpi-card.orange { border-left-color: var(--kantox-orange); }
+        .kpi-card.purple { border-left-color: var(--purple-accent); }
+
+        .kpi-card h4 {
+            color: var(--kantox-orange);
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .kpi-card .value {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 0.25rem;
+        }
+
+        .kpi-card .description {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        .kpi-card .change {
+            font-size: 0.85rem;
+            margin-top: 0.5rem;
+        }
+
+        .kpi-card .change.positive { color: var(--success-green); }
+        .kpi-card .change.negative { color: var(--warning-red); }
+
+        /* Feature List */
+        .feature-list {
+            list-style: none;
+        }
+
+        .feature-list li {
+            padding: 0.75rem 0;
+            border-bottom: 1px solid var(--border-color);
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+        }
+
+        .feature-list li:last-child {
+            border-bottom: none;
+        }
+
+        .feature-list .check {
+            color: var(--kantox-teal);
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+
+        /* View Modes */
+        .view-modes {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .view-mode {
+            background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+            border: 2px solid var(--border-color);
+            border-radius: 12px;
+            padding: 1.5rem;
+            transition: all 0.3s;
+        }
+
+        .view-mode:hover {
+            border-color: var(--kantox-teal);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 165, 181, 0.15);
+        }
+
+        .view-mode h4 {
+            color: var(--kantox-teal);
+            font-size: 1.1rem;
+            margin-bottom: 0.75rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .view-mode p {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+        }
+
+        /* Info Box */
+        .info-box {
+            background: linear-gradient(135deg, #E6FFFA 0%, #B2F5EA 100%);
+            border-left: 4px solid var(--kantox-teal);
+            padding: 1rem 1.25rem;
+            border-radius: 0 8px 8px 0;
+            margin: 1rem 0;
+        }
+
+        .info-box.warning {
+            background: linear-gradient(135deg, #FFFAF0 0%, #FEEBC8 100%);
+            border-left-color: var(--kantox-orange);
+        }
+
+        .info-box.purple {
+            background: linear-gradient(135deg, #FAF5FF 0%, #E9D8FD 100%);
+            border-left-color: var(--purple-accent);
+        }
+
+        .info-box strong {
+            color: var(--kantox-teal);
+        }
+
+        .info-box.warning strong {
+            color: var(--kantox-orange);
+        }
+
+        .info-box.purple strong {
+            color: var(--purple-accent);
+        }
+
+        /* Table Styles */
+        .table-container {
+            overflow-x: auto;
+            margin: 1rem 0;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.9rem;
+        }
+
+        th {
+            background: var(--kantox-teal);
+            color: white;
+            padding: 0.75rem 1rem;
+            text-align: left;
+            font-weight: 600;
+        }
+
+        td {
+            padding: 0.75rem 1rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        tr:hover {
+            background: var(--bg-light);
+        }
+
+        /* Workflow Steps */
+        .workflow {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+
+        .workflow-step {
+            flex: 1;
+            min-width: 200px;
+            background: white;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 1rem;
+            text-align: center;
+            position: relative;
+        }
+
+        .workflow-step::after {
+            content: '→';
+            position: absolute;
+            right: -1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--kantox-teal);
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .workflow-step:last-child::after {
+            display: none;
+        }
+
+        .workflow-step .step-number {
+            width: 30px;
+            height: 30px;
+            background: var(--kantox-teal);
+            color: white;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+
+        .workflow-step h5 {
+            color: var(--text-primary);
+            margin-bottom: 0.25rem;
+        }
+
+        .workflow-step p {
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+        }
+
+        /* Dynamic Period Demo */
+        .period-demo {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            background: var(--bg-light);
+            padding: 1rem;
+            border-radius: 8px;
+            margin: 1rem 0;
+        }
+
+        .period-demo label {
+            font-weight: 500;
+            color: var(--text-secondary);
+        }
+
+        .period-demo input {
+            width: 80px;
+            padding: 0.5rem;
+            border: 2px solid var(--border-color);
+            border-radius: 6px;
+            text-align: center;
+            font-size: 1rem;
+        }
+
+        .period-demo input:focus {
+            outline: none;
+            border-color: var(--kantox-teal);
+        }
+
+        .period-demo span {
+            color: var(--text-secondary);
+        }
+
+        /* Comparison Cards */
+        .comparison-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin: 1rem 0;
+        }
+
+        .comparison-card {
+            background: white;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 1rem;
+            text-align: center;
+        }
+
+        .comparison-card .metric {
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            margin-bottom: 0.5rem;
+        }
+
+        .comparison-card .value {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--text-primary);
+        }
+
+        .comparison-card .change {
+            font-size: 0.85rem;
+            margin-top: 0.25rem;
+        }
+
+        .comparison-card .change.positive { color: var(--success-green); }
+        .comparison-card .change.negative { color: var(--warning-red); }
+
+        /* Footer */
+        .footer {
+            background: var(--text-primary);
+            color: white;
+            padding: 2rem;
+            text-align: center;
+            margin-top: 2rem;
+        }
+
+        .footer a {
+            color: var(--kantox-orange-light);
+            text-decoration: none;
+        }
+
+        .footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .container {
+                padding: 1rem;
+            }
+
+            .section {
+                padding: 1.25rem;
+            }
+
+            .header h1 {
+                font-size: 1.5rem;
+            }
+
+            .workflow-step::after {
+                display: none;
+            }
+
+            .workflow {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="header-logo">
+            <div class="logo-icon">K</div>
+            <div>
+                <h1>Exposure Analytics</h1>
+                <p>Entity Level</p>
+            </div>
+        </div>
+        <span class="badge">User Guide</span>
+    </header>
+
+    <nav class="nav-tabs">
+        <a href="#overview" class="active">Overview</a>
+        <a href="#kpis">Key Metrics</a>
+        <a href="#charts">Visualizations</a>
+        <a href="#table">Data Table</a>
+		<a href="#policy">Policy Setup</a>
+        <a href="#detailed">Detailed Analysis</a>
+        <a href="#trends">Trends</a>
+    </nav>
+
+    <main class="container">
+        <!-- Overview Section -->
+        <section id="overview" class="section">
+            <h2 class="section-title">
+                <span class="icon">🏢</span>
+                What is Entity Level?
+            </h2>
+            <p style="margin-bottom: 1rem;">
+                <strong>Entity Level</strong> provides a detailed view of FX exposure broken down by each legal entity 
+                in your organization. While "Top of the House" shows the consolidated net, this view allows you to 
+                analyze each subsidiary's contribution to total currency risk.
+            </p>
+            <div class="info-box">
+                <strong>💡 Key Concept:</strong> Unlike Top of the House, Entity Level does NOT perform netting between 
+                entities. It shows the gross exposure of each entity expressed in its corresponding functional currency.
+            </div>
+
+            <h3 style="margin: 1.5rem 0 1rem; color: var(--kantox-teal);">When to Use Entity Level?</h3>
+            <ul class="feature-list">
+                <li>
+                    <span class="check">✓</span>
+                    <div>
+                        <strong>Subsidiary Analysis</strong> - Identify which entities have the highest FX exposure
+                    </div>
+                </li>
+                <li>
+                    <span class="check">✓</span>
+                    <div>
+                        <strong>Decentralized Management</strong> - Allows each entity to manage its own FX risk
+                    </div>
+                </li>
+                <li>
+                    <span class="check">✓</span>
+                    <div>
+                        <strong>Regulatory Reporting</strong> - Generate exposure reports by legal entity
+                    </div>
+                </li>
+                <li>
+                    <span class="check">✓</span>
+                    <div>
+                        <strong>Account Analysis</strong> - Drill down to individual accounting account level
+                    </div>
+                </li>
+            </ul>
+        </section>
+
+        <!-- KPIs Section -->
+        <section id="kpis" class="section">
+            <h2 class="section-title">
+                <span class="icon">📈</span>
+                Key Performance Indicators (KPIs)
+            </h2>
+            <p style="margin-bottom: 1.5rem;">The Entity Level view displays three key indicators in the header:</p>
+            
+            <div class="kpi-grid">
+                <div class="kpi-card">
+                    <h4>🏢 Entity Level Exposure</h4>
+                    <div class="value">€5.29bn</div>
+                    <div class="description">Sum of absolute exposures across all entities</div>
+                    <div class="change negative">Δ of prev Effective date: -1.25%</div>
+                </div>
+                <div class="kpi-card orange">
+                    <h4>🔄 Active Pairs</h4>
+                    <div class="value">29</div>
+                    <div class="description">Currency pairs with active exposure</div>
+                    <div class="change">Top all-time: USDSEK, EURUSD, GBPUSD</div>
+                </div>
+                <div class="kpi-card purple">
+                    <h4>🏛️ Entities</h4>
+                    <div class="value">24</div>
+                    <div class="description">Number of entities with active exposure</div>
+                    <div class="change">Largest all-time: Company Logistics Ltd, Company UK Ltd, Company Spain SL</div>
+                </div>
+            </div>
+
+            <div class="info-box warning">
+                <strong>⚠️ Important Difference:</strong> The "Entity Level" exposure is typically larger than "Top of the House" 
+                because it doesn't consider natural offsets between entities. For example, if Entity A has +10M EUR 
+                and Entity B has -10M EUR, Entity Level would show 20M while Top of the House would show 0.
+            </div>
+        </section>
+
+        <!-- Charts Section -->
+        <section id="charts" class="section">
+            <h2 class="section-title">
+                <span class="icon">📊</span>
+                Visualizations
+            </h2>
+
+            <h3 style="margin-bottom: 1rem; color: var(--text-primary);">Exposure by Entity (Donut Chart)</h3>
+            <p style="margin-bottom: 1rem;">
+                The left donut chart shows the distribution of total exposure across different entities 
+                in the organization. It helps quickly identify which subsidiaries concentrate the most currency risk.
+            </p>
+            <ul class="feature-list">
+                <li>
+                    <span class="check">•</span>
+                    <div>Each segment represents a different legal entity</div>
+                </li>
+                <li>
+                    <span class="check">•</span>
+                    <div>Values are normalized to EUR (or selected display currency)</div>
+                </li>
+                <li>
+                    <span class="check">•</span>
+                    <div>Click on an entity to filter the entire page by that entity</div>
+                </li>
+            </ul>
+
+            <h3 style="margin: 1.5rem 0 1rem; color: var(--text-primary);">Exposure by Currency Pair (Bar Chart)</h3>
+            <p style="margin-bottom: 1rem;">
+                The right bar chart shows aggregated exposure by normalized currency pair. 
+                Unlike Top of the House, this shows the sum of absolute values (no netting).
+            </p>
+            <ul class="feature-list">
+                <li>
+                    <span class="check">•</span>
+                    <div>Bars are sorted by exposure magnitude</div>
+                </li>
+                <li>
+                    <span class="check">•</span>
+                    <div>All values are expressed in the normalized reference currency</div>
+                </li>
+                <li>
+                    <span class="check">•</span>
+                    <div>Use this chart to prioritize which pairs need more attention</div>
+                </li>
+            </ul>
+        </section>
+
+        <!-- Table Section -->
+        <section id="table" class="section">
+            <h2 class="section-title">
+                <span class="icon">📋</span>
+                Entity Data Table
+            </h2>
+            <p style="margin-bottom: 1rem;">
+                The main table shows exposure details broken down by entity and currency pair:
+            </p>
+
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Column</th>
+                            <th>Description</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Total (Entity / Currency pair)</strong></td>
+                            <td>Entity name and currency pair. The table has expandable hierarchy.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Exposure</strong></td>
+                            <td>Net exposure of that entity in that pair</td>
+                        </tr>
+                        <tr>
+                            <td><strong>CCY 1 / CCY 2</strong></td>
+                            <td>Breakdown by each currency in the pair</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Policy in functional ccy</strong></td>
+                            <td>Target hedge amount per policy, in functional currency</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Hedged (in functional ccy)</strong></td>
+                            <td>Amount currently hedged in functional currency</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Recommendation direction</strong></td>
+                            <td>Suggested direction: BUY or SELL</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Hedge Recommendation</strong></td>
+                            <td>Recommended hedge amount</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Functional ccy</strong></td>
+                            <td>Entity's functional currency (EUR, GBP, USD, etc.)</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="info-box">
+                <strong>💡 Tip:</strong> Expand each entity by clicking the "+" to see the breakdown by currency pair. 
+                This allows you to analyze the exposure composition of each subsidiary.
+            </div>
+        </section>
+
+        <!-- Policy Setup Section -->
+        <section id="policy" class="section">
+            <h2 class="section-title">
+                <span class="icon">⚙️</span>
+                Policy Parameter Setup
+            </h2>
+            <p style="margin-bottom: 1.5rem;">
+                The <strong>Policy Parameter Setup</strong> panel allows you to define differentiated hedging rules 
+                by currency pair tiers. Access it by clicking the settings icon.
+            </p>
+
+            <h3 style="margin-bottom: 1rem; color: var(--text-primary);">Tier System</h3>
+            <p style="margin-bottom: 1rem;">
+                You can configure up to 3 policy levels with different parameters:
+            </p>
+
+            <div class="steps">
+                <div class="step">
+                    <h4>Tier 1 - Primary Pairs</h4>
+                    <p>Configure your most important currency pairs with specific thresholds and hedge ratios. 
+                    Typically includes pairs like EURUSD, EURGBP, EURDKK with more aggressive policies.</p>
+                </div>
+                <div class="step">
+                    <h4>Tier 2 - Secondary Pairs</h4>
+                    <p>Define rules for pairs with lower volume or intermediate priority. 
+                    May include pairs like GBPUSD, USDCHF with higher thresholds.</p>
+                </div>
+                <div class="step">
+                    <h4>Tier 3 - Other Pairs</h4>
+                    <p>Configure policies for remaining currency pairs with lower exposure. 
+                    These typically have higher thresholds before recommending hedges.</p>
+                </div>
+            </div>
+
+            <h3 style="margin: 1.5rem 0 1rem; color: var(--text-primary);">Parameters per Tier</h3>
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Parameter</th>
+                            <th>Description</th>
+                            <th>Example</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Currency pairs</strong></td>
+                            <td>Selection of pairs assigned to this tier</td>
+                            <td>EURUSD, EURGBP, EURDKK</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Threshold</strong></td>
+                            <td>Minimum exposure amount to generate a recommendation</td>
+                            <td>23,250,000</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Hedging policy %</strong></td>
+                            <td>Percentage of exposure to hedge</td>
+                            <td>85.00%</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="info-box warning">
+                <strong>⚠️ Important:</strong> Changes to policy configuration immediately affect 
+                the recommendations shown. Ensure parameters reflect the approved hedging strategy.
+            </div>
+        </section>
+
+
+        <!-- Detailed Analysis Section -->
+        <section id="detailed" class="section">
+            <h2 class="section-title">
+                <span class="icon">🔬</span>
+                Detailed Entity Analysis
+            </h2>
+            <p style="margin-bottom: 1rem;">
+                Access detailed analysis for a specific entity by clicking the 
+                <strong>"Detailed Entity Analysis"</strong> button in the right sidebar panel.
+            </p>
+
+            <div class="view-modes">
+                <div class="view-mode">
+                    <h4>📊 Summary View</h4>
+                    <p>Entity-specific KPIs: total exposure, active pairs, number of accounts, and 
+                    top accounts by exposure.</p>
+                </div>
+                <div class="view-mode">
+                    <h4>🍩 Distribution by Pair</h4>
+                    <p>Donut chart showing how that entity's exposure is distributed across its 
+                    different currency pairs.</p>
+                </div>
+                <div class="view-mode">
+                    <h4>📈 By Account Type</h4>
+                    <p>Bar chart grouping exposure by account description 
+                    (Profit/Loss, Trade Receivables, etc.).</p>
+                </div>
+            </div>
+
+            <h3 style="margin: 1.5rem 0 1rem; color: var(--text-primary);">Detailed Analysis KPIs</h3>
+            <div class="kpi-grid">
+                <div class="kpi-card">
+                    <h4>🏢 Entity Name</h4>
+                    <div class="value">Company UK Ltd</div>
+                    <div class="description">Selected entity for analysis</div>
+                </div>
+                <div class="kpi-card orange">
+                    <h4>💰 Entity Level</h4>
+                    <div class="value">€566.55M</div>
+                    <div class="description">Entity's total exposure</div>
+                    <div class="change positive">Δ of prev Effective date: +0.01%</div>
+                </div>
+                <div class="kpi-card">
+                    <h4>🔄 Active Pairs</h4>
+                    <div class="value">7</div>
+                    <div class="description">Pairs with exposure in this entity</div>
+                </div>
+                <div class="kpi-card purple">
+                    <h4>📑 Accounts</h4>
+                    <div class="value">99</div>
+                    <div class="description">Accounting accounts with FX exposure</div>
+                </div>
+            </div>
+
+            <h3 style="margin: 1.5rem 0 1rem; color: var(--text-primary);">Detailed Account Table</h3>
+            <p style="margin-bottom: 1rem;">
+                The detailed analysis table shows each individual accounting account with temporal comparison metrics:
+            </p>
+
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Column</th>
+                            <th>Description</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Functional currency</strong></td>
+                            <td>Account code and description</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Exposure</strong></td>
+                            <td>Current account exposure</td>
+                        </tr>
+                        <tr>
+                            <td><strong>CCY 1 / CCY 2</strong></td>
+                            <td>Breakdown by currency</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Balance</strong></td>
+                            <td>Current account balance</td>
+                        </tr>
+                        <tr>
+                            <td><strong>% diff vs previous day</strong></td>
+                            <td>Percentage change vs. previous day</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Balance % diff vs last week</strong></td>
+                            <td>Change vs. one week ago</td>
+                        </tr>
+                        <tr>
+                            <td><strong>% diff vs dynamic period</strong></td>
+                            <td>Change vs. configured dynamic period</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- Dynamic Period Section -->
+        <section id="trends" class="section">
+            <h2 class="section-title">
+                <span class="icon">📅</span>
+                Dynamic Period and Trends
+            </h2>
+            <p style="margin-bottom: 1rem;">
+                The <strong>Dynamic Period Setting</strong> allows you to define a custom comparison period 
+                to analyze how exposure has evolved.
+            </p>
+
+            <div class="period-demo">
+                <label>Dynamic period setting →</label>
+                <input type="number" value="14" min="1" max="365">
+                <span>days ago</span>
+            </div>
+
+            <p style="margin-bottom: 1rem;">
+                This value affects the "% diff vs dynamic period" and "Balance dynamic period" columns in the table, 
+                allowing you to compare against any time horizon you need (7 days, 14 days, 30 days, etc.).
+            </p>
+
+            <h3 style="margin: 1.5rem 0 1rem; color: var(--text-primary);">Temporal Comparison Metrics</h3>
+            <div class="comparison-grid">
+                <div class="comparison-card">
+                    <div class="metric">vs Previous Day</div>
+                    <div class="value">-1.24%</div>
+                    <div class="change negative">↓ Decrease</div>
+                </div>
+                <div class="comparison-card">
+                    <div class="metric">vs Last Week</div>
+                    <div class="value">+2.84%</div>
+                    <div class="change positive">↑ Increase</div>
+                </div>
+                <div class="comparison-card">
+                    <div class="metric">vs Dynamic Period</div>
+                    <div class="value">-0.05%</div>
+                    <div class="change negative">↓ Decrease</div>
+                </div>
+            </div>
+
+            <h3 style="margin: 1.5rem 0 1rem; color: var(--text-primary);">Balance Trend Analysis Chart</h3>
+            <p style="margin-bottom: 1rem;">
+                The <strong>"Balance trend analysis"</strong> chart at the bottom shows the historical evolution 
+                of balance by currency pair over time.
+            </p>
+            <ul class="feature-list">
+                <li>
+                    <span class="check">•</span>
+                    <div>Each colored line represents a different currency pair (EURGBP, GBPCAD, GBPCHF, etc.)</div>
+                </li>
+                <li>
+                    <span class="check">•</span>
+                    <div>The X-axis shows days within the selected period</div>
+                </li>
+                <li>
+                    <span class="check">•</span>
+                    <div>Values are expressed in the entity's functional currency</div>
+                </li>
+                <li>
+                    <span class="check">•</span>
+                    <div>Hover over the chart to see specific values by date</div>
+                </li>
+            </ul>
+
+            <div class="info-box purple">
+                <strong>🔍 Advanced Usage:</strong> Combine the dynamic period with date filters to analyze 
+                seasonal patterns or the impact of specific events on an entity's exposure.
+            </div>
+        </section>
+
+        <!-- Navigation Workflow -->
+        <section class="section">
+            <h2 class="section-title">
+                <span class="icon">🔄</span>
+                Navigation Workflow
+            </h2>
+            <p style="margin-bottom: 1.5rem;">
+                Follow this workflow for a complete entity exposure analysis:
+            </p>
+
+            <div class="workflow">
+                <div class="workflow-step">
+                    <div class="step-number">1</div>
+                    <h5>Select Filters</h5>
+                    <p>Date, client, display currency</p>
+                </div>
+                <div class="workflow-step">
+                    <div class="step-number">2</div>
+                    <h5>Review KPIs</h5>
+                    <p>Total exposure, active entities</p>
+                </div>
+                <div class="workflow-step">
+                    <div class="step-number">3</div>
+                    <h5>Identify Key Entities</h5>
+                    <p>Use donut to see distribution</p>
+                </div>
+                <div class="workflow-step">
+                    <div class="step-number">4</div>
+                    <h5>Drill Down</h5>
+                    <p>Access Detailed Entity Analysis</p>
+                </div>
+            </div>
+
+            <div class="info-box">
+                <strong>💡 Tip:</strong> You can switch between "Top of the House" and "Entity Level" using the 
+                sidebar page menu to compare the consolidated view vs. the entity breakdown.
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>Exposure Analytics - User Documentation</p>
+        <p style="margin-top: 0.5rem; opacity: 0.8;">
+            Need help? Contact the support team • 
+            <a href="top-of-the-house.html">← View Top of the House Guide</a>
+        </p>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    
+                    // Update active state
+                    document.querySelectorAll('.nav-tabs a').forEach(a => a.classList.remove('active'));
+                    this.classList.add('active');
+                }
+            });
+        });
+
+        // Update active nav on scroll
+        window.addEventListener('scroll', () => {
+            const sections = document.querySelectorAll('section[id]');
+            let current = '';
+            
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                if (scrollY >= sectionTop - 200) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            document.querySelectorAll('.nav-tabs a').forEach(a => {
+                a.classList.remove('active');
+                if (a.getAttribute('href') === '#' + current) {
+                    a.classList.add('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
