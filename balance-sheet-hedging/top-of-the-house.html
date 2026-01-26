@@ -1,0 +1,766 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Top of the House - User Guide | Exposure Analytics</title>
+    <style>
+        :root {
+            --kantox-teal: #00A5B5;
+            --kantox-teal-dark: #008A99;
+            --kantox-orange: #F47A20;
+            --kantox-orange-light: #FF9F4A;
+            --text-primary: #2D3748;
+            --text-secondary: #4A5568;
+            --bg-light: #F7FAFC;
+            --bg-card: #FFFFFF;
+            --border-color: #E2E8F0;
+            --success-green: #48BB78;
+            --warning-red: #F56565;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-light);
+            color: var(--text-primary);
+            line-height: 1.6;
+        }
+
+        /* Header */
+        .header {
+            background: linear-gradient(135deg, var(--kantox-teal) 0%, var(--kantox-teal-dark) 100%);
+            color: white;
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .header-logo {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .header-logo .logo-icon {
+            width: 50px;
+            height: 50px;
+            background: white;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            color: var(--kantox-teal);
+            font-size: 1.5rem;
+        }
+
+        .header h1 {
+            font-size: 2rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .header p {
+            opacity: 0.9;
+            font-size: 1.1rem;
+        }
+
+        .badge {
+            display: inline-block;
+            background: var(--kantox-orange);
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            margin-top: 0.5rem;
+        }
+
+        /* Navigation */
+        .nav-tabs {
+            background: white;
+            padding: 1rem 2rem;
+            border-bottom: 1px solid var(--border-color);
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .nav-tabs a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            transition: all 0.2s;
+        }
+
+        .nav-tabs a:hover, .nav-tabs a.active {
+            background: var(--kantox-teal);
+            color: white;
+        }
+
+        /* Main Content */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        /* Section Styles */
+        .section {
+            background: var(--bg-card);
+            border-radius: 12px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            border: 1px solid var(--border-color);
+        }
+
+        .section-title {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            color: var(--kantox-teal);
+            font-size: 1.4rem;
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.75rem;
+            border-bottom: 2px solid var(--kantox-teal);
+        }
+
+        .section-title .icon {
+            width: 32px;
+            height: 32px;
+            background: var(--kantox-teal);
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1rem;
+        }
+
+        /* KPI Cards */
+        .kpi-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .kpi-card {
+            background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            padding: 1.25rem;
+            border-left: 4px solid var(--kantox-teal);
+        }
+
+        .kpi-card h4 {
+            color: var(--kantox-orange);
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .kpi-card .value {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 0.25rem;
+        }
+
+        .kpi-card .description {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        .kpi-card .change {
+            font-size: 0.85rem;
+            margin-top: 0.5rem;
+        }
+
+        .kpi-card .change.positive { color: var(--success-green); }
+        .kpi-card .change.negative { color: var(--warning-red); }
+
+        /* Feature List */
+        .feature-list {
+            list-style: none;
+        }
+
+        .feature-list li {
+            padding: 0.75rem 0;
+            border-bottom: 1px solid var(--border-color);
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+        }
+
+        .feature-list li:last-child {
+            border-bottom: none;
+        }
+
+        .feature-list .check {
+            color: var(--kantox-teal);
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+
+        /* Steps */
+        .steps {
+            counter-reset: step;
+        }
+
+        .step {
+            position: relative;
+            padding-left: 3rem;
+            padding-bottom: 1.5rem;
+            border-left: 2px solid var(--border-color);
+            margin-left: 1rem;
+        }
+
+        .step:last-child {
+            border-left: 2px solid transparent;
+            padding-bottom: 0;
+        }
+
+        .step::before {
+            counter-increment: step;
+            content: counter(step);
+            position: absolute;
+            left: -1rem;
+            top: 0;
+            width: 2rem;
+            height: 2rem;
+            background: var(--kantox-teal);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 0.9rem;
+        }
+
+        .step h4 {
+            color: var(--text-primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .step p {
+            color: var(--text-secondary);
+        }
+
+        /* Info Box */
+        .info-box {
+            background: linear-gradient(135deg, #E6FFFA 0%, #B2F5EA 100%);
+            border-left: 4px solid var(--kantox-teal);
+            padding: 1rem 1.25rem;
+            border-radius: 0 8px 8px 0;
+            margin: 1rem 0;
+        }
+
+        .info-box.warning {
+            background: linear-gradient(135deg, #FFFAF0 0%, #FEEBC8 100%);
+            border-left-color: var(--kantox-orange);
+        }
+
+        .info-box strong {
+            color: var(--kantox-teal);
+        }
+
+        .info-box.warning strong {
+            color: var(--kantox-orange);
+        }
+
+        /* Table Styles */
+        .table-container {
+            overflow-x: auto;
+            margin: 1rem 0;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.9rem;
+        }
+
+        th {
+            background: var(--kantox-teal);
+            color: white;
+            padding: 0.75rem 1rem;
+            text-align: left;
+            font-weight: 600;
+        }
+
+        td {
+            padding: 0.75rem 1rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        tr:hover {
+            background: var(--bg-light);
+        }
+
+        /* Currency Buttons Demo */
+        .currency-demo {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+            margin: 1rem 0;
+        }
+
+        .currency-btn {
+            padding: 0.5rem 1.25rem;
+            border: 2px solid var(--border-color);
+            border-radius: 6px;
+            background: white;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-weight: 500;
+        }
+
+        .currency-btn:hover {
+            border-color: var(--kantox-teal);
+            color: var(--kantox-teal);
+        }
+
+        .currency-btn.active {
+            background: var(--kantox-teal);
+            color: white;
+            border-color: var(--kantox-teal);
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--text-primary);
+            color: white;
+            padding: 2rem;
+            text-align: center;
+            margin-top: 2rem;
+        }
+
+        .footer a {
+            color: var(--kantox-orange-light);
+            text-decoration: none;
+        }
+
+        .footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .container {
+                padding: 1rem;
+            }
+
+            .section {
+                padding: 1.25rem;
+            }
+
+            .header h1 {
+                font-size: 1.5rem;
+            }
+
+            .step {
+                padding-left: 2.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="header-logo">
+            <div class="logo-icon">K</div>
+            <div>
+                <h1>Exposure Analytics</h1>
+                <p>Top of the House</p>
+            </div>
+        </div>
+        <span class="badge">User Guide</span>
+    </header>
+
+    <nav class="nav-tabs">
+        <a href="#overview" class="active">Overview</a>
+        <a href="#kpis">Key Metrics</a>
+        <a href="#charts">Visualizations</a>
+        <a href="#table">Data Table</a>
+        <a href="#policy">Policy Setup</a>
+        <a href="#filters">Filters</a>
+    </nav>
+
+    <main class="container">
+        <!-- Overview Section -->
+        <section id="overview" class="section">
+            <h2 class="section-title">
+                <span class="icon">📊</span>
+                What is Top of the House?
+            </h2>
+            <p style="margin-bottom: 1rem;">
+                <strong>Top of the House</strong> provides a consolidated view of your organization's entire FX exposure. 
+                This view aggregates all FX positions at the corporate level, allowing you to understand the net currency 
+                risk after considering natural offsets between entities.
+            </p>
+            <div class="info-box">
+                <strong>💡 Key Concept:</strong> The "Top of the House" view shows the net exposure resulting from 
+                algebraically summing positions across all group entities, reflecting the actual risk faced by the 
+                organization as a whole.
+            </div>
+
+            <h3 style="margin: 1.5rem 0 1rem; color: var(--kantox-teal);">Key Benefits</h3>
+            <ul class="feature-list">
+                <li>
+                    <span class="check">✓</span>
+                    <div>
+                        <strong>Consolidated View</strong> - Understand your organization's total exposure at a glance
+                    </div>
+                </li>
+                <li>
+                    <span class="check">✓</span>
+                    <div>
+                        <strong>Natural Netting</strong> - Identify automatic offsets between entities that reduce actual risk
+                    </div>
+                </li>
+                <li>
+                    <span class="check">✓</span>
+                    <div>
+                        <strong>Hedge Recommendations</strong> - Get hedging suggestions based on your configured policy
+                    </div>
+                </li>
+                <li>
+                    <span class="check">✓</span>
+                    <div>
+                        <strong>Multi-currency</strong> - View everything expressed in your preferred reference currency
+                    </div>
+                </li>
+            </ul>
+        </section>
+
+        <!-- KPIs Section -->
+        <section id="kpis" class="section">
+            <h2 class="section-title">
+                <span class="icon">📈</span>
+                Key Performance Indicators (KPIs)
+            </h2>
+            <p style="margin-bottom: 1.5rem;">At the top of the dashboard, you'll find three cards with key metrics:</p>
+            
+            <div class="kpi-grid">
+                <div class="kpi-card">
+                    <h4>🏠 Top of the House</h4>
+                    <div class="value">3.20bn</div>
+                    <div class="description">Total net consolidated exposure of the organization</div>
+                    <div class="change positive">Δ of prev Effective date: +0.12%</div>
+                </div>
+                <div class="kpi-card">
+                    <h4>📋 Total Hedge Recommendation</h4>
+                    <div class="value">€26.73M</div>
+                    <div class="description">Total recommended hedge volume based on your policy</div>
+                    <div class="change negative">Δ of prev Effective date: -89.01%</div>
+                </div>
+                <div class="kpi-card">
+                    <h4>🔄 Active Pairs</h4>
+                    <div class="value">29</div>
+                    <div class="description">Number of currency pairs with active exposure</div>
+                    <div class="change">Top all-time: USDSEK, EURUSD, GBPUSD</div>
+                </div>
+            </div>
+
+            <div class="info-box warning">
+                <strong>⚠️ Note:</strong> The variation indicator (Δ) compares against the previous effective date. 
+                Significant changes may indicate new transactions, maturities, or market movements.
+            </div>
+        </section>
+
+        <!-- Charts Section -->
+        <section id="charts" class="section">
+            <h2 class="section-title">
+                <span class="icon">📉</span>
+                Visualizations
+            </h2>
+
+            <h3 style="margin-bottom: 1rem; color: var(--text-primary);">Top of the House Exposure (Donut Chart)</h3>
+            <p style="margin-bottom: 1rem;">
+                The donut chart displays the exposure distribution by normalized currency pair. 
+                Each segment represents the proportion of exposure in that specific pair.
+            </p>
+            <ul class="feature-list">
+                <li>
+                    <span class="check">•</span>
+                    <div>Values are shown both as absolute amounts and percentages</div>
+                </li>
+                <li>
+                    <span class="check">•</span>
+                    <div>Hover over a segment to see detailed information</div>
+                </li>
+                <li>
+                    <span class="check">•</span>
+                    <div>Click on a currency pair in the legend to filter it</div>
+                </li>
+            </ul>
+
+            <h3 style="margin: 1.5rem 0 1rem; color: var(--text-primary);">Top of the House Hedge Recommendation (Bar Chart)</h3>
+            <p style="margin-bottom: 1rem;">
+                This bar chart shows hedge recommendations grouped by direction (BUY/SELL) 
+                and functional currency. It helps quickly identify where hedging needs are concentrated.
+            </p>
+            <ul class="feature-list">
+                <li>
+                    <span class="check">•</span>
+                    <div><strong>BUY:</strong> Indicates need to buy the base currency of the pair</div>
+                </li>
+                <li>
+                    <span class="check">•</span>
+                    <div><strong>SELL:</strong> Indicates need to sell the base currency of the pair</div>
+                </li>
+                <li>
+                    <span class="check">•</span>
+                    <div>Values are expressed in the functional reference currency</div>
+                </li>
+            </ul>
+        </section>
+
+        <!-- Table Section -->
+        <section id="table" class="section">
+            <h2 class="section-title">
+                <span class="icon">📋</span>
+                Detailed Data Table
+            </h2>
+            <p style="margin-bottom: 1rem;">
+                The bottom table shows details by normalized currency pair with all relevant metrics:
+            </p>
+
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Column</th>
+                            <th>Description</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Total</strong></td>
+                            <td>Normalized currency pair (e.g., EURUSD, GBPUSD)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Exposure</strong></td>
+                            <td>Total net exposure in that pair</td>
+                        </tr>
+                        <tr>
+                            <td><strong>CCY 1 / CCY 2</strong></td>
+                            <td>Exposure breakdown by each currency in the pair</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Hedge policy (reference ccy)</strong></td>
+                            <td>Target amount according to hedge policy</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Hedged Amount in reference ccy</strong></td>
+                            <td>Amount currently hedged</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Recommendation direction</strong></td>
+                            <td>Suggested direction: BUY or SELL</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Hedge Recommendation</strong></td>
+                            <td>Recommended hedge amount</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Reference CCY</strong></td>
+                            <td>Reference currency for that pair</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="info-box">
+                <strong>💡 Tip:</strong> You can sort the table by clicking on column headers. 
+                You can also export data using the Export option in the Power BI top bar.
+            </div>
+        </section>
+
+        <!-- Policy Setup Section -->
+        <section id="policy" class="section">
+            <h2 class="section-title">
+                <span class="icon">⚙️</span>
+                Policy Parameter Setup
+            </h2>
+            <p style="margin-bottom: 1.5rem;">
+                The <strong>Policy Parameter Setup</strong> panel allows you to define differentiated hedging rules 
+                by currency pair tiers. Access it by clicking the settings icon.
+            </p>
+
+            <h3 style="margin-bottom: 1rem; color: var(--text-primary);">Tier System</h3>
+            <p style="margin-bottom: 1rem;">
+                You can configure up to 3 policy levels with different parameters:
+            </p>
+
+            <div class="steps">
+                <div class="step">
+                    <h4>Tier 1 - Primary Pairs</h4>
+                    <p>Configure your most important currency pairs with specific thresholds and hedge ratios. 
+                    Typically includes pairs like EURUSD, EURGBP, EURDKK with more aggressive policies.</p>
+                </div>
+                <div class="step">
+                    <h4>Tier 2 - Secondary Pairs</h4>
+                    <p>Define rules for pairs with lower volume or intermediate priority. 
+                    May include pairs like GBPUSD, USDCHF with higher thresholds.</p>
+                </div>
+                <div class="step">
+                    <h4>Tier 3 - Other Pairs</h4>
+                    <p>Configure policies for remaining currency pairs with lower exposure. 
+                    These typically have higher thresholds before recommending hedges.</p>
+                </div>
+            </div>
+
+            <h3 style="margin: 1.5rem 0 1rem; color: var(--text-primary);">Parameters per Tier</h3>
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Parameter</th>
+                            <th>Description</th>
+                            <th>Example</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Currency pairs</strong></td>
+                            <td>Selection of pairs assigned to this tier</td>
+                            <td>EURUSD, EURGBP, EURDKK</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Threshold</strong></td>
+                            <td>Minimum exposure amount to generate a recommendation</td>
+                            <td>23,250,000</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Hedging policy %</strong></td>
+                            <td>Percentage of exposure to hedge</td>
+                            <td>85.00%</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="info-box warning">
+                <strong>⚠️ Important:</strong> Changes to policy configuration immediately affect 
+                the recommendations shown. Ensure parameters reflect the approved hedging strategy.
+            </div>
+        </section>
+
+        <!-- Filters Section -->
+        <section id="filters" class="section">
+            <h2 class="section-title">
+                <span class="icon">🔍</span>
+                Filters and Controls
+            </h2>
+
+            <h3 style="margin-bottom: 1rem; color: var(--text-primary);">Display Currency Selector</h3>
+            <p style="margin-bottom: 1rem;">
+                Choose which currency you want all dashboard values expressed in:
+            </p>
+            <div class="currency-demo">
+                <span class="currency-btn">CHF</span>
+                <span class="currency-btn active">EUR</span>
+                <span class="currency-btn">GBP</span>
+                <span class="currency-btn">SEK</span>
+                <span class="currency-btn">USD</span>
+            </div>
+
+            <h3 style="margin: 1.5rem 0 1rem; color: var(--text-primary);">Other Available Filters</h3>
+            <ul class="feature-list">
+                <li>
+                    <span class="check">📅</span>
+                    <div>
+                        <strong>Dates</strong> - Select the effective analysis date. 
+                        Displayed data will correspond to that specific date.
+                    </div>
+                </li>
+                <li>
+                    <span class="check">👤</span>
+                    <div>
+                        <strong>Client</strong> - If you have access to multiple clients, 
+                        select which one to visualize.
+                    </div>
+                </li>
+                <li>
+                    <span class="check">📊</span>
+                    <div>
+                        <strong>Filters Panel (sidebar)</strong> - Access additional filters 
+                        by clicking the filters icon on the right edge.
+                    </div>
+                </li>
+            </ul>
+
+            <div class="info-box">
+                <strong>💡 Tip:</strong> Applied filters persist while navigating between 
+                "Top of the House" and "Entity Level" pages. This allows comparing views 
+                with the same selection criteria.
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>Exposure Analytics - User Documentation</p>
+        <p style="margin-top: 0.5rem; opacity: 0.8;">
+            Need help? Contact the support team • 
+            <a href="entity-level.html">View Entity Level Guide →</a>
+        </p>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    
+                    // Update active state
+                    document.querySelectorAll('.nav-tabs a').forEach(a => a.classList.remove('active'));
+                    this.classList.add('active');
+                }
+            });
+        });
+
+        // Update active nav on scroll
+        window.addEventListener('scroll', () => {
+            const sections = document.querySelectorAll('section[id]');
+            let current = '';
+            
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                if (scrollY >= sectionTop - 200) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            document.querySelectorAll('.nav-tabs a').forEach(a => {
+                a.classList.remove('active');
+                if (a.getAttribute('href') === '#' + current) {
+                    a.classList.add('active');
+                }
+            });
+        });
+
+        // Currency button demo interaction
+        document.querySelectorAll('.currency-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                document.querySelectorAll('.currency-btn').forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+            });
+        });
+    </script>
+</body>
+</html>
