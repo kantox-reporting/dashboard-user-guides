@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
+    <title>Cash Flow Dashboard - User Guide</title>
+    <style>
+        :root{--kantox-teal:#00A5B5;--kantox-teal-dark:#008A99;--kantox-orange:#F47A20;--kantox-orange-light:#FF9F4A;--text-primary:#2D3748;--text-secondary:#4A5568;--bg-light:#F7FAFC;--bg-card:#FFFFFF;--border-color:#E2E8F0;--success-green:#48BB78;--warning-red:#F56565;--purple-accent:#805AD5;}
+        *{margin:0;padding:0;box-sizing:border-box;}
+        body{font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif;background:var(--bg-light);color:var(--text-primary);line-height:1.6;}
+        .header{background:linear-gradient(135deg,var(--kantox-teal) 0%,var(--kantox-teal-dark) 100%);color:white;padding:2rem;text-align:center;}
+        .header-logo{display:flex;align-items:center;justify-content:center;gap:1rem;margin-bottom:1rem;}
+        .logo-icon{width:50px;height:50px;background:white;border-radius:8px;display:flex;align-items:center;justify-content:center;font-weight:bold;color:var(--kantox-teal);font-size:1.5rem;}
+        .header h1{font-size:2rem;font-weight:600;margin-bottom:.5rem;}
+        .header p{opacity:.9;font-size:1.1rem;}
+        .badge{display:inline-block;background:var(--kantox-orange);padding:.25rem .75rem;border-radius:20px;font-size:.85rem;margin-top:.5rem;}
+        .nav-tabs{background:white;padding:1rem 2rem;border-bottom:1px solid var(--border-color);display:flex;gap:.5rem;flex-wrap:wrap;justify-content:center;position:sticky;top:0;z-index:100;}
+        .nav-tabs a{color:var(--text-secondary);text-decoration:none;padding:.5rem .85rem;border-radius:6px;transition:all .2s;font-size:.9rem;}
+        .nav-tabs a:hover,.nav-tabs a.active{background:var(--kantox-teal);color:white;}
+        .container{max-width:1200px;margin:0 auto;padding:2rem;}
+        .section{background:var(--bg-card);border-radius:12px;padding:2rem;margin-bottom:2rem;box-shadow:0 2px 8px rgba(0,0,0,.05);border:1px solid var(--border-color);}
+        .section-title{display:flex;align-items:center;gap:.75rem;color:var(--kantox-teal);font-size:1.4rem;margin-bottom:1.5rem;padding-bottom:.75rem;border-bottom:2px solid var(--kantox-teal);}
+        .section-title .icon{width:32px;height:32px;background:var(--kantox-teal);border-radius:6px;display:flex;align-items:center;justify-content:center;color:white;font-size:1rem;}
+        .info-box{background:linear-gradient(135deg,#E6FFFA 0%,#B2F5EA 100%);border-left:4px solid var(--kantox-teal);padding:1rem 1.25rem;border-radius:0 8px 8px 0;margin:1rem 0;}
+        .info-box.warning{background:linear-gradient(135deg,#FFFAF0 0%,#FEEBC8 100%);border-left-color:var(--kantox-orange);}
+        .info-box.purple{background:linear-gradient(135deg,#FAF5FF 0%,#E9D8FD 100%);border-left-color:var(--purple-accent);}
+        .info-box strong{color:var(--kantox-teal);}
+        .info-box.warning strong{color:var(--kantox-orange);}
+        .info-box.purple strong{color:var(--purple-accent);}
+        table{width:100%;border-collapse:collapse;font-size:.9rem;}
+        th{background:var(--kantox-teal);color:white;padding:.75rem 1rem;text-align:left;font-weight:600;}
+        td{padding:.75rem 1rem;border-bottom:1px solid var(--border-color);}
+        tr:hover{background:var(--bg-light);}
+        .table-container{overflow-x:auto;margin:1rem 0;}
+        .feature-list{list-style:none;}
+        .feature-list li{padding:.75rem 0;border-bottom:1px solid var(--border-color);display:flex;align-items:flex-start;gap:.75rem;}
+        .feature-list li:last-child{border-bottom:none;}
+        .feature-list .check{color:var(--kantox-teal);font-weight:bold;font-size:1.1rem;}
+        .visual-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.5rem;margin:1.5rem 0;}
+        .visual-card{background:linear-gradient(135deg,#f8f9fa 0%,#fff 100%);border:2px solid var(--border-color);border-radius:12px;padding:1.5rem;transition:all .3s;}
+        .visual-card:hover{border-color:var(--kantox-teal);transform:translateY(-2px);box-shadow:0 4px 12px rgba(0,165,181,.15);}
+        .visual-card h4{color:var(--kantox-teal);font-size:1rem;margin-bottom:.75rem;}
+        .visual-card p{color:var(--text-secondary);font-size:.9rem;}
+        .footer{background:var(--text-primary);color:white;padding:2rem;text-align:center;margin-top:2rem;}
+        h3{margin:1.5rem 0 .75rem;color:var(--text-primary);}
+        p{margin-bottom:.75rem;}
+    </style>
+</head>
+<body>
+<header class="header">
+    <div class="header-logo">
+        <div class="logo-icon">K</div>
+        <div><h1>Cash Flow Dashboard</h1><p>FX Trade Cash Flow &amp; Settlement Analysis</p></div>
+    </div>
+    <span class="badge">User Guide</span>
+</header>
+<nav class="nav-tabs">
+    <a href="#overview" class="active">Overview</a>
+    <a href="#filters">Filters</a>
+    <a href="#cashflow">Cash Flow View</a>
+    <a href="#alternate">Additional Views</a>
+    <a href="#refresh">Data Refresh</a>
+</nav>
+<main class="container">
+    <section id="overview" class="section">
+        <h2 class="section-title"><span class="icon">💸</span>What is the Cash Flow Dashboard?</h2>
+        <p>The <strong>Cash Flow Dashboard</strong> gives you a clear view of your FX trade cash flows — when amounts are due, how much you are buying and selling per currency, and how your execution rates compare to the weighted average. It helps you plan liquidity, monitor trade activity over time, and review the performance of your hedging programme.</p>
+        <div class="info-box"><strong>💡 Key Value:</strong> See your monthly cash flow picture at a glance — amounts in your preferred reporting currency, with a rate trend line that shows whether your execution rates are improving or deteriorating.</div>
+        <h3>Key Benefits</h3>
+        <ul class="feature-list">
+            <li><span class="check">✓</span><div><strong>Monthly Cash Flow View</strong> — visualise settlement amounts by month with execution rate trends overlaid</div></li>
+            <li><span class="check">✓</span><div><strong>Full Trade List</strong> — expandable table of all trades with amounts, directions, rates, and liquidity providers</div></li>
+            <li><span class="check">✓</span><div><strong>Dynamic Currency Normalization</strong> — view all amounts in your preferred reporting currency (EUR, USD, GBP, CHF, SEK)</div></li>
+            <li><span class="check">✓</span><div><strong>Buy/Sell Split</strong> — isolate the buy or sell side of your portfolio</div></li>
+        </ul>
+    </section>
+
+    <section id="filters" class="section">
+        <h2 class="section-title"><span class="icon">🎛️</span>Filters &amp; Controls</h2>
+        <div class="table-container">
+            <table>
+                <thead><tr><th>Filter</th><th>What it does</th></tr></thead>
+                <tbody>
+                    <tr><td><strong>Execution Date (Between)</strong></td><td>Date range slider and picker — filters all visuals to trades executed within this window</td></tr>
+                    <tr><td><strong>Buy Direction (+/−)</strong></td><td>Toggle to show positive (buy) or negative (sell) side of your cash flows</td></tr>
+                    <tr><td><strong>Expressed in</strong></td><td>Select your normalization currency — all amounts are converted to this currency at current spot rates (EUR, USD, GBP, CHF, SEK)</td></tr>
+                    <tr><td><strong>Entity / Account</strong></td><td>Filter to a specific entity or account within your organisation</td></tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="info-box"><strong>💡 Tip:</strong> Use the "Expressed in" selector to switch to your reporting currency before exporting data for internal reports.</div>
+    </section>
+
+    <section id="cashflow" class="section">
+        <h2 class="section-title"><span class="icon">📊</span>Main Cash Flow View</h2>
+        <p>The main page shows your settlement activity with two key elements:</p>
+
+        <h3>📈 Monthly Bar + Line Chart</h3>
+        <p>A combination chart showing:</p>
+        <ul class="feature-list">
+            <li><span class="check">■</span><div><strong>Bars (columns):</strong> Total normalised amount settled each month — height reflects the volume of FX activity</div></li>
+            <li><span class="check">—</span><div><strong>Dashed line (WAHR):</strong> Weighted Average Hedge Rate for that month — shows whether your execution rates are trending better or worse over time</div></li>
+        </ul>
+        <div class="info-box"><strong>Reading the chart:</strong> A rising WAHR line on a buy position means you are locking in better rates over time. A falling line may indicate worsening market conditions or a shift in trading mix.</div>
+
+        <h3>📋 Trade List Table (expandable)</h3>
+        <p>Click the <strong>"Open Trade List"</strong> button to expand a detailed table of all trades. Columns include:</p>
+        <div class="table-container">
+            <table>
+                <thead><tr><th>Column</th><th>Description</th></tr></thead>
+                <tbody>
+                    <tr><td><strong>Reference</strong></td><td>Unique trade reference</td></tr>
+                    <tr><td><strong>Execution Date</strong></td><td>When the trade was executed</td></tr>
+                    <tr><td><strong>Value Date</strong></td><td>When the trade settles</td></tr>
+                    <tr><td><strong>Type</strong></td><td>Trade type (e.g. Forward, Swap)</td></tr>
+                    <tr><td><strong>Currency / Counter Currency</strong></td><td>The two currencies of the trade</td></tr>
+                    <tr><td><strong>Direction</strong></td><td>Buy or Sell</td></tr>
+                    <tr><td><strong>Normalised Amount</strong></td><td>Amount converted to your selected display currency</td></tr>
+                    <tr><td><strong>Hedge Rate / WAHR</strong></td><td>Execution rate and the weighted average for that period</td></tr>
+                    <tr><td><strong>Liquidity Provider</strong></td><td>The bank that executed this trade</td></tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <section id="alternate" class="section">
+        <h2 class="section-title"><span class="icon">🔀</span>Additional Views</h2>
+        <div class="visual-grid">
+            <div class="visual-card">
+                <h4>📄 BL v1 — Previous Layout</h4>
+                <p>An earlier version of the main cash flow view. If you were familiar with a previous layout, this page preserves that design. The underlying data and filters are identical.</p>
+            </div>
+            <div class="visual-card">
+                <h4>🏢 KL — Entity Scope View</h4>
+                <p>An alternate view scoped to a specific organisational entity. Use this if your organisation operates with multiple legal entities and you need a dedicated view for one of them — same charts, different account filter applied.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="refresh" class="section">
+        <h2 class="section-title"><span class="icon">🔄</span>Data Refresh</h2>
+        <ul class="feature-list">
+            <li><span class="check">📅</span><div>Dashboard data refreshes once per day</div></li>
+            <li><span class="check">⏰</span><div>Trades executed today will appear in tomorrow's refresh</div></li>
+            <li><span class="check">💱</span><div>Normalised amounts use the most recently available spot rates</div></li>
+        </ul>
+        <div class="info-box warning"><strong>⚠️ Note:</strong> If you need to verify a specific trade, compare against the Kantox platform, keeping the refresh timing in mind.</div>
+    </section>
+</main>
+<footer class="footer"><p>Cash Flow Dashboard — User Guide</p><p style="margin-top:.5rem;opacity:.8;">Dashboard User Guide — Kantox</p></footer>
+<script>
+document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener('click',function(e){e.preventDefault();const t=document.querySelector(this.getAttribute('href'));if(t){t.scrollIntoView({behavior:'smooth',block:'start'});document.querySelectorAll('.nav-tabs a').forEach(x=>x.classList.remove('active'));this.classList.add('active');}});});
+window.addEventListener('scroll',()=>{const s=document.querySelectorAll('section[id]');let c='';s.forEach(x=>{if(scrollY>=x.offsetTop-200)c=x.getAttribute('id');});document.querySelectorAll('.nav-tabs a').forEach(a=>{a.classList.remove('active');if(a.getAttribute('href')==='#'+c)a.classList.add('active');});});
+</script>
+</body>
+</html>

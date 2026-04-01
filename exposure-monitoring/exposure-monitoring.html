@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
+    <title>Exposure Monitoring - User Guide</title>
+    <style>
+        :root{--kantox-teal:#00A5B5;--kantox-teal-dark:#008A99;--kantox-orange:#F47A20;--kantox-orange-light:#FF9F4A;--text-primary:#2D3748;--text-secondary:#4A5568;--bg-light:#F7FAFC;--bg-card:#FFFFFF;--border-color:#E2E8F0;--success-green:#48BB78;--warning-red:#F56565;--purple-accent:#805AD5;}
+        *{margin:0;padding:0;box-sizing:border-box;}
+        body{font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif;background:var(--bg-light);color:var(--text-primary);line-height:1.6;}
+        .header{background:linear-gradient(135deg,var(--kantox-teal) 0%,var(--kantox-teal-dark) 100%);color:white;padding:2rem;text-align:center;}
+        .header-logo{display:flex;align-items:center;justify-content:center;gap:1rem;margin-bottom:1rem;}
+        .logo-icon{width:50px;height:50px;background:white;border-radius:8px;display:flex;align-items:center;justify-content:center;font-weight:bold;color:var(--kantox-teal);font-size:1.5rem;}
+        .header h1{font-size:2rem;font-weight:600;margin-bottom:.5rem;}
+        .header p{opacity:.9;font-size:1.1rem;}
+        .badge{display:inline-block;background:var(--kantox-orange);padding:.25rem .75rem;border-radius:20px;font-size:.85rem;margin-top:.5rem;}
+        .nav-tabs{background:white;padding:1rem 2rem;border-bottom:1px solid var(--border-color);display:flex;gap:.5rem;flex-wrap:wrap;justify-content:center;position:sticky;top:0;z-index:100;}
+        .nav-tabs a{color:var(--text-secondary);text-decoration:none;padding:.5rem .85rem;border-radius:6px;transition:all .2s;font-size:.9rem;}
+        .nav-tabs a:hover,.nav-tabs a.active{background:var(--kantox-teal);color:white;}
+        .container{max-width:1200px;margin:0 auto;padding:2rem;}
+        .section{background:var(--bg-card);border-radius:12px;padding:2rem;margin-bottom:2rem;box-shadow:0 2px 8px rgba(0,0,0,.05);border:1px solid var(--border-color);}
+        .section-title{display:flex;align-items:center;gap:.75rem;color:var(--kantox-teal);font-size:1.4rem;margin-bottom:1.5rem;padding-bottom:.75rem;border-bottom:2px solid var(--kantox-teal);}
+        .section-title .icon{width:32px;height:32px;background:var(--kantox-teal);border-radius:6px;display:flex;align-items:center;justify-content:center;color:white;font-size:1rem;}
+        .info-box{background:linear-gradient(135deg,#E6FFFA 0%,#B2F5EA 100%);border-left:4px solid var(--kantox-teal);padding:1rem 1.25rem;border-radius:0 8px 8px 0;margin:1rem 0;}
+        .info-box.warning{background:linear-gradient(135deg,#FFFAF0 0%,#FEEBC8 100%);border-left-color:var(--kantox-orange);}
+        .info-box.purple{background:linear-gradient(135deg,#FAF5FF 0%,#E9D8FD 100%);border-left-color:var(--purple-accent);}
+        .info-box strong{color:var(--kantox-teal);}
+        .info-box.warning strong{color:var(--kantox-orange);}
+        .info-box.purple strong{color:var(--purple-accent);}
+        table{width:100%;border-collapse:collapse;font-size:.9rem;}
+        th{background:var(--kantox-teal);color:white;padding:.75rem 1rem;text-align:left;font-weight:600;}
+        td{padding:.75rem 1rem;border-bottom:1px solid var(--border-color);}
+        tr:hover{background:var(--bg-light);}
+        .table-container{overflow-x:auto;margin:1rem 0;}
+        .feature-list{list-style:none;}
+        .feature-list li{padding:.75rem 0;border-bottom:1px solid var(--border-color);display:flex;align-items:flex-start;gap:.75rem;}
+        .feature-list li:last-child{border-bottom:none;}
+        .feature-list .check{color:var(--kantox-teal);font-weight:bold;font-size:1.1rem;}
+        .footer{background:var(--text-primary);color:white;padding:2rem;text-align:center;margin-top:2rem;}
+        h3{margin:1.5rem 0 .75rem;color:var(--text-primary);}
+        p{margin-bottom:.75rem;}
+    </style>
+</head>
+<body>
+<header class="header">
+    <div class="header-logo">
+        <div class="logo-icon">K</div>
+        <div><h1>Exposure Monitoring</h1><p>FX Exposure &amp; Hedge Coverage Tracking</p></div>
+    </div>
+    <span class="badge">User Guide</span>
+</header>
+<nav class="nav-tabs">
+    <a href="#overview" class="active">Overview</a>
+    <a href="#filters">Filters</a>
+    <a href="#exposure">Exposure View</a>
+    <a href="#coverage">Coverage Ratios</a>
+    <a href="#refresh">Data Refresh</a>
+</nav>
+<main class="container">
+    <section id="overview" class="section">
+        <h2 class="section-title"><span class="icon">🎯</span>What is the Exposure Monitoring Dashboard?</h2>
+        <p>The <strong>Exposure Monitoring Dashboard</strong> provides a consolidated view of your total FX exposure and how much of it is currently hedged. It helps you track your coverage position across currency pairs and time horizons, so you always know how much exposure remains open and unprotected at any point.</p>
+        <div class="info-box"><strong>💡 Key Value:</strong> Keep a real-time pulse on your hedging coverage — see at a glance which currency pairs are under-hedged, over-hedged, or on target, and act before exposure gaps become costly.</div>
+        <h3>Key Benefits</h3>
+        <ul class="feature-list">
+            <li><span class="check">✓</span><div><strong>Total Exposure Overview</strong> — gross FX exposure by currency pair and by time bucket</div></li>
+            <li><span class="check">✓</span><div><strong>Hedge Coverage Tracking</strong> — how much of your gross exposure has been hedged at each maturity horizon</div></li>
+            <li><span class="check">✓</span><div><strong>Residual Exposure</strong> — the open, unhedged portion of your FX risk in each currency pair</div></li>
+            <li><span class="check">✓</span><div><strong>Coverage Ratio KPIs</strong> — percentage hedged vs. total exposure, compared against your policy target</div></li>
+            <li><span class="check">✓</span><div><strong>Multi-Currency View</strong> — all amounts normalised to your preferred reporting currency</div></li>
+        </ul>
+    </section>
+
+    <section id="filters" class="section">
+        <h2 class="section-title"><span class="icon">🎛️</span>Filters &amp; Controls</h2>
+        <div class="table-container">
+            <table>
+                <thead><tr><th>Filter</th><th>What it does</th></tr></thead>
+                <tbody>
+                    <tr><td><strong>Entity Group</strong></td><td>Select one or more entities to monitor</td></tr>
+                    <tr><td><strong>Currency Pair</strong></td><td>Focus on a specific currency pair (e.g. EUR/USD, EUR/GBP)</td></tr>
+                    <tr><td><strong>Bucket / Horizon</strong></td><td>Filter to a specific time bucket or hedging horizon</td></tr>
+                    <tr><td><strong>Value Date range</strong></td><td>Restrict to exposures maturing within a specific window</td></tr>
+                    <tr><td><strong>Expressed in</strong></td><td>Reporting currency for all normalised amounts</td></tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <section id="exposure" class="section">
+        <h2 class="section-title"><span class="icon">📊</span>Exposure View</h2>
+        <h3>Gross Exposure by Currency Pair</h3>
+        <p>The main chart shows your total gross FX exposure broken down by currency pair. Each bar (or segment) represents the full amount of FX risk in that pair — both the portion that has been hedged and the open remainder.</p>
+        <ul class="feature-list">
+            <li><span class="check">🟦</span><div><strong>Hedged amount</strong> — the portion of exposure covered by open hedge positions</div></li>
+            <li><span class="check">🟥</span><div><strong>Residual / unhedged amount</strong> — the open exposure yet to be covered</div></li>
+        </ul>
+        <div class="info-box"><strong>Reading the chart:</strong> A bar that is mostly hedged (blue) indicates good coverage. A bar dominated by the unhedged segment (red) signals that you may want to add hedges for that currency pair before rates move further.</div>
+
+        <h3>Exposure by Bucket / Horizon</h3>
+        <p>The bucketed view groups exposure by time horizon (e.g. 0–1 month, 1–3 months, 3–6 months). This helps you identify whether your coverage is well distributed across tenors or concentrated in the near term.</p>
+        <div class="info-box warning"><strong>⚠️ Near-term buckets:</strong> Exposure in the 0–1 month bucket is the most urgent to hedge. If the near-term bucket shows significant unhedged amounts, prioritise these with your treasury team.</div>
+    </section>
+
+    <section id="coverage" class="section">
+        <h2 class="section-title"><span class="icon">📏</span>Coverage Ratios</h2>
+        <p>The coverage ratio KPIs show your hedge coverage as a percentage of gross exposure, per currency pair and in aggregate:</p>
+        <div class="table-container">
+            <table>
+                <thead><tr><th>Metric</th><th>Meaning</th></tr></thead>
+                <tbody>
+                    <tr><td><strong>Coverage %</strong></td><td>Hedged amount ÷ Gross exposure — the proportion of your total FX risk that is covered</td></tr>
+                    <tr><td><strong>Gross Exposure</strong></td><td>Total FX amount (hedged + unhedged) in the selected currency pair and period</td></tr>
+                    <tr><td><strong>Hedged Amount</strong></td><td>Notional of open hedge positions covering the selected exposure</td></tr>
+                    <tr><td><strong>Residual Exposure</strong></td><td>Gross Exposure minus Hedged Amount — your current open risk</td></tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="info-box purple"><strong>💡 Policy targets:</strong> Your Dynamic Hedging programme defines coverage ratio targets for each bucket and currency pair. Compare the Coverage % shown here against your policy targets to identify breaches or over-hedging situations.</div>
+    </section>
+
+    <section id="refresh" class="section">
+        <h2 class="section-title"><span class="icon">🔄</span>Data Refresh</h2>
+        <ul class="feature-list">
+            <li><span class="check">📅</span><div>Exposure data refreshes once per business day</div></li>
+            <li><span class="check">💱</span><div>Normalised amounts use the latest available spot rates at each refresh</div></li>
+            <li><span class="check">📊</span><div>New hedges executed today will be reflected after the next daily refresh</div></li>
+        </ul>
+        <div class="info-box warning"><strong>⚠️ Intraday changes:</strong> If you execute new hedges during the day, coverage ratios will not update until the next refresh. For real-time confirmation, verify new trades directly in the Kantox platform.</div>
+    </section>
+</main>
+<footer class="footer"><p>Exposure Monitoring — User Guide</p><p style="margin-top:.5rem;opacity:.8;">Dashboard User Guide — Kantox</p></footer>
+<script>
+document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener('click',function(e){e.preventDefault();const t=document.querySelector(this.getAttribute('href'));if(t){t.scrollIntoView({behavior:'smooth',block:'start'});document.querySelectorAll('.nav-tabs a').forEach(x=>x.classList.remove('active'));this.classList.add('active');}});});
+window.addEventListener('scroll',()=>{const s=document.querySelectorAll('section[id]');let c='';s.forEach(x=>{if(scrollY>=x.offsetTop-200)c=x.getAttribute('id');});document.querySelectorAll('.nav-tabs a').forEach(a=>{a.classList.remove('active');if(a.getAttribute('href')==='#'+c)a.classList.add('active');});});
+</script>
+</body>
+</html>

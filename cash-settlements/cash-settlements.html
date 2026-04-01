@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
+    <title>Cash Settlements - User Guide</title>
+    <style>
+        :root{--kantox-teal:#00A5B5;--kantox-teal-dark:#008A99;--kantox-orange:#F47A20;--kantox-orange-light:#FF9F4A;--text-primary:#2D3748;--text-secondary:#4A5568;--bg-light:#F7FAFC;--bg-card:#FFFFFF;--border-color:#E2E8F0;--success-green:#48BB78;--warning-red:#F56565;--purple-accent:#805AD5;}
+        *{margin:0;padding:0;box-sizing:border-box;}
+        body{font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif;background:var(--bg-light);color:var(--text-primary);line-height:1.6;}
+        .header{background:linear-gradient(135deg,var(--kantox-teal) 0%,var(--kantox-teal-dark) 100%);color:white;padding:2rem;text-align:center;}
+        .header-logo{display:flex;align-items:center;justify-content:center;gap:1rem;margin-bottom:1rem;}
+        .logo-icon{width:50px;height:50px;background:white;border-radius:8px;display:flex;align-items:center;justify-content:center;font-weight:bold;color:var(--kantox-teal);font-size:1.5rem;}
+        .header h1{font-size:2rem;font-weight:600;margin-bottom:.5rem;}
+        .header p{opacity:.9;font-size:1.1rem;}
+        .badge{display:inline-block;background:var(--kantox-orange);padding:.25rem .75rem;border-radius:20px;font-size:.85rem;margin-top:.5rem;}
+        .nav-tabs{background:white;padding:1rem 2rem;border-bottom:1px solid var(--border-color);display:flex;gap:.5rem;flex-wrap:wrap;justify-content:center;position:sticky;top:0;z-index:100;}
+        .nav-tabs a{color:var(--text-secondary);text-decoration:none;padding:.5rem .85rem;border-radius:6px;transition:all .2s;font-size:.9rem;}
+        .nav-tabs a:hover,.nav-tabs a.active{background:var(--kantox-teal);color:white;}
+        .container{max-width:1200px;margin:0 auto;padding:2rem;}
+        .section{background:var(--bg-card);border-radius:12px;padding:2rem;margin-bottom:2rem;box-shadow:0 2px 8px rgba(0,0,0,.05);border:1px solid var(--border-color);}
+        .section-title{display:flex;align-items:center;gap:.75rem;color:var(--kantox-teal);font-size:1.4rem;margin-bottom:1.5rem;padding-bottom:.75rem;border-bottom:2px solid var(--kantox-teal);}
+        .section-title .icon{width:32px;height:32px;background:var(--kantox-teal);border-radius:6px;display:flex;align-items:center;justify-content:center;color:white;font-size:1rem;}
+        .info-box{background:linear-gradient(135deg,#E6FFFA 0%,#B2F5EA 100%);border-left:4px solid var(--kantox-teal);padding:1rem 1.25rem;border-radius:0 8px 8px 0;margin:1rem 0;}
+        .info-box.warning{background:linear-gradient(135deg,#FFFAF0 0%,#FEEBC8 100%);border-left-color:var(--kantox-orange);}
+        .info-box.purple{background:linear-gradient(135deg,#FAF5FF 0%,#E9D8FD 100%);border-left-color:var(--purple-accent);}
+        .info-box strong{color:var(--kantox-teal);}
+        .info-box.warning strong{color:var(--kantox-orange);}
+        .info-box.purple strong{color:var(--purple-accent);}
+        table{width:100%;border-collapse:collapse;font-size:.9rem;}
+        th{background:var(--kantox-teal);color:white;padding:.75rem 1rem;text-align:left;font-weight:600;}
+        td{padding:.75rem 1rem;border-bottom:1px solid var(--border-color);}
+        tr:hover{background:var(--bg-light);}
+        .table-container{overflow-x:auto;margin:1rem 0;}
+        .feature-list{list-style:none;}
+        .feature-list li{padding:.75rem 0;border-bottom:1px solid var(--border-color);display:flex;align-items:flex-start;gap:.75rem;}
+        .feature-list li:last-child{border-bottom:none;}
+        .feature-list .check{color:var(--kantox-teal);font-weight:bold;font-size:1.1rem;}
+        .footer{background:var(--text-primary);color:white;padding:2rem;text-align:center;margin-top:2rem;}
+        h3{margin:1.5rem 0 .75rem;color:var(--text-primary);}
+        p{margin-bottom:.75rem;}
+    </style>
+</head>
+<body>
+<header class="header">
+    <div class="header-logo">
+        <div class="logo-icon">K</div>
+        <div><h1>Cash Settlements</h1><p>Bank Settlement Obligations &amp; Liquidity Planning</p></div>
+    </div>
+    <span class="badge">User Guide</span>
+</header>
+<nav class="nav-tabs">
+    <a href="#overview" class="active">Overview</a>
+    <a href="#filters">Filters</a>
+    <a href="#by-bank">By Bank</a>
+    <a href="#by-currency">By Currency</a>
+    <a href="#refresh">Data Refresh</a>
+</nav>
+<main class="container">
+    <section id="overview" class="section">
+        <h2 class="section-title"><span class="icon">💳</span>What is the Cash Settlements Report?</h2>
+        <p>The <strong>Cash Settlements</strong> report provides a granular view of actual cash amounts due across your open FX positions. Rather than showing unrealised P&amp;L (as the MtM Dashboard does), this report focuses on the <em>real money movement</em> — what you will pay or receive at each settlement date, broken down by bank counterparty and currency pair.</p>
+        <div class="info-box"><strong>💡 Key Value:</strong> Know exactly how much cash you need to settle with each bank, on each value date, in each currency. Essential for daily liquidity management and settlement risk monitoring.</div>
+        <h3>Key Benefits</h3>
+        <ul class="feature-list">
+            <li><span class="check">✓</span><div><strong>Bank-level Settlement View</strong> — see total obligations due per liquidity provider (bank) across value dates</div></li>
+            <li><span class="check">✓</span><div><strong>Currency-level Detail</strong> — understand the currency breakdown of your settlement obligations</div></li>
+            <li><span class="check">✓</span><div><strong>Concentration Monitoring</strong> — identify if settlement amounts are concentrated with a single counterparty or date</div></li>
+            <li><span class="check">✓</span><div><strong>Timeline View</strong> — filter by value date range to focus on imminent settlements or longer-term obligations</div></li>
+        </ul>
+    </section>
+
+    <section id="filters" class="section">
+        <h2 class="section-title"><span class="icon">🎛️</span>Filters &amp; Controls</h2>
+        <div class="table-container">
+            <table>
+                <thead><tr><th>Filter</th><th>What it does</th></tr></thead>
+                <tbody>
+                    <tr><td><strong>Value Date range</strong></td><td>Restrict to settlements falling within a specific date window — e.g. next 30 days for short-term liquidity planning</td></tr>
+                    <tr><td><strong>Bank / Liquidity Provider</strong></td><td>Filter to a specific bank to see your obligations with a single counterparty</td></tr>
+                    <tr><td><strong>Currency Pair</strong></td><td>Narrow to a specific currency pair to understand exposure in a particular market</td></tr>
+                    <tr><td><strong>Expressed in</strong></td><td>Select the reporting currency for normalised totals (EUR, USD, GBP, CHF, SEK)</td></tr>
+                    <tr><td><strong>Entity / Account</strong></td><td>Filter to a specific entity within your organisation</td></tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="info-box"><strong>💡 Tip:</strong> For daily settlement preparation, set the Value Date filter to "today + 2 business days" and view by bank to prepare your nostro funding in advance.</div>
+    </section>
+
+    <section id="by-bank" class="section">
+        <h2 class="section-title"><span class="icon">🏛️</span>Settlement by Bank</h2>
+        <p>The bank-level view shows your settlement obligations grouped by liquidity provider — each row (or bar segment) represents one bank:</p>
+        <ul class="feature-list">
+            <li><span class="check">•</span><div>Total normalised amount due to or from each bank on each value date</div></li>
+            <li><span class="check">•</span><div>Number of outstanding trades per bank</div></li>
+            <li><span class="check">•</span><div>Distribution across value dates — spikes indicate concentrated settlement risk</div></li>
+        </ul>
+        <div class="info-box warning"><strong>⚠️ Settlement concentration:</strong> If a large proportion of your settlement obligations fall on a single date with a single bank, this represents concentration risk. Use this view to monitor and manage this proactively with your treasury team.</div>
+    </section>
+
+    <section id="by-currency" class="section">
+        <h2 class="section-title"><span class="icon">💱</span>Settlement by Currency</h2>
+        <p>The currency view breaks down the same settlement obligations by currency pair, giving you:</p>
+        <ul class="feature-list">
+            <li><span class="check">•</span><div>Total buy-side amount per currency (what you will receive)</div></li>
+            <li><span class="check">•</span><div>Total sell-side amount per currency (what you will pay out)</div></li>
+            <li><span class="check">•</span><div>Net settlement position per currency pair across the selected period</div></li>
+        </ul>
+        <div class="info-box purple"><strong>🔍 Netting opportunities:</strong> If you have both buy and sell trades in the same currency pair settling on the same date with the same bank, these may be eligible for netting. Confirm with your bank counterparty whether bilateral netting is in place for your account.</div>
+    </section>
+
+    <section id="refresh" class="section">
+        <h2 class="section-title"><span class="icon">🔄</span>Data Refresh</h2>
+        <ul class="feature-list">
+            <li><span class="check">📅</span><div>Settlement data refreshes daily using the previous business day's positions</div></li>
+            <li><span class="check">⏰</span><div>Trades executed or amended today will appear after the next daily refresh</div></li>
+            <li><span class="check">💱</span><div>Normalised amounts use the most recent available spot rates at each refresh</div></li>
+        </ul>
+        <div class="info-box warning"><strong>⚠️ Note:</strong> Cash settlement amounts shown here are based on the originally agreed hedge rate and notional — they do not change with market movements (unlike the MtM P&amp;L). However, normalised totals may shift slightly as the spot conversion rate used for display updates daily.</div>
+    </section>
+</main>
+<footer class="footer"><p>Cash Settlements — User Guide</p><p style="margin-top:.5rem;opacity:.8;">Dashboard User Guide — Kantox</p></footer>
+<script>
+document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener('click',function(e){e.preventDefault();const t=document.querySelector(this.getAttribute('href'));if(t){t.scrollIntoView({behavior:'smooth',block:'start'});document.querySelectorAll('.nav-tabs a').forEach(x=>x.classList.remove('active'));this.classList.add('active');}});});
+window.addEventListener('scroll',()=>{const s=document.querySelectorAll('section[id]');let c='';s.forEach(x=>{if(scrollY>=x.offsetTop-200)c=x.getAttribute('id');});document.querySelectorAll('.nav-tabs a').forEach(a=>{a.classList.remove('active');if(a.getAttribute('href')==='#'+c)a.classList.add('active');});});
+</script>
+</body>
+</html>

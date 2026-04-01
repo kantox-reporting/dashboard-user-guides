@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
+    <title>DH Analytics Dashboard - User Guide</title>
+    <style>
+        :root{--kantox-teal:#00A5B5;--kantox-teal-dark:#008A99;--kantox-orange:#F47A20;--kantox-orange-light:#FF9F4A;--text-primary:#2D3748;--text-secondary:#4A5568;--bg-light:#F7FAFC;--bg-card:#FFFFFF;--border-color:#E2E8F0;--success-green:#48BB78;--warning-red:#F56565;--purple-accent:#805AD5;}
+        *{margin:0;padding:0;box-sizing:border-box;}
+        body{font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif;background:var(--bg-light);color:var(--text-primary);line-height:1.6;}
+        .header{background:linear-gradient(135deg,var(--kantox-teal) 0%,var(--kantox-teal-dark) 100%);color:white;padding:2rem;text-align:center;}
+        .header-logo{display:flex;align-items:center;justify-content:center;gap:1rem;margin-bottom:1rem;}
+        .logo-icon{width:50px;height:50px;background:white;border-radius:8px;display:flex;align-items:center;justify-content:center;font-weight:bold;color:var(--kantox-teal);font-size:1.5rem;}
+        .header h1{font-size:2rem;font-weight:600;margin-bottom:.5rem;}
+        .header p{opacity:.9;font-size:1.1rem;}
+        .badge{display:inline-block;background:var(--kantox-orange);padding:.25rem .75rem;border-radius:20px;font-size:.85rem;margin-top:.5rem;}
+        .nav-tabs{background:white;padding:1rem 2rem;border-bottom:1px solid var(--border-color);display:flex;gap:.5rem;flex-wrap:wrap;justify-content:center;position:sticky;top:0;z-index:100;}
+        .nav-tabs a{color:var(--text-secondary);text-decoration:none;padding:.5rem .85rem;border-radius:6px;transition:all .2s;font-size:.9rem;}
+        .nav-tabs a:hover,.nav-tabs a.active{background:var(--kantox-teal);color:white;}
+        .container{max-width:1200px;margin:0 auto;padding:2rem;}
+        .section{background:var(--bg-card);border-radius:12px;padding:2rem;margin-bottom:2rem;box-shadow:0 2px 8px rgba(0,0,0,.05);border:1px solid var(--border-color);}
+        .section-title{display:flex;align-items:center;gap:.75rem;color:var(--kantox-teal);font-size:1.4rem;margin-bottom:1.5rem;padding-bottom:.75rem;border-bottom:2px solid var(--kantox-teal);}
+        .section-title .icon{width:32px;height:32px;background:var(--kantox-teal);border-radius:6px;display:flex;align-items:center;justify-content:center;color:white;font-size:1rem;}
+        .info-box{background:linear-gradient(135deg,#E6FFFA 0%,#B2F5EA 100%);border-left:4px solid var(--kantox-teal);padding:1rem 1.25rem;border-radius:0 8px 8px 0;margin:1rem 0;}
+        .info-box.warning{background:linear-gradient(135deg,#FFFAF0 0%,#FEEBC8 100%);border-left-color:var(--kantox-orange);}
+        .info-box.purple{background:linear-gradient(135deg,#FAF5FF 0%,#E9D8FD 100%);border-left-color:var(--purple-accent);}
+        .info-box strong{color:var(--kantox-teal);}
+        .info-box.warning strong{color:var(--kantox-orange);}
+        .info-box.purple strong{color:var(--purple-accent);}
+        table{width:100%;border-collapse:collapse;font-size:.9rem;}
+        th{background:var(--kantox-teal);color:white;padding:.75rem 1rem;text-align:left;font-weight:600;}
+        td{padding:.75rem 1rem;border-bottom:1px solid var(--border-color);}
+        tr:hover{background:var(--bg-light);}
+        .table-container{overflow-x:auto;margin:1rem 0;}
+        .feature-list{list-style:none;}
+        .feature-list li{padding:.75rem 0;border-bottom:1px solid var(--border-color);display:flex;align-items:flex-start;gap:.75rem;}
+        .feature-list li:last-child{border-bottom:none;}
+        .feature-list .check{color:var(--kantox-teal);font-weight:bold;font-size:1.1rem;}
+        .kpi-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1.5rem;margin:1.5rem 0;}
+        .kpi-card{background:linear-gradient(135deg,#f8f9fa 0%,#fff 100%);border:1px solid var(--border-color);border-radius:10px;padding:1.25rem;border-left:4px solid var(--kantox-teal);}
+        .kpi-card.orange{border-left-color:var(--kantox-orange);}
+        .kpi-card.purple{border-left-color:var(--purple-accent);}
+        .kpi-card.green{border-left-color:var(--success-green);}
+        .kpi-card h4{color:var(--kantox-orange);font-size:.85rem;font-weight:600;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.5px;}
+        .kpi-card .value{font-size:1.1rem;font-weight:700;color:var(--text-primary);margin-bottom:.25rem;}
+        .kpi-card .description{color:var(--text-secondary);font-size:.85rem;}
+        .footer{background:var(--text-primary);color:white;padding:2rem;text-align:center;margin-top:2rem;}
+        h3{margin:1.5rem 0 .75rem;color:var(--text-primary);}
+        p{margin-bottom:.75rem;}
+    </style>
+</head>
+<body>
+<header class="header">
+    <div class="header-logo">
+        <div class="logo-icon">K</div>
+        <div><h1>DH Analytics Dashboard</h1><p>Dynamic Hedging Position &amp; Performance Analysis</p></div>
+    </div>
+    <span class="badge">User Guide</span>
+</header>
+<nav class="nav-tabs">
+    <a href="#overview" class="active">Overview</a>
+    <a href="#filters">Filters</a>
+    <a href="#visuals">Dashboard Visuals</a>
+    <a href="#metrics">Key Metrics</a>
+    <a href="#refresh">Data Refresh</a>
+</nav>
+<main class="container">
+    <section id="overview" class="section">
+        <h2 class="section-title"><span class="icon">📐</span>What is the DH Analytics Dashboard?</h2>
+        <p>The <strong>DH Analytics Dashboard</strong> provides a comprehensive view of your Dynamic Hedging programme. It lets you analyse outstanding FX exposure, understand the performance decomposition of your hedge portfolio, and monitor how your hedging activity evolves across currency pairs and value dates.</p>
+        <div class="info-box"><strong>💡 Key Value:</strong> See your total outstanding exposure, its directional split, and the performance breakdown (pricing P&amp;L, DH performance, and forward points) all in one view — with full multi-currency normalisation.</div>
+        <h3>Key Benefits</h3>
+        <ul class="feature-list">
+            <li><span class="check">✓</span><div><strong>Exposure Overview</strong> — see total outstanding FX exposure by entity and currency pair</div></li>
+            <li><span class="check">✓</span><div><strong>Performance Decomposition</strong> — break down results into Pricing P&amp;L, DH Performance, and Forward Points</div></li>
+            <li><span class="check">✓</span><div><strong>Directional Analysis</strong> — filter to positive (buy) or negative (sell) entries separately</div></li>
+            <li><span class="check">✓</span><div><strong>Multi-Currency Normalisation</strong> — view amounts in any supported currency, with automatic conversion at spot rates</div></li>
+            <li><span class="check">✓</span><div><strong>Creation vs. Value Date Views</strong> — switch between the date the hedge was created and the date it matures</div></li>
+        </ul>
+    </section>
+
+    <section id="filters" class="section">
+        <h2 class="section-title"><span class="icon">🎛️</span>Filters &amp; Controls</h2>
+        <div class="table-container">
+            <table>
+                <thead><tr><th>Filter</th><th>What it does</th></tr></thead>
+                <tbody>
+                    <tr><td><strong>Entity Group</strong></td><td>Select the client entity to analyse</td></tr>
+                    <tr><td><strong>Direction</strong></td><td>Toggle between Positive Entries (buy side) and Negative Entries (sell side) — or leave unfiltered for both</td></tr>
+                    <tr><td><strong>Creation Date (Between)</strong></td><td>Filter by when the hedge entry was created</td></tr>
+                    <tr><td><strong>Value Date (Between)</strong></td><td>Filter by when the hedge matures and settles</td></tr>
+                    <tr><td><strong>Currency Pair</strong></td><td>Filter to one or more currency pairs (e.g. EUR/USD, EUR/GBP)</td></tr>
+                    <tr><td><strong>Performance Parameters</strong></td><td>Select which performance metric to display in the charts (DH Performance, Pricing P&amp;L, Forward Points, etc.)</td></tr>
+                    <tr><td><strong>Normalisation Currency (n_currency)</strong></td><td>Select the currency to express all amounts in. Supports EUR, GBP, USD, CHF — plus additional currencies via live spot conversion</td></tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="info-box"><strong>💡 Tip:</strong> The normalisation currency selector is especially powerful — switching between EUR and USD, for example, lets you review the same portfolio from different reporting perspectives without changing the underlying data.</div>
+    </section>
+
+    <section id="visuals" class="section">
+        <h2 class="section-title"><span class="icon">📊</span>Dashboard Visuals</h2>
+
+        <h3>🏢 Exposure Sent by Entity (Bar Chart)</h3>
+        <p>A horizontal bar chart showing total FX volume traded, broken down by entity or account. Quickly identify which entities have the largest open exposure and whether any entity has a disproportionate share of the programme.</p>
+
+        <h3>📊 KPI Cards</h3>
+        <div class="kpi-grid">
+            <div class="kpi-card">
+                <h4>Performance %</h4>
+                <div class="description">Selected performance metric as a percentage — shows how the programme is performing relative to a benchmark</div>
+            </div>
+            <div class="kpi-card orange">
+                <h4>Exposure Saved</h4>
+                <div class="description">Value generated by the Dynamic Hedging programme relative to an unhedged benchmark</div>
+            </div>
+            <div class="kpi-card green">
+                <h4>FX Volume Traded</h4>
+                <div class="description">Total normalised notional amount traded within the selected filters</div>
+            </div>
+        </div>
+
+        <h3>🌊 Waterfall Chart — Exposure Details</h3>
+        <p>The waterfall chart decomposes your exposure step by step:</p>
+        <ul class="feature-list">
+            <li><span class="check">1</span><div><strong>Main Direction</strong> — the starting gross exposure on the dominant side</div></li>
+            <li><span class="check">2</span><div><strong>FX Volume Traded</strong> — total notional executed</div></li>
+            <li><span class="check">3</span><div><strong>Negative Amount</strong> — the sell-side (or buy-side if viewing the negative direction)</div></li>
+            <li><span class="check">4</span><div><strong>Netted Amount</strong> — net exposure after both sides are offset — this is your true outstanding risk</div></li>
+        </ul>
+        <div class="info-box"><strong>Reading the waterfall:</strong> Green bars increase the net exposure; red bars reduce it. The final bar (Netted Amount) shows your actual net position after netting positive and negative entries against each other.</div>
+
+        <h3>🔖 Bookmark Navigator</h3>
+        <p>Use the bookmark navigation buttons to switch between saved views — for example, switching between a creation-date perspective and a value-date perspective without adjusting filters manually.</p>
+    </section>
+
+    <section id="metrics" class="section">
+        <h2 class="section-title"><span class="icon">📏</span>Key Metrics Explained</h2>
+        <div class="table-container">
+            <table>
+                <thead><tr><th>Metric</th><th>Meaning</th></tr></thead>
+                <tbody>
+                    <tr><td><strong>FX Volume Traded</strong></td><td>Total notional amount executed in the programme, normalised to your selected display currency</td></tr>
+                    <tr><td><strong>Positive Amount</strong></td><td>Notional on the buy (positive) side of your programme</td></tr>
+                    <tr><td><strong>Negative Amount</strong></td><td>Notional on the sell (negative) side</td></tr>
+                    <tr><td><strong>Netted Amount</strong></td><td>Net exposure — positive minus negative, showing your true outstanding risk</td></tr>
+                    <tr><td><strong>DH Performance</strong></td><td>Value created by the hedge relative to what the market rate was at the time of hedging — measures how well the programme timed its entries</td></tr>
+                    <tr><td><strong>Pricing P&amp;L</strong></td><td>P&amp;L from market rate movements between the entry creation date and the current valuation date</td></tr>
+                    <tr><td><strong>Forward Points</strong></td><td>The forward point component embedded in the hedge rate — reflects the interest rate differential between the two currencies over the tenor</td></tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="info-box purple"><strong>🔍 Performance Parameters slicer:</strong> Select one metric at a time in the Performance Parameters slicer to see its contribution clearly. Combining DH Performance + Forward Points gives you the full cost of carry in the programme.</div>
+    </section>
+
+    <section id="refresh" class="section">
+        <h2 class="section-title"><span class="icon">🔄</span>Data Refresh</h2>
+        <ul class="feature-list">
+            <li><span class="check">📅</span><div>Daily refresh — positions and entries reflect the previous business day</div></li>
+            <li><span class="check">💱</span><div>Normalisation rates update with each refresh using the latest available spot rates</div></li>
+            <li><span class="check">📊</span><div>Performance metrics are recalculated daily as market rates change</div></li>
+        </ul>
+    </section>
+</main>
+<footer class="footer"><p>DH Analytics Dashboard — User Guide</p><p style="margin-top:.5rem;opacity:.8;">Dashboard User Guide — Kantox</p></footer>
+<script>
+document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener('click',function(e){e.preventDefault();const t=document.querySelector(this.getAttribute('href'));if(t){t.scrollIntoView({behavior:'smooth',block:'start'});document.querySelectorAll('.nav-tabs a').forEach(x=>x.classList.remove('active'));this.classList.add('active');}});});
+window.addEventListener('scroll',()=>{const s=document.querySelectorAll('section[id]');let c='';s.forEach(x=>{if(scrollY>=x.offsetTop-200)c=x.getAttribute('id');});document.querySelectorAll('.nav-tabs a').forEach(a=>{a.classList.remove('active');if(a.getAttribute('href')==='#'+c)a.classList.add('active');});});
+</script>
+</body>
+</html>

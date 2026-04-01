@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
+    <title>K2 DH Report - User Guide</title>
+    <style>
+        :root{--kantox-teal:#00A5B5;--kantox-teal-dark:#008A99;--kantox-orange:#F47A20;--kantox-orange-light:#FF9F4A;--text-primary:#2D3748;--text-secondary:#4A5568;--bg-light:#F7FAFC;--bg-card:#FFFFFF;--border-color:#E2E8F0;--success-green:#48BB78;--warning-red:#F56565;--purple-accent:#805AD5;}
+        *{margin:0;padding:0;box-sizing:border-box;}
+        body{font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif;background:var(--bg-light);color:var(--text-primary);line-height:1.6;}
+        .header{background:linear-gradient(135deg,var(--kantox-teal) 0%,var(--kantox-teal-dark) 100%);color:white;padding:2rem;text-align:center;}
+        .header-logo{display:flex;align-items:center;justify-content:center;gap:1rem;margin-bottom:1rem;}
+        .logo-icon{width:50px;height:50px;background:white;border-radius:8px;display:flex;align-items:center;justify-content:center;font-weight:bold;color:var(--kantox-teal);font-size:1.5rem;}
+        .header h1{font-size:2rem;font-weight:600;margin-bottom:.5rem;}
+        .header p{opacity:.9;font-size:1.1rem;}
+        .badge{display:inline-block;background:var(--kantox-orange);padding:.25rem .75rem;border-radius:20px;font-size:.85rem;margin-top:.5rem;}
+        .nav-tabs{background:white;padding:1rem 2rem;border-bottom:1px solid var(--border-color);display:flex;gap:.5rem;flex-wrap:wrap;justify-content:center;position:sticky;top:0;z-index:100;}
+        .nav-tabs a{color:var(--text-secondary);text-decoration:none;padding:.5rem .85rem;border-radius:6px;transition:all .2s;font-size:.9rem;}
+        .nav-tabs a:hover,.nav-tabs a.active{background:var(--kantox-teal);color:white;}
+        .container{max-width:1200px;margin:0 auto;padding:2rem;}
+        .section{background:var(--bg-card);border-radius:12px;padding:2rem;margin-bottom:2rem;box-shadow:0 2px 8px rgba(0,0,0,.05);border:1px solid var(--border-color);}
+        .section-title{display:flex;align-items:center;gap:.75rem;color:var(--kantox-teal);font-size:1.4rem;margin-bottom:1.5rem;padding-bottom:.75rem;border-bottom:2px solid var(--kantox-teal);}
+        .section-title .icon{width:32px;height:32px;background:var(--kantox-teal);border-radius:6px;display:flex;align-items:center;justify-content:center;color:white;font-size:1rem;}
+        .info-box{background:linear-gradient(135deg,#E6FFFA 0%,#B2F5EA 100%);border-left:4px solid var(--kantox-teal);padding:1rem 1.25rem;border-radius:0 8px 8px 0;margin:1rem 0;}
+        .info-box.warning{background:linear-gradient(135deg,#FFFAF0 0%,#FEEBC8 100%);border-left-color:var(--kantox-orange);}
+        .info-box.purple{background:linear-gradient(135deg,#FAF5FF 0%,#E9D8FD 100%);border-left-color:var(--purple-accent);}
+        .info-box strong{color:var(--kantox-teal);}
+        .info-box.warning strong{color:var(--kantox-orange);}
+        .info-box.purple strong{color:var(--purple-accent);}
+        table{width:100%;border-collapse:collapse;font-size:.9rem;}
+        th{background:var(--kantox-teal);color:white;padding:.75rem 1rem;text-align:left;font-weight:600;}
+        td{padding:.75rem 1rem;border-bottom:1px solid var(--border-color);}
+        tr:hover{background:var(--bg-light);}
+        .table-container{overflow-x:auto;margin:1rem 0;}
+        .feature-list{list-style:none;}
+        .feature-list li{padding:.75rem 0;border-bottom:1px solid var(--border-color);display:flex;align-items:flex-start;gap:.75rem;}
+        .feature-list li:last-child{border-bottom:none;}
+        .feature-list .check{color:var(--kantox-teal);font-weight:bold;font-size:1.1rem;}
+        .footer{background:var(--text-primary);color:white;padding:2rem;text-align:center;margin-top:2rem;}
+        h3{margin:1.5rem 0 .75rem;color:var(--text-primary);}
+        p{margin-bottom:.75rem;}
+    </style>
+</head>
+<body>
+<header class="header">
+    <div class="header-logo">
+        <div class="logo-icon">K</div>
+        <div><h1>K2 DH Report</h1><p>K2 Dynamic Hedging Entry &amp; Performance Report</p></div>
+    </div>
+    <span class="badge">User Guide</span>
+</header>
+<nav class="nav-tabs">
+    <a href="#overview" class="active">Overview</a>
+    <a href="#k2-context">K2 Programme</a>
+    <a href="#filters">Filters</a>
+    <a href="#entries">Entries &amp; Performance</a>
+    <a href="#refresh">Data Refresh</a>
+</nav>
+<main class="container">
+    <section id="overview" class="section">
+        <h2 class="section-title"><span class="icon">📋</span>What is the K2 DH Report?</h2>
+        <p>The <strong>K2 DH Report</strong> is the transaction-level Dynamic Hedging report for the <strong>K2 programme</strong>. It mirrors the structure of the standard DH Report but operates on a separate, dedicated set of hedging entries and coverage rules specific to the K2 programme configuration.</p>
+        <div class="info-box"><strong>💡 Key Value:</strong> Review and audit every individual K2 hedge entry — its amounts, rates, status, and performance — with the same level of detail as the standard programme, but scoped exclusively to K2 activity.</div>
+        <h3>Key Benefits</h3>
+        <ul class="feature-list">
+            <li><span class="check">✓</span><div><strong>K2-Scoped Entries</strong> — all data is filtered exclusively to K2 programme entries; no cross-contamination with K1 data</div></li>
+            <li><span class="check">✓</span><div><strong>Entry-Level Detail</strong> — creation dates, value dates, notional, execution rates, and current status for every K2 hedge entry</div></li>
+            <li><span class="check">✓</span><div><strong>Performance Attribution</strong> — DH Performance, Pricing P&amp;L, and Forward Points at the individual entry level</div></li>
+            <li><span class="check">✓</span><div><strong>Coverage &amp; Bucket Monitoring</strong> — see how K2 entries fill defined hedging buckets across the coverage horizon</div></li>
+        </ul>
+    </section>
+
+    <section id="k2-context" class="section">
+        <h2 class="section-title"><span class="icon">🔑</span>The K2 Programme</h2>
+        <p>The K2 programme is a separate Dynamic Hedging configuration with its own exposure profile, coverage rules, and hedging parameters, distinct from the primary K1 programme. Key differences to be aware of:</p>
+        <ul class="feature-list">
+            <li><span class="check">•</span><div><strong>Separate entry pool</strong> — K2 entries are created independently from K1 entries and have their own reference numbering</div></li>
+            <li><span class="check">•</span><div><strong>Own bucket structure</strong> — K2 may have a different set of hedging buckets or tenor bands compared to K1</div></li>
+            <li><span class="check">•</span><div><strong>Independent coverage rules</strong> — coverage ratios and rebalancing triggers are defined separately for K2</div></li>
+            <li><span class="check">•</span><div><strong>Consolidated view available</strong> — for a cross-programme view, use the standard DH Analytics Dashboard which can be configured to show both K1 and K2 exposure together</div></li>
+        </ul>
+        <div class="info-box purple"><strong>💡 K1 vs K2:</strong> If you are unsure which programme an entry belongs to, check the entry reference prefix or the programme field in the entries table. This report will only ever show K2 entries.</div>
+    </section>
+
+    <section id="filters" class="section">
+        <h2 class="section-title"><span class="icon">🎛️</span>Filters &amp; Controls</h2>
+        <div class="table-container">
+            <table>
+                <thead><tr><th>Filter</th><th>What it does</th></tr></thead>
+                <tbody>
+                    <tr><td><strong>Entity Group</strong></td><td>Select the K2 entity to analyse</td></tr>
+                    <tr><td><strong>Currency Pair</strong></td><td>Filter to specific K2 currency pairs</td></tr>
+                    <tr><td><strong>Creation Date</strong></td><td>Filter K2 entries by creation date window</td></tr>
+                    <tr><td><strong>Value Date</strong></td><td>Filter by the maturity date of K2 entries</td></tr>
+                    <tr><td><strong>Entry Status</strong></td><td>Open, closed, or all K2 entries</td></tr>
+                    <tr><td><strong>Direction</strong></td><td>Positive (buy) or negative (sell) K2 entries</td></tr>
+                    <tr><td><strong>Normalisation Currency</strong></td><td>Reporting currency for all normalised amounts</td></tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <section id="entries" class="section">
+        <h2 class="section-title"><span class="icon">📝</span>K2 Entries &amp; Performance</h2>
+        <p>The entries table and performance metrics in the K2 DH Report follow the same structure as the standard DH Report. Each K2 entry shows:</p>
+        <div class="table-container">
+            <table>
+                <thead><tr><th>Field</th><th>Description</th></tr></thead>
+                <tbody>
+                    <tr><td><strong>Entry Reference</strong></td><td>Unique K2 entry identifier</td></tr>
+                    <tr><td><strong>Creation Date</strong></td><td>When the K2 entry was submitted to the programme</td></tr>
+                    <tr><td><strong>Value Date</strong></td><td>Settlement / maturity date of this K2 entry</td></tr>
+                    <tr><td><strong>Currency Pair</strong></td><td>FX pair for this entry</td></tr>
+                    <tr><td><strong>Notional / Normalised Amount</strong></td><td>Original and reporting-currency-converted amounts</td></tr>
+                    <tr><td><strong>Hedge Rate</strong></td><td>Execution rate for this K2 entry</td></tr>
+                    <tr><td><strong>DH Performance</strong></td><td>Value created vs. the unhedged benchmark at time of creation</td></tr>
+                    <tr><td><strong>Pricing P&amp;L</strong></td><td>P&amp;L from market movements since creation</td></tr>
+                    <tr><td><strong>Forward Points</strong></td><td>Cost-of-carry component of the hedge rate</td></tr>
+                    <tr><td><strong>Status</strong></td><td>Current state (open / closed)</td></tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="info-box warning"><strong>⚠️ Performance on open entries:</strong> DH Performance and Pricing P&amp;L on open K2 entries are indicative and will continue to change until the entry reaches its value date and is cash-settled.</div>
+    </section>
+
+    <section id="refresh" class="section">
+        <h2 class="section-title"><span class="icon">🔄</span>Data Refresh</h2>
+        <ul class="feature-list">
+            <li><span class="check">📅</span><div>K2 data refreshes once per business day alongside the main programme data</div></li>
+            <li><span class="check">💱</span><div>Normalisation rates and performance metrics are recalculated at each refresh</div></li>
+            <li><span class="check">📊</span><div>New K2 entries created today will appear after the next daily refresh</div></li>
+        </ul>
+    </section>
+</main>
+<footer class="footer"><p>K2 DH Report — User Guide</p><p style="margin-top:.5rem;opacity:.8;">Dashboard User Guide — Kantox</p></footer>
+<script>
+document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener('click',function(e){e.preventDefault();const t=document.querySelector(this.getAttribute('href'));if(t){t.scrollIntoView({behavior:'smooth',block:'start'});document.querySelectorAll('.nav-tabs a').forEach(x=>x.classList.remove('active'));this.classList.add('active');}});});
+window.addEventListener('scroll',()=>{const s=document.querySelectorAll('section[id]');let c='';s.forEach(x=>{if(scrollY>=x.offsetTop-200)c=x.getAttribute('id');});document.querySelectorAll('.nav-tabs a').forEach(a=>{a.classList.remove('active');if(a.getAttribute('href')==='#'+c)a.classList.add('active');});});
+</script>
+</body>
+</html>

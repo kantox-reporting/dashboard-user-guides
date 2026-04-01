@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
+    <title>Standard Hedge Policy - User Guide</title>
+    <style>
+        :root{--kantox-teal:#00A5B5;--kantox-teal-dark:#008A99;--kantox-orange:#F47A20;--kantox-orange-light:#FF9F4A;--text-primary:#2D3748;--text-secondary:#4A5568;--bg-light:#F7FAFC;--bg-card:#FFFFFF;--border-color:#E2E8F0;--success-green:#48BB78;--warning-red:#F56565;--purple-accent:#805AD5;}
+        *{margin:0;padding:0;box-sizing:border-box;}
+        body{font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif;background:var(--bg-light);color:var(--text-primary);line-height:1.6;}
+        .header{background:linear-gradient(135deg,var(--kantox-teal) 0%,var(--kantox-teal-dark) 100%);color:white;padding:2rem;text-align:center;}
+        .header-logo{display:flex;align-items:center;justify-content:center;gap:1rem;margin-bottom:1rem;}
+        .logo-icon{width:50px;height:50px;background:white;border-radius:8px;display:flex;align-items:center;justify-content:center;font-weight:bold;color:var(--kantox-teal);font-size:1.5rem;}
+        .header h1{font-size:2rem;font-weight:600;margin-bottom:.5rem;}
+        .header p{opacity:.9;font-size:1.1rem;}
+        .badge{display:inline-block;background:var(--kantox-orange);padding:.25rem .75rem;border-radius:20px;font-size:.85rem;margin-top:.5rem;}
+        .nav-tabs{background:white;padding:1rem 2rem;border-bottom:1px solid var(--border-color);display:flex;gap:.5rem;flex-wrap:wrap;justify-content:center;position:sticky;top:0;z-index:100;}
+        .nav-tabs a{color:var(--text-secondary);text-decoration:none;padding:.5rem .85rem;border-radius:6px;transition:all .2s;font-size:.9rem;}
+        .nav-tabs a:hover,.nav-tabs a.active{background:var(--kantox-teal);color:white;}
+        .container{max-width:1200px;margin:0 auto;padding:2rem;}
+        .section{background:var(--bg-card);border-radius:12px;padding:2rem;margin-bottom:2rem;box-shadow:0 2px 8px rgba(0,0,0,.05);border:1px solid var(--border-color);}
+        .section-title{display:flex;align-items:center;gap:.75rem;color:var(--kantox-teal);font-size:1.4rem;margin-bottom:1.5rem;padding-bottom:.75rem;border-bottom:2px solid var(--kantox-teal);}
+        .section-title .icon{width:32px;height:32px;background:var(--kantox-teal);border-radius:6px;display:flex;align-items:center;justify-content:center;color:white;font-size:1rem;}
+        .info-box{background:linear-gradient(135deg,#E6FFFA 0%,#B2F5EA 100%);border-left:4px solid var(--kantox-teal);padding:1rem 1.25rem;border-radius:0 8px 8px 0;margin:1rem 0;}
+        .info-box.warning{background:linear-gradient(135deg,#FFFAF0 0%,#FEEBC8 100%);border-left-color:var(--kantox-orange);}
+        .info-box.purple{background:linear-gradient(135deg,#FAF5FF 0%,#E9D8FD 100%);border-left-color:var(--purple-accent);}
+        .info-box strong{color:var(--kantox-teal);}
+        .info-box.warning strong{color:var(--kantox-orange);}
+        .info-box.purple strong{color:var(--purple-accent);}
+        table{width:100%;border-collapse:collapse;font-size:.9rem;}
+        th{background:var(--kantox-teal);color:white;padding:.75rem 1rem;text-align:left;font-weight:600;}
+        td{padding:.75rem 1rem;border-bottom:1px solid var(--border-color);}
+        tr:hover{background:var(--bg-light);}
+        .table-container{overflow-x:auto;margin:1rem 0;}
+        .feature-list{list-style:none;}
+        .feature-list li{padding:.75rem 0;border-bottom:1px solid var(--border-color);display:flex;align-items:flex-start;gap:.75rem;}
+        .feature-list li:last-child{border-bottom:none;}
+        .feature-list .check{color:var(--kantox-teal);font-weight:bold;font-size:1.1rem;}
+        .footer{background:var(--text-primary);color:white;padding:2rem;text-align:center;margin-top:2rem;}
+        h3{margin:1.5rem 0 .75rem;color:var(--text-primary);}
+        p{margin-bottom:.75rem;}
+    </style>
+</head>
+<body>
+<header class="header">
+    <div class="header-logo">
+        <div class="logo-icon">K</div>
+        <div><h1>Standard Hedge Policy</h1><p>Hedge Coverage &amp; Policy Compliance Monitoring</p></div>
+    </div>
+    <span class="badge">User Guide</span>
+</header>
+<nav class="nav-tabs">
+    <a href="#overview" class="active">Overview</a>
+    <a href="#filters">Filters</a>
+    <a href="#coverage">Coverage View</a>
+    <a href="#compliance">Policy Compliance</a>
+    <a href="#refresh">Data Refresh</a>
+</nav>
+<main class="container">
+    <section id="overview" class="section">
+        <h2 class="section-title"><span class="icon">📜</span>What is the Standard Hedge Policy Dashboard?</h2>
+        <p>The <strong>Standard Hedge Policy Dashboard</strong> provides a structured view of how your hedging activity aligns with your organisation's FX hedge policy. It shows actual coverage ratios per currency pair and time horizon alongside the policy targets defined in your programme, making it easy to identify compliance gaps or excesses.</p>
+        <div class="info-box"><strong>💡 Key Value:</strong> See at a glance whether your hedging programme is operating within policy — which buckets are on target, which are under-hedged, and which exceed the upper policy limit.</div>
+        <h3>Key Benefits</h3>
+        <ul class="feature-list">
+            <li><span class="check">✓</span><div><strong>Policy Target vs. Actual</strong> — compare actual hedge coverage ratios against your defined policy minimums and maximums</div></li>
+            <li><span class="check">✓</span><div><strong>Bucket-Level Compliance</strong> — see policy status for each time bucket (short, medium, long tenor)</div></li>
+            <li><span class="check">✓</span><div><strong>Currency Pair Breakdown</strong> — policy compliance by each hedged currency pair</div></li>
+            <li><span class="check">✓</span><div><strong>Trend View</strong> — how coverage ratios have evolved over time relative to policy</div></li>
+            <li><span class="check">✓</span><div><strong>Alert Indicators</strong> — visual signals when coverage falls outside policy bands</div></li>
+        </ul>
+    </section>
+
+    <section id="filters" class="section">
+        <h2 class="section-title"><span class="icon">🎛️</span>Filters &amp; Controls</h2>
+        <div class="table-container">
+            <table>
+                <thead><tr><th>Filter</th><th>What it does</th></tr></thead>
+                <tbody>
+                    <tr><td><strong>Entity</strong></td><td>Select the entity whose hedge policy you want to review</td></tr>
+                    <tr><td><strong>Currency Pair</strong></td><td>Filter to a specific currency pair</td></tr>
+                    <tr><td><strong>Time Bucket</strong></td><td>Focus on a specific tenor band (e.g. 1–3 months, 3–6 months)</td></tr>
+                    <tr><td><strong>Date Range</strong></td><td>Review coverage history over a specific period</td></tr>
+                    <tr><td><strong>Expressed in</strong></td><td>Normalisation currency for amounts (EUR, USD, GBP, CHF, SEK)</td></tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <section id="coverage" class="section">
+        <h2 class="section-title"><span class="icon">📊</span>Coverage View</h2>
+        <h3>Coverage Ratio by Bucket</h3>
+        <p>Each bucket (time horizon) shows three values side by side:</p>
+        <ul class="feature-list">
+            <li><span class="check">📌</span><div><strong>Policy minimum:</strong> The minimum hedge coverage ratio required by your policy for this bucket (e.g. 40%)</div></li>
+            <li><span class="check">📌</span><div><strong>Policy maximum:</strong> The upper bound — hedging above this level is outside policy (e.g. 90%)</div></li>
+            <li><span class="check">▶</span><div><strong>Actual coverage:</strong> Your current hedge coverage ratio for this bucket, calculated as hedged notional ÷ gross exposure</div></li>
+        </ul>
+        <div class="info-box"><strong>Reading the chart:</strong> When the actual coverage bar falls between the policy min and max lines, you are in compliance. When it falls below the minimum, you are under-hedged. When it exceeds the maximum, you are over-hedged relative to policy.</div>
+
+        <h3>Coverage Over Time</h3>
+        <p>The trend view shows how coverage ratios have moved over your selected date range. A stable coverage ratio tracking within policy bands indicates a well-managed programme; sudden drops or spikes may indicate large exposure arrivals or hedge maturities that need attention.</p>
+    </section>
+
+    <section id="compliance" class="section">
+        <h2 class="section-title"><span class="icon">✅</span>Policy Compliance Summary</h2>
+        <p>The compliance summary shows the overall status of each currency pair and bucket combination:</p>
+        <div class="table-container">
+            <table>
+                <thead><tr><th>Status</th><th>Meaning</th></tr></thead>
+                <tbody>
+                    <tr><td><strong style="color:var(--success-green)">✓ In Policy</strong></td><td>Actual coverage is within the defined minimum and maximum for this bucket</td></tr>
+                    <tr><td><strong style="color:var(--warning-red)">↓ Under-Hedged</strong></td><td>Coverage is below the policy minimum — action may be required to add hedges</td></tr>
+                    <tr><td><strong style="color:var(--kantox-orange)">↑ Over-Hedged</strong></td><td>Coverage exceeds the policy maximum — review whether reduction or roll-forward is appropriate</td></tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="info-box warning"><strong>⚠️ Policy is indicative:</strong> The policy targets shown in this dashboard reflect your programme configuration at the last data refresh. If your policy parameters have been updated, contact your Kantox programme manager to confirm the latest targets are reflected.</div>
+    </section>
+
+    <section id="refresh" class="section">
+        <h2 class="section-title"><span class="icon">🔄</span>Data Refresh</h2>
+        <ul class="feature-list">
+            <li><span class="check">📅</span><div>Coverage and compliance data refreshes once per business day</div></li>
+            <li><span class="check">💱</span><div>Exposure amounts are recalculated using the latest spot rates at each refresh</div></li>
+            <li><span class="check">📊</span><div>New hedges executed today will appear in compliance calculations after the next daily refresh</div></li>
+        </ul>
+    </section>
+</main>
+<footer class="footer"><p>Standard Hedge Policy — User Guide</p><p style="margin-top:.5rem;opacity:.8;">Dashboard User Guide — Kantox</p></footer>
+<script>
+document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener('click',function(e){e.preventDefault();const t=document.querySelector(this.getAttribute('href'));if(t){t.scrollIntoView({behavior:'smooth',block:'start'});document.querySelectorAll('.nav-tabs a').forEach(x=>x.classList.remove('active'));this.classList.add('active');}});});
+window.addEventListener('scroll',()=>{const s=document.querySelectorAll('section[id]');let c='';s.forEach(x=>{if(scrollY>=x.offsetTop-200)c=x.getAttribute('id');});document.querySelectorAll('.nav-tabs a').forEach(a=>{a.classList.remove('active');if(a.getAttribute('href')==='#'+c)a.classList.add('active');});});
+</script>
+</body>
+</html>

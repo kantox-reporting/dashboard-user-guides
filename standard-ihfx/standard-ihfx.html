@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
+    <title>Standard IHFX - User Guide</title>
+    <style>
+        :root{--kantox-teal:#00A5B5;--kantox-teal-dark:#008A99;--kantox-orange:#F47A20;--kantox-orange-light:#FF9F4A;--text-primary:#2D3748;--text-secondary:#4A5568;--bg-light:#F7FAFC;--bg-card:#FFFFFF;--border-color:#E2E8F0;--success-green:#48BB78;--warning-red:#F56565;--purple-accent:#805AD5;}
+        *{margin:0;padding:0;box-sizing:border-box;}
+        body{font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif;background:var(--bg-light);color:var(--text-primary);line-height:1.6;}
+        .header{background:linear-gradient(135deg,var(--kantox-teal) 0%,var(--kantox-teal-dark) 100%);color:white;padding:2rem;text-align:center;}
+        .header-logo{display:flex;align-items:center;justify-content:center;gap:1rem;margin-bottom:1rem;}
+        .logo-icon{width:50px;height:50px;background:white;border-radius:8px;display:flex;align-items:center;justify-content:center;font-weight:bold;color:var(--kantox-teal);font-size:1.5rem;}
+        .header h1{font-size:2rem;font-weight:600;margin-bottom:.5rem;}
+        .header p{opacity:.9;font-size:1.1rem;}
+        .badge{display:inline-block;background:var(--kantox-orange);padding:.25rem .75rem;border-radius:20px;font-size:.85rem;margin-top:.5rem;}
+        .nav-tabs{background:white;padding:1rem 2rem;border-bottom:1px solid var(--border-color);display:flex;gap:.5rem;flex-wrap:wrap;justify-content:center;position:sticky;top:0;z-index:100;}
+        .nav-tabs a{color:var(--text-secondary);text-decoration:none;padding:.5rem .85rem;border-radius:6px;transition:all .2s;font-size:.9rem;}
+        .nav-tabs a:hover,.nav-tabs a.active{background:var(--kantox-teal);color:white;}
+        .container{max-width:1200px;margin:0 auto;padding:2rem;}
+        .section{background:var(--bg-card);border-radius:12px;padding:2rem;margin-bottom:2rem;box-shadow:0 2px 8px rgba(0,0,0,.05);border:1px solid var(--border-color);}
+        .section-title{display:flex;align-items:center;gap:.75rem;color:var(--kantox-teal);font-size:1.4rem;margin-bottom:1.5rem;padding-bottom:.75rem;border-bottom:2px solid var(--kantox-teal);}
+        .section-title .icon{width:32px;height:32px;background:var(--kantox-teal);border-radius:6px;display:flex;align-items:center;justify-content:center;color:white;font-size:1rem;}
+        .info-box{background:linear-gradient(135deg,#E6FFFA 0%,#B2F5EA 100%);border-left:4px solid var(--kantox-teal);padding:1rem 1.25rem;border-radius:0 8px 8px 0;margin:1rem 0;}
+        .info-box.warning{background:linear-gradient(135deg,#FFFAF0 0%,#FEEBC8 100%);border-left-color:var(--kantox-orange);}
+        .info-box.purple{background:linear-gradient(135deg,#FAF5FF 0%,#E9D8FD 100%);border-left-color:var(--purple-accent);}
+        .info-box strong{color:var(--kantox-teal);}
+        .info-box.warning strong{color:var(--kantox-orange);}
+        .info-box.purple strong{color:var(--purple-accent);}
+        table{width:100%;border-collapse:collapse;font-size:.9rem;}
+        th{background:var(--kantox-teal);color:white;padding:.75rem 1rem;text-align:left;font-weight:600;}
+        td{padding:.75rem 1rem;border-bottom:1px solid var(--border-color);}
+        tr:hover{background:var(--bg-light);}
+        .table-container{overflow-x:auto;margin:1rem 0;}
+        .feature-list{list-style:none;}
+        .feature-list li{padding:.75rem 0;border-bottom:1px solid var(--border-color);display:flex;align-items:flex-start;gap:.75rem;}
+        .feature-list li:last-child{border-bottom:none;}
+        .feature-list .check{color:var(--kantox-teal);font-weight:bold;font-size:1.1rem;}
+        .footer{background:var(--text-primary);color:white;padding:2rem;text-align:center;margin-top:2rem;}
+        h3{margin:1.5rem 0 .75rem;color:var(--text-primary);}
+        p{margin-bottom:.75rem;}
+    </style>
+</head>
+<body>
+<header class="header">
+    <div class="header-logo">
+        <div class="logo-icon">K</div>
+        <div><h1>Standard IHFX</h1><p>Internal Hedge FX — Inter-Entity Hedging Report</p></div>
+    </div>
+    <span class="badge">User Guide</span>
+</header>
+<nav class="nav-tabs">
+    <a href="#overview" class="active">Overview</a>
+    <a href="#filters">Filters</a>
+    <a href="#ihfx-view">IHFX View</a>
+    <a href="#k2-setup">K2 Setup</a>
+    <a href="#refresh">Data Refresh</a>
+</nav>
+<main class="container">
+    <section id="overview" class="section">
+        <h2 class="section-title"><span class="icon">🔁</span>What is the Standard IHFX Report?</h2>
+        <p>The <strong>Standard IHFX (Internal Hedge FX)</strong> report tracks inter-entity FX hedging activity within a multi-entity organisation. When one entity within the group hedges on behalf of another, or when internal hedges are used to transfer FX risk between legal entities, this report provides the audit trail and performance view for those internal transactions.</p>
+        <div class="info-box"><strong>💡 Key Value:</strong> Maintain full visibility over internal FX hedges between entities in your group — amounts, rates, directions, and performance — in one consolidated view.</div>
+        <h3>Key Benefits</h3>
+        <ul class="feature-list">
+            <li><span class="check">✓</span><div><strong>Inter-Entity Transparency</strong> — see which entities are the source and destination of internal hedges</div></li>
+            <li><span class="check">✓</span><div><strong>Internal Rate Tracking</strong> — compare internal transfer rates against external market rates to ensure fair allocation</div></li>
+            <li><span class="check">✓</span><div><strong>Settlement Visibility</strong> — upcoming internal settlements by entity pair and currency</div></li>
+            <li><span class="check">✓</span><div><strong>Full Trade List</strong> — every internal hedge transaction with reference, amounts, and counterparty entity</div></li>
+        </ul>
+    </section>
+
+    <section id="filters" class="section">
+        <h2 class="section-title"><span class="icon">🎛️</span>Filters &amp; Controls</h2>
+        <div class="table-container">
+            <table>
+                <thead><tr><th>Filter</th><th>What it does</th></tr></thead>
+                <tbody>
+                    <tr><td><strong>Source Entity</strong></td><td>The entity that originated the internal hedge request</td></tr>
+                    <tr><td><strong>Counterparty Entity</strong></td><td>The entity on the other side of the internal hedge</td></tr>
+                    <tr><td><strong>Currency Pair</strong></td><td>Filter to a specific internal hedge currency pair</td></tr>
+                    <tr><td><strong>Execution Date</strong></td><td>When the internal hedge was executed</td></tr>
+                    <tr><td><strong>Value Date</strong></td><td>When the internal hedge settles between entities</td></tr>
+                    <tr><td><strong>Expressed in</strong></td><td>Normalisation currency for all amounts</td></tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <section id="ihfx-view" class="section">
+        <h2 class="section-title"><span class="icon">📊</span>IHFX View</h2>
+        <h3>Internal Hedge Transactions Table</h3>
+        <p>The core of the IHFX report is the transaction table, which shows each internal hedge with:</p>
+        <div class="table-container">
+            <table>
+                <thead><tr><th>Column</th><th>Description</th></tr></thead>
+                <tbody>
+                    <tr><td><strong>Trade Reference</strong></td><td>Unique internal trade identifier</td></tr>
+                    <tr><td><strong>Execution Date</strong></td><td>Date the internal hedge was booked</td></tr>
+                    <tr><td><strong>Value Date</strong></td><td>Settlement date between the two entities</td></tr>
+                    <tr><td><strong>Source Entity</strong></td><td>The entity whose exposure is being hedged</td></tr>
+                    <tr><td><strong>Counterparty Entity</strong></td><td>The treasury or central entity providing the internal hedge</td></tr>
+                    <tr><td><strong>Currency Pair</strong></td><td>The FX pair for this internal hedge</td></tr>
+                    <tr><td><strong>Direction</strong></td><td>Buy or sell from the source entity's perspective</td></tr>
+                    <tr><td><strong>Notional / Normalised Amount</strong></td><td>Original and reporting-currency-converted amounts</td></tr>
+                    <tr><td><strong>Internal Rate</strong></td><td>The rate agreed between entities for this internal transaction</td></tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="info-box"><strong>💡 Internal vs. External rates:</strong> The internal rate charged to the source entity typically includes a spread over the external market rate to cover the central treasury's cost of hedging. Review the internal rate vs. the market rate to understand the internal hedging cost allocated to each entity.</div>
+    </section>
+
+    <section id="k2-setup" class="section">
+        <h2 class="section-title"><span class="icon">🔗</span>K2 to K1 Setup</h2>
+        <p>The IHFX report also covers the <strong>K2 to K1 internal hedge setup</strong>. In this configuration, K2 programme entries generate offsetting internal hedges that are passed to the K1 programme. This allows the two programmes to share liquidity and hedge positions without creating bilateral external trades.</p>
+        <ul class="feature-list">
+            <li><span class="check">•</span><div>K2 exposure entries create internal hedge requests in the K1 programme</div></li>
+            <li><span class="check">•</span><div>K1 executes the external hedge on behalf of both programmes</div></li>
+            <li><span class="check">•</span><div>The IHFX report tracks the internal leg of this flow — the K2 → K1 transfer</div></li>
+        </ul>
+        <div class="info-box purple"><strong>🔍 For K2 clients:</strong> If you are a K2 programme participant, the IHFX report shows the internal hedges your entries generated in K1. The external execution details (bank, rate, settlement) are visible in the K2 DH Report.</div>
+    </section>
+
+    <section id="refresh" class="section">
+        <h2 class="section-title"><span class="icon">🔄</span>Data Refresh</h2>
+        <ul class="feature-list">
+            <li><span class="check">📅</span><div>IHFX data refreshes once per business day</div></li>
+            <li><span class="check">📊</span><div>New internal hedge transactions booked today will appear after the next refresh</div></li>
+            <li><span class="check">💱</span><div>Normalised amounts update with each refresh using latest spot rates</div></li>
+        </ul>
+    </section>
+</main>
+<footer class="footer"><p>Standard IHFX — User Guide</p><p style="margin-top:.5rem;opacity:.8;">Dashboard User Guide — Kantox</p></footer>
+<script>
+document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener('click',function(e){e.preventDefault();const t=document.querySelector(this.getAttribute('href'));if(t){t.scrollIntoView({behavior:'smooth',block:'start'});document.querySelectorAll('.nav-tabs a').forEach(x=>x.classList.remove('active'));this.classList.add('active');}});});
+window.addEventListener('scroll',()=>{const s=document.querySelectorAll('section[id]');let c='';s.forEach(x=>{if(scrollY>=x.offsetTop-200)c=x.getAttribute('id');});document.querySelectorAll('.nav-tabs a').forEach(a=>{a.classList.remove('active');if(a.getAttribute('href')==='#'+c)a.classList.add('active');});});
+</script>
+</body>
+</html>

@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
+    <title>Mark-to-Market Dashboard - User Guide</title>
+    <style>
+        :root{--kantox-teal:#00A5B5;--kantox-teal-dark:#008A99;--kantox-orange:#F47A20;--kantox-orange-light:#FF9F4A;--text-primary:#2D3748;--text-secondary:#4A5568;--bg-light:#F7FAFC;--bg-card:#FFFFFF;--border-color:#E2E8F0;--success-green:#48BB78;--warning-red:#F56565;--purple-accent:#805AD5;}
+        *{margin:0;padding:0;box-sizing:border-box;}
+        body{font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif;background:var(--bg-light);color:var(--text-primary);line-height:1.6;}
+        .header{background:linear-gradient(135deg,var(--kantox-teal) 0%,var(--kantox-teal-dark) 100%);color:white;padding:2rem;text-align:center;}
+        .header-logo{display:flex;align-items:center;justify-content:center;gap:1rem;margin-bottom:1rem;}
+        .logo-icon{width:50px;height:50px;background:white;border-radius:8px;display:flex;align-items:center;justify-content:center;font-weight:bold;color:var(--kantox-teal);font-size:1.5rem;}
+        .header h1{font-size:2rem;font-weight:600;margin-bottom:.5rem;}
+        .header p{opacity:.9;font-size:1.1rem;}
+        .badge{display:inline-block;background:var(--kantox-orange);padding:.25rem .75rem;border-radius:20px;font-size:.85rem;margin-top:.5rem;}
+        .nav-tabs{background:white;padding:1rem 2rem;border-bottom:1px solid var(--border-color);display:flex;gap:.5rem;flex-wrap:wrap;justify-content:center;position:sticky;top:0;z-index:100;}
+        .nav-tabs a{color:var(--text-secondary);text-decoration:none;padding:.5rem .85rem;border-radius:6px;transition:all .2s;font-size:.9rem;}
+        .nav-tabs a:hover,.nav-tabs a.active{background:var(--kantox-teal);color:white;}
+        .container{max-width:1200px;margin:0 auto;padding:2rem;}
+        .section{background:var(--bg-card);border-radius:12px;padding:2rem;margin-bottom:2rem;box-shadow:0 2px 8px rgba(0,0,0,.05);border:1px solid var(--border-color);}
+        .section-title{display:flex;align-items:center;gap:.75rem;color:var(--kantox-teal);font-size:1.4rem;margin-bottom:1.5rem;padding-bottom:.75rem;border-bottom:2px solid var(--kantox-teal);}
+        .section-title .icon{width:32px;height:32px;background:var(--kantox-teal);border-radius:6px;display:flex;align-items:center;justify-content:center;color:white;font-size:1rem;}
+        .info-box{background:linear-gradient(135deg,#E6FFFA 0%,#B2F5EA 100%);border-left:4px solid var(--kantox-teal);padding:1rem 1.25rem;border-radius:0 8px 8px 0;margin:1rem 0;}
+        .info-box.warning{background:linear-gradient(135deg,#FFFAF0 0%,#FEEBC8 100%);border-left-color:var(--kantox-orange);}
+        .info-box.purple{background:linear-gradient(135deg,#FAF5FF 0%,#E9D8FD 100%);border-left-color:var(--purple-accent);}
+        .info-box strong{color:var(--kantox-teal);}
+        .info-box.warning strong{color:var(--kantox-orange);}
+        .info-box.purple strong{color:var(--purple-accent);}
+        table{width:100%;border-collapse:collapse;font-size:.9rem;}
+        th{background:var(--kantox-teal);color:white;padding:.75rem 1rem;text-align:left;font-weight:600;}
+        td{padding:.75rem 1rem;border-bottom:1px solid var(--border-color);}
+        tr:hover{background:var(--bg-light);}
+        .table-container{overflow-x:auto;margin:1rem 0;}
+        .feature-list{list-style:none;}
+        .feature-list li{padding:.75rem 0;border-bottom:1px solid var(--border-color);display:flex;align-items:flex-start;gap:.75rem;}
+        .feature-list li:last-child{border-bottom:none;}
+        .feature-list .check{color:var(--kantox-teal);font-weight:bold;font-size:1.1rem;}
+        .footer{background:var(--text-primary);color:white;padding:2rem;text-align:center;margin-top:2rem;}
+        h3{margin:1.5rem 0 .75rem;color:var(--text-primary);}
+        p{margin-bottom:.75rem;}
+    </style>
+</head>
+<body>
+<header class="header">
+    <div class="header-logo">
+        <div class="logo-icon">K</div>
+        <div><h1>Mark-to-Market Dashboard</h1><p>Live Portfolio Valuation &amp; P&amp;L Analysis</p></div>
+    </div>
+    <span class="badge">User Guide</span>
+</header>
+<nav class="nav-tabs">
+    <a href="#overview" class="active">Overview</a>
+    <a href="#filters">Filters</a>
+    <a href="#mtm">MtM Valuation</a>
+    <a href="#cashflow">Cash Settlements</a>
+    <a href="#refresh">Data Refresh</a>
+</nav>
+<main class="container">
+    <section id="overview" class="section">
+        <h2 class="section-title"><span class="icon">📉</span>What is the Mark-to-Market Dashboard?</h2>
+        <p>The <strong>Mark-to-Market (MtM) Dashboard</strong> shows the current market value of your open FX hedges. It calculates the unrealised P&amp;L on every open position by comparing your locked-in hedge rate against the current forward market rate at the same maturity. This tells you — in a multiple daily refresh scheme — whether your portfolio is "in the money" or "out of the money" relative to today's market.</p>
+        <div class="info-box"><strong>💡 Key Value:</strong> See the theoretical gain or loss on your entire open portfolio at a glance, broken down by maturity month, with dynamic currency normalisation for multi-currency portfolios.</div>
+        <h3>Key Benefits</h3>
+        <ul class="feature-list">
+            <li><span class="check">✓</span><div><strong>Live Portfolio Valuation</strong> — unrealised P&amp;L using current forward rates at each trade's specific maturity tenor</div></li>
+            <li><span class="check">✓</span><div><strong>Waterfall Breakdown</strong> — see monthly P&amp;L contributions: which maturities are in- or out-of-the-money</div></li>
+            <li><span class="check">✓</span><div><strong>Cash Flow View</strong> — settlement amounts by bank and currency alongside the MtM view</div></li>
+            <li><span class="check">✓</span><div><strong>Dynamic Currency Normalisation</strong> — all amounts in your preferred reporting currency</div></li>
+        </ul>
+    </section>
+
+    <section id="filters" class="section">
+        <h2 class="section-title"><span class="icon">🎛️</span>Filters &amp; Controls</h2>
+        <div class="table-container">
+            <table>
+                <thead><tr><th>Filter</th><th>What it does</th></tr></thead>
+                <tbody>
+                    <tr><td><strong>Date Granularity</strong></td><td>Toggle between Month / Quarter / Year aggregation for the time axis of charts</td></tr>
+                    <tr><td><strong>Value Date range</strong></td><td>Filter to trades maturing within a specific window</td></tr>
+                    <tr><td><strong>Buy/Sell Direction</strong></td><td>Isolate buy or sell side of the portfolio</td></tr>
+                    <tr><td><strong>Expressed in</strong></td><td>Select display currency — all amounts normalised at current rates (EUR, USD, GBP, CHF, SEK)</td></tr>
+                    <tr><td><strong>Entity / Account</strong></td><td>Filter to a specific entity or account</td></tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <section id="mtm" class="section">
+        <h2 class="section-title"><span class="icon">🌊</span>MtM Valuation View</h2>
+        <h3>Waterfall Chart — P&amp;L by Value Date</h3>
+        <p>The main visual is a waterfall chart where each bar represents one period (month, quarter, or year depending on your date granularity setting):</p>
+        <ul class="feature-list">
+            <li><span class="check">🟢</span><div><strong>Green bars</strong> — in-the-money positions for that maturity period. The current forward rate is more favourable than your locked hedge rate.</div></li>
+            <li><span class="check">🔴</span><div><strong>Red bars</strong> — out-of-the-money. The market moved against you since you placed the hedge.</div></li>
+            <li><span class="check">▶</span><div><strong>Cumulative total (last bar)</strong> — the overall portfolio P&amp;L across all maturities</div></li>
+        </ul>
+        <div class="info-box"><strong>How MtM is calculated:</strong> For each trade, the dashboard compares your locked hedge rate vs. the current forward rate at that trade's exact maturity tenor (not a single spot rate). P&amp;L = (Current forward rate − Hedge rate) × Notional amount. A positive result means the market moved in your favour.</div>
+        <div class="info-box warning"><strong>⚠️ Important:</strong> MtM P&amp;L is unrealised — it shows what your portfolio would be worth if all positions were closed today. Actual settlement amounts will differ as rates continue to move until the trade matures.</div>
+    </section>
+
+    <section id="cashflow" class="section">
+        <h2 class="section-title"><span class="icon">🏦</span>Cash Settlements View</h2>
+        <p>The dashboard also includes a cash flow and settlement view, showing amounts due per bank and per currency across value dates. This is useful for:</p>
+        <ul class="feature-list">
+            <li><span class="check">•</span><div>Managing settlement concentration across your liquidity providers</div></li>
+            <li><span class="check">•</span><div>Planning liquidity for upcoming settlement dates</div></li>
+            <li><span class="check">•</span><div>Monitoring settlement amounts by currency pair</div></li>
+        </ul>
+        <p>Toggle between the MtM view and the Cash Settlements view using the filter icon bookmark buttons at the top of the main page.</p>
+    </section>
+
+    <section id="refresh" class="section">
+        <h2 class="section-title"><span class="icon">🔄</span>Data Refresh</h2>
+        <ul class="feature-list">
+            <li><span class="check">📅</span><div>MtM rates update daily using market forward rates as of the previous business day</div></li>
+            <li><span class="check">📊</span><div>P&amp;L figures are indicative and will fluctuate with market movements</div></li>
+            <li><span class="check">⏰</span><div>New trades executed today will appear after the next daily refresh</div></li>
+        </ul>
+    </section>
+</main>
+<footer class="footer"><p>Mark-to-Market Dashboard — User Guide</p><p style="margin-top:.5rem;opacity:.8;">Dashboard User Guide — Kantox</p></footer>
+<script>
+document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener('click',function(e){e.preventDefault();const t=document.querySelector(this.getAttribute('href'));if(t){t.scrollIntoView({behavior:'smooth',block:'start'});document.querySelectorAll('.nav-tabs a').forEach(x=>x.classList.remove('active'));this.classList.add('active');}});});
+window.addEventListener('scroll',()=>{const s=document.querySelectorAll('section[id]');let c='';s.forEach(x=>{if(scrollY>=x.offsetTop-200)c=x.getAttribute('id');});document.querySelectorAll('.nav-tabs a').forEach(a=>{a.classList.remove('active');if(a.getAttribute('href')==='#'+c)a.classList.add('active');});});
+</script>
+</body>
+</html>

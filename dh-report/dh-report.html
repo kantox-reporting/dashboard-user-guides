@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
+    <title>DH Report - User Guide</title>
+    <style>
+        :root{--kantox-teal:#00A5B5;--kantox-teal-dark:#008A99;--kantox-orange:#F47A20;--kantox-orange-light:#FF9F4A;--text-primary:#2D3748;--text-secondary:#4A5568;--bg-light:#F7FAFC;--bg-card:#FFFFFF;--border-color:#E2E8F0;--success-green:#48BB78;--warning-red:#F56565;--purple-accent:#805AD5;}
+        *{margin:0;padding:0;box-sizing:border-box;}
+        body{font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif;background:var(--bg-light);color:var(--text-primary);line-height:1.6;}
+        .header{background:linear-gradient(135deg,var(--kantox-teal) 0%,var(--kantox-teal-dark) 100%);color:white;padding:2rem;text-align:center;}
+        .header-logo{display:flex;align-items:center;justify-content:center;gap:1rem;margin-bottom:1rem;}
+        .logo-icon{width:50px;height:50px;background:white;border-radius:8px;display:flex;align-items:center;justify-content:center;font-weight:bold;color:var(--kantox-teal);font-size:1.5rem;}
+        .header h1{font-size:2rem;font-weight:600;margin-bottom:.5rem;}
+        .header p{opacity:.9;font-size:1.1rem;}
+        .badge{display:inline-block;background:var(--kantox-orange);padding:.25rem .75rem;border-radius:20px;font-size:.85rem;margin-top:.5rem;}
+        .nav-tabs{background:white;padding:1rem 2rem;border-bottom:1px solid var(--border-color);display:flex;gap:.5rem;flex-wrap:wrap;justify-content:center;position:sticky;top:0;z-index:100;}
+        .nav-tabs a{color:var(--text-secondary);text-decoration:none;padding:.5rem .85rem;border-radius:6px;transition:all .2s;font-size:.9rem;}
+        .nav-tabs a:hover,.nav-tabs a.active{background:var(--kantox-teal);color:white;}
+        .container{max-width:1200px;margin:0 auto;padding:2rem;}
+        .section{background:var(--bg-card);border-radius:12px;padding:2rem;margin-bottom:2rem;box-shadow:0 2px 8px rgba(0,0,0,.05);border:1px solid var(--border-color);}
+        .section-title{display:flex;align-items:center;gap:.75rem;color:var(--kantox-teal);font-size:1.4rem;margin-bottom:1.5rem;padding-bottom:.75rem;border-bottom:2px solid var(--kantox-teal);}
+        .section-title .icon{width:32px;height:32px;background:var(--kantox-teal);border-radius:6px;display:flex;align-items:center;justify-content:center;color:white;font-size:1rem;}
+        .info-box{background:linear-gradient(135deg,#E6FFFA 0%,#B2F5EA 100%);border-left:4px solid var(--kantox-teal);padding:1rem 1.25rem;border-radius:0 8px 8px 0;margin:1rem 0;}
+        .info-box.warning{background:linear-gradient(135deg,#FFFAF0 0%,#FEEBC8 100%);border-left-color:var(--kantox-orange);}
+        .info-box.purple{background:linear-gradient(135deg,#FAF5FF 0%,#E9D8FD 100%);border-left-color:var(--purple-accent);}
+        .info-box strong{color:var(--kantox-teal);}
+        .info-box.warning strong{color:var(--kantox-orange);}
+        .info-box.purple strong{color:var(--purple-accent);}
+        table{width:100%;border-collapse:collapse;font-size:.9rem;}
+        th{background:var(--kantox-teal);color:white;padding:.75rem 1rem;text-align:left;font-weight:600;}
+        td{padding:.75rem 1rem;border-bottom:1px solid var(--border-color);}
+        tr:hover{background:var(--bg-light);}
+        .table-container{overflow-x:auto;margin:1rem 0;}
+        .feature-list{list-style:none;}
+        .feature-list li{padding:.75rem 0;border-bottom:1px solid var(--border-color);display:flex;align-items:flex-start;gap:.75rem;}
+        .feature-list li:last-child{border-bottom:none;}
+        .feature-list .check{color:var(--kantox-teal);font-weight:bold;font-size:1.1rem;}
+        .footer{background:var(--text-primary);color:white;padding:2rem;text-align:center;margin-top:2rem;}
+        h3{margin:1.5rem 0 .75rem;color:var(--text-primary);}
+        p{margin-bottom:.75rem;}
+    </style>
+</head>
+<body>
+<header class="header">
+    <div class="header-logo">
+        <div class="logo-icon">K</div>
+        <div><h1>DH Report</h1><p>Dynamic Hedging Detailed Entry &amp; Performance Report</p></div>
+    </div>
+    <span class="badge">User Guide</span>
+</header>
+<nav class="nav-tabs">
+    <a href="#overview" class="active">Overview</a>
+    <a href="#filters">Filters</a>
+    <a href="#entries">Hedge Entries</a>
+    <a href="#performance">Performance View</a>
+    <a href="#refresh">Data Refresh</a>
+</nav>
+<main class="container">
+    <section id="overview" class="section">
+        <h2 class="section-title"><span class="icon">📋</span>What is the DH Report?</h2>
+        <p>The <strong>DH Report</strong> is the detailed transaction-level companion to the DH Analytics Dashboard. While the Analytics Dashboard gives you aggregate KPIs and charts, the DH Report lets you inspect every individual hedge entry in your Dynamic Hedging programme — its status, amounts, rates, and performance contribution.</p>
+        <div class="info-box"><strong>💡 Key Value:</strong> Drill down into the individual entries that make up your portfolio. Understand which specific trades are performing well, which are consuming coverage, and how your bucket structure is being filled over time.</div>
+        <h3>Key Benefits</h3>
+        <ul class="feature-list">
+            <li><span class="check">✓</span><div><strong>Entry-Level Transparency</strong> — every hedge entry with its creation date, value date, notional, currency pair, and execution rate</div></li>
+            <li><span class="check">✓</span><div><strong>Status Tracking</strong> — see the current status of each entry (open, closed, partially filled, expired)</div></li>
+            <li><span class="check">✓</span><div><strong>Performance Attribution</strong> — DH Performance, Pricing P&amp;L, and Forward Points at the individual entry level</div></li>
+            <li><span class="check">✓</span><div><strong>Bucket Coverage</strong> — understand how entries are distributed across your defined hedging buckets</div></li>
+            <li><span class="check">✓</span><div><strong>Currency Pair Detail</strong> — analyse the programme currency pair by currency pair</div></li>
+        </ul>
+    </section>
+
+    <section id="filters" class="section">
+        <h2 class="section-title"><span class="icon">🎛️</span>Filters &amp; Controls</h2>
+        <div class="table-container">
+            <table>
+                <thead><tr><th>Filter</th><th>What it does</th></tr></thead>
+                <tbody>
+                    <tr><td><strong>Entity Group</strong></td><td>Select the client entity to view</td></tr>
+                    <tr><td><strong>Currency Pair</strong></td><td>Filter to one or more currency pairs (e.g. EUR/USD)</td></tr>
+                    <tr><td><strong>Creation Date</strong></td><td>Filter entries by when they were created in the programme</td></tr>
+                    <tr><td><strong>Value Date</strong></td><td>Filter by maturity / settlement date of each entry</td></tr>
+                    <tr><td><strong>Entry Status</strong></td><td>Filter to open, closed, or all entries</td></tr>
+                    <tr><td><strong>Direction</strong></td><td>Positive (buy) or negative (sell) entries</td></tr>
+                    <tr><td><strong>Normalisation Currency</strong></td><td>Select reporting currency for all normalised amounts</td></tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <section id="entries" class="section">
+        <h2 class="section-title"><span class="icon">📝</span>Hedge Entries Table</h2>
+        <p>The core of the DH Report is the entry-level data table. Each row represents a single hedge entry with the following key fields:</p>
+        <div class="table-container">
+            <table>
+                <thead><tr><th>Field</th><th>Description</th></tr></thead>
+                <tbody>
+                    <tr><td><strong>Entry Reference</strong></td><td>Unique identifier for the hedge entry</td></tr>
+                    <tr><td><strong>Creation Date</strong></td><td>When the entry was created or submitted to the programme</td></tr>
+                    <tr><td><strong>Value Date</strong></td><td>The settlement / maturity date of this entry</td></tr>
+                    <tr><td><strong>Currency Pair</strong></td><td>The FX pair (e.g. EUR/USD)</td></tr>
+                    <tr><td><strong>Direction</strong></td><td>Buy (positive) or Sell (negative)</td></tr>
+                    <tr><td><strong>Notional Amount</strong></td><td>Original exposure amount in the entry's base currency</td></tr>
+                    <tr><td><strong>Normalised Amount</strong></td><td>Notional converted to your selected reporting currency</td></tr>
+                    <tr><td><strong>Hedge Rate</strong></td><td>The rate at which the entry was executed</td></tr>
+                    <tr><td><strong>Status</strong></td><td>Current state of the entry</td></tr>
+                    <tr><td><strong>Bucket</strong></td><td>The hedging bucket or tenor band this entry belongs to</td></tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="info-box"><strong>💡 Tip:</strong> Sort the table by Value Date to plan upcoming settlements, or sort by DH Performance to identify your best- and worst-performing entries.</div>
+    </section>
+
+    <section id="performance" class="section">
+        <h2 class="section-title"><span class="icon">📈</span>Performance View</h2>
+        <p>Alongside the entry details, the DH Report shows performance metrics at the individual entry level:</p>
+        <ul class="feature-list">
+            <li><span class="check">•</span><div><strong>DH Performance:</strong> How much value the Dynamic Hedging programme generated on this entry vs. an unhedged benchmark rate at the time of creation</div></li>
+            <li><span class="check">•</span><div><strong>Pricing P&amp;L:</strong> P&amp;L from market rate movements between entry creation and today's valuation</div></li>
+            <li><span class="check">•</span><div><strong>Forward Points:</strong> The cost-of-carry component embedded in the hedge rate — reflects the interest rate differential over the entry's tenor</div></li>
+        </ul>
+        <div class="info-box purple"><strong>🔍 Understanding Forward Points:</strong> Forward points can be positive or negative depending on the interest rate differential between the two currencies. A currency with a lower interest rate than EUR will typically have negative forward points on EUR buy trades (the forward rate is lower than spot).</div>
+        <div class="info-box warning"><strong>⚠️ Open vs. Closed entries:</strong> Performance on <em>open</em> entries is indicative — it will continue to evolve until the entry matures and is cash-settled. Performance on <em>closed</em> entries is final and locked in.</div>
+    </section>
+
+    <section id="refresh" class="section">
+        <h2 class="section-title"><span class="icon">🔄</span>Data Refresh</h2>
+        <ul class="feature-list">
+            <li><span class="check">📅</span><div>Data refreshes once per business day</div></li>
+            <li><span class="check">💱</span><div>Normalisation rates and performance metrics are recalculated at each refresh</div></li>
+            <li><span class="check">📊</span><div>New entries created today will appear after the next daily refresh</div></li>
+        </ul>
+    </section>
+</main>
+<footer class="footer"><p>DH Report — User Guide</p><p style="margin-top:.5rem;opacity:.8;">Dashboard User Guide — Kantox</p></footer>
+<script>
+document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener('click',function(e){e.preventDefault();const t=document.querySelector(this.getAttribute('href'));if(t){t.scrollIntoView({behavior:'smooth',block:'start'});document.querySelectorAll('.nav-tabs a').forEach(x=>x.classList.remove('active'));this.classList.add('active');}});});
+window.addEventListener('scroll',()=>{const s=document.querySelectorAll('section[id]');let c='';s.forEach(x=>{if(scrollY>=x.offsetTop-200)c=x.getAttribute('id');});document.querySelectorAll('.nav-tabs a').forEach(a=>{a.classList.remove('active');if(a.getAttribute('href')==='#'+c)a.classList.add('active');});});
+</script>
+</body>
+</html>
