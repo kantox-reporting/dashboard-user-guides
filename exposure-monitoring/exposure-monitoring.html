@@ -46,29 +46,29 @@
 <header class="header">
     <div class="header-logo">
         <div class="logo-icon">K</div>
-        <div><h1>Exposure Monitoring</h1><p>FX Exposure &amp; Hedge Coverage Tracking</p></div>
+        <div><h1>Exposure Monitoring</h1><p>DH Positions &amp; Entry Exposure Monitoring</p></div>
     </div>
     <span class="badge">User Guide</span>
 </header>
 <nav class="nav-tabs">
     <a href="#overview" class="active">Overview</a>
     <a href="#filters">Filters</a>
-    <a href="#exposure">Exposure View</a>
-    <a href="#coverage">Coverage Ratios</a>
+    <a href="#positions-entries">Positions &amp; Entries</a>
+    <a href="#status">Exposure by Status</a>
     <a href="#refresh">Data Refresh</a>
 </nav>
 <main class="container">
     <section id="overview" class="section">
         <h2 class="section-title"><span class="icon">🎯</span>What is the Exposure Monitoring Dashboard?</h2>
-        <p>The <strong>Exposure Monitoring Dashboard</strong> provides a consolidated view of your total FX exposure and how much of it is currently hedged. It helps you track your coverage position across currency pairs and time horizons, so you always know how much exposure remains open and unprotected at any point.</p>
-        <div class="info-box"><strong>💡 Key Value:</strong> Keep a real-time pulse on your hedging coverage — see at a glance which currency pairs are under-hedged, over-hedged, or on target, and act before exposure gaps become costly.</div>
+        <p>The <strong>Exposure Monitoring Dashboard</strong> gives you a joint view of your FX exposure entries and the Dynamic Hedging positions covering them. Rather than showing only a single coverage ratio, it lets you see the full picture: what you have submitted to the programme, what positions exist against that exposure, and how those positions are distributed across their lifecycle statuses.</p>
+        <div class="info-box"><strong>💡 Key Value:</strong> Understand at a glance how your submitted exposure relates to active DH positions — broken down by currency pair, status, and date — so you can spot gaps, expiring positions, or positions in monitoring before they affect your programme.</div>
         <h3>Key Benefits</h3>
         <ul class="feature-list">
-            <li><span class="check">✓</span><div><strong>Total Exposure Overview</strong> — gross FX exposure by currency pair and by time bucket</div></li>
-            <li><span class="check">✓</span><div><strong>Hedge Coverage Tracking</strong> — how much of your gross exposure has been hedged at each maturity horizon</div></li>
-            <li><span class="check">✓</span><div><strong>Residual Exposure</strong> — the open, unhedged portion of your FX risk in each currency pair</div></li>
-            <li><span class="check">✓</span><div><strong>Coverage Ratio KPIs</strong> — percentage hedged vs. total exposure, compared against your policy target</div></li>
-            <li><span class="check">✓</span><div><strong>Multi-Currency View</strong> — all amounts normalised to your preferred reporting currency</div></li>
+            <li><span class="check">✓</span><div><strong>Positions &amp; Entries Together</strong> — see your DH positions (hedges) and exposure entries side by side in a linked, expandable table</div></li>
+            <li><span class="check">✓</span><div><strong>Status Breakdown</strong> — understand how much of your position notional is Open, Monitoring, Expired, or Closed at any point in time</div></li>
+            <li><span class="check">✓</span><div><strong>WAHR Tracking</strong> — the Weighted Average Hedge Rate (WAHR) is shown at position level, giving you a blended rate view across your portfolio</div></li>
+            <li><span class="check">✓</span><div><strong>Normalised Amounts</strong> — all amounts can be viewed in a common reporting currency for cross-pair comparison</div></li>
+            <li><span class="check">✓</span><div><strong>Expand / Collapse</strong> — drill from an aggregated position view down into the individual entries linked to each position</div></li>
         </ul>
     </section>
 
@@ -78,56 +78,74 @@
             <table>
                 <thead><tr><th>Filter</th><th>What it does</th></tr></thead>
                 <tbody>
-                    <tr><td><strong>Entity Group</strong></td><td>Select one or more entities to monitor</td></tr>
-                    <tr><td><strong>Currency Pair</strong></td><td>Focus on a specific currency pair (e.g. EUR/USD, EUR/GBP)</td></tr>
-                    <tr><td><strong>Bucket / Horizon</strong></td><td>Filter to a specific time bucket or hedging horizon</td></tr>
-                    <tr><td><strong>Value Date range</strong></td><td>Restrict to exposures maturing within a specific window</td></tr>
-                    <tr><td><strong>Expressed in</strong></td><td>Reporting currency for all normalised amounts</td></tr>
+                    <tr><td><strong>Entity / Account</strong></td><td>Select the entity or account to monitor</td></tr>
+                    <tr><td><strong>Currency Pair</strong></td><td>Focus on one or more FX pairs (e.g. EUR/USD)</td></tr>
+                    <tr><td><strong>Direction</strong></td><td>Buy or sell positions</td></tr>
+                    <tr><td><strong>Creation Date</strong></td><td>Filter positions and entries by when they were created in the programme</td></tr>
+                    <tr><td><strong>Value Date</strong></td><td>Filter by the maturity / settlement date of positions and entries</td></tr>
+                    <tr><td><strong>Status</strong></td><td>Filter by position status (Open, Monitoring, Expired, Closed, Cancelled)</td></tr>
+                    <tr><td><strong>Expressed in</strong></td><td>Reporting currency for normalised amounts</td></tr>
                 </tbody>
             </table>
         </div>
     </section>
 
-    <section id="exposure" class="section">
-        <h2 class="section-title"><span class="icon">📊</span>Exposure View</h2>
-        <h3>Gross Exposure by Currency Pair</h3>
-        <p>The main chart shows your total gross FX exposure broken down by currency pair. Each bar (or segment) represents the full amount of FX risk in that pair — both the portion that has been hedged and the open remainder.</p>
-        <ul class="feature-list">
-            <li><span class="check">🟦</span><div><strong>Hedged amount</strong> — the portion of exposure covered by open hedge positions</div></li>
-            <li><span class="check">🟥</span><div><strong>Residual / unhedged amount</strong> — the open exposure yet to be covered</div></li>
-        </ul>
-        <div class="info-box"><strong>Reading the chart:</strong> A bar that is mostly hedged (blue) indicates good coverage. A bar dominated by the unhedged segment (red) signals that you may want to add hedges for that currency pair before rates move further.</div>
+    <section id="positions-entries" class="section">
+        <h2 class="section-title"><span class="icon">📊</span>Positions &amp; Entries View</h2>
+        <p>The main view of the dashboard shows DH positions and their linked exposure entries in an expandable hierarchy. The ▼ button expands a position to reveal the individual entries assigned to it; the ▲ button collapses them back.</p>
 
-        <h3>Exposure by Bucket / Horizon</h3>
-        <p>The bucketed view groups exposure by time horizon (e.g. 0–1 month, 1–3 months, 3–6 months). This helps you identify whether your coverage is well distributed across tenors or concentrated in the near term.</p>
-        <div class="info-box warning"><strong>⚠️ Near-term buckets:</strong> Exposure in the 0–1 month bucket is the most urgent to hedge. If the near-term bucket shows significant unhedged amounts, prioritise these with your treasury team.</div>
-    </section>
-
-    <section id="coverage" class="section">
-        <h2 class="section-title"><span class="icon">📏</span>Coverage Ratios</h2>
-        <p>The coverage ratio KPIs show your hedge coverage as a percentage of gross exposure, per currency pair and in aggregate:</p>
+        <h3>Position-Level Information</h3>
+        <p>Each position row shows the DH hedge that was opened to cover exposure. Key fields at this level:</p>
         <div class="table-container">
             <table>
-                <thead><tr><th>Metric</th><th>Meaning</th></tr></thead>
+                <thead><tr><th>Field</th><th>Description</th></tr></thead>
                 <tbody>
-                    <tr><td><strong>Coverage %</strong></td><td>Hedged amount ÷ Gross exposure — the proportion of your total FX risk that is covered</td></tr>
-                    <tr><td><strong>Gross Exposure</strong></td><td>Total FX amount (hedged + unhedged) in the selected currency pair and period</td></tr>
-                    <tr><td><strong>Hedged Amount</strong></td><td>Notional of open hedge positions covering the selected exposure</td></tr>
-                    <tr><td><strong>Residual Exposure</strong></td><td>Gross Exposure minus Hedged Amount — your current open risk</td></tr>
+                    <tr><td><strong>Position Reference</strong></td><td>Unique identifier for the DH hedge position</td></tr>
+                    <tr><td><strong>Creation Date</strong></td><td>When the position was opened in the programme</td></tr>
+                    <tr><td><strong>Value Date</strong></td><td>The settlement / maturity date of the position</td></tr>
+                    <tr><td><strong>Currency Pair</strong></td><td>FX pair hedged by this position</td></tr>
+                    <tr><td><strong>Direction</strong></td><td>Buy or sell</td></tr>
+                    <tr><td><strong>Original Amount</strong></td><td>Notional amount of the position in its base currency</td></tr>
+                    <tr><td><strong>Normalised Amount</strong></td><td>Notional converted to your selected reporting currency</td></tr>
+                    <tr><td><strong>WAHR</strong></td><td>Weighted Average Hedge Rate — the blended rate at which this position is hedged</td></tr>
+                    <tr><td><strong>Status</strong></td><td>Current lifecycle state of the position (Open, Monitoring, Expired, Closed, Cancelled)</td></tr>
                 </tbody>
             </table>
         </div>
-        <div class="info-box purple"><strong>💡 Policy targets:</strong> Your Dynamic Hedging programme defines coverage ratio targets for each bucket and currency pair. Compare the Coverage % shown here against your policy targets to identify breaches or over-hedging situations.</div>
+        <div class="info-box purple"><strong>🔍 What is WAHR?</strong> The Weighted Average Hedge Rate (WAHR) is the blended execution rate across all trades within a position, weighted by notional amount. It is the effective rate at which your DH programme has hedged this exposure.</div>
+
+        <h3>Entry-Level Information</h3>
+        <p>Expanding a position reveals the individual exposure entries linked to it. Each entry row shows the original FX exposure record submitted to the programme, including its creation date, amount, currency, value date, and status.</p>
+        <div class="info-box"><strong>💡 Tip:</strong> Use the expand view to verify which of your submitted entries are covered by a specific position. Entries that appear without a linked position may still be waiting for coverage.</div>
+    </section>
+
+    <section id="status" class="section">
+        <h2 class="section-title"><span class="icon">📏</span>Exposure by Status</h2>
+        <p>The <strong>Exposure by Status</strong> page provides an aggregated breakdown of your total DH position notional grouped by lifecycle status. This gives you a quick health check on the state of your hedging portfolio:</p>
+        <div class="table-container">
+            <table>
+                <thead><tr><th>Status</th><th>Meaning</th></tr></thead>
+                <tbody>
+                    <tr><td><strong>Open</strong></td><td>The position is active and hedging live exposure. It has not yet reached its value date.</td></tr>
+                    <tr><td><strong>Monitoring</strong></td><td>The position is in an active monitoring phase — the programme is watching market conditions but the position has not yet executed or expired.</td></tr>
+                    <tr><td><strong>Expired</strong></td><td>The position has passed its value date without executing. The related exposure is no longer covered by this position.</td></tr>
+                    <tr><td><strong>Closed</strong></td><td>The position has been fully executed and settled. The hedging cycle for this position is complete.</td></tr>
+                    <tr><td><strong>Cancelled</strong></td><td>The position was cancelled before execution. The related exposure may remain unhedged.</td></tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="info-box warning"><strong>⚠️ Monitoring expired positions:</strong> A significant notional in <em>Expired</em> status may indicate that exposure was not covered before its value date. Review these positions with your Kantox account manager to understand whether the exposure was settled unhedged or rolled forward.</div>
+        <div class="info-box"><strong>💡 Monitoring status:</strong> Positions in <em>Monitoring</em> status are not yet executed but remain active in the programme. Their final outcome (closed vs. expired) depends on whether a suitable market opportunity is found before the value date.</div>
     </section>
 
     <section id="refresh" class="section">
         <h2 class="section-title"><span class="icon">🔄</span>Data Refresh</h2>
         <ul class="feature-list">
-            <li><span class="check">📅</span><div>Exposure data refreshes once per business day</div></li>
-            <li><span class="check">💱</span><div>Normalised amounts use the latest available spot rates at each refresh</div></li>
-            <li><span class="check">📊</span><div>New hedges executed today will be reflected after the next daily refresh</div></li>
+            <li><span class="check">📅</span><div>Exposure and position data refreshes once per business day</div></li>
+            <li><span class="check">💱</span><div>WAHR and normalised amounts are recalculated at each refresh using latest spot rates</div></li>
+            <li><span class="check">📊</span><div>New entries and positions created today will appear after the next daily refresh</div></li>
         </ul>
-        <div class="info-box warning"><strong>⚠️ Intraday changes:</strong> If you execute new hedges during the day, coverage ratios will not update until the next refresh. For real-time confirmation, verify new trades directly in the Kantox platform.</div>
+        <div class="info-box warning"><strong>⚠️ Intraday changes:</strong> Positions executed or entries created during the day will not be reflected until the next refresh. For real-time trade confirmation, verify activity directly in the Kantox platform.</div>
     </section>
 </main>
 <footer class="footer"><p>Exposure Monitoring — User Guide</p><p style="margin-top:.5rem;opacity:.8;">Dashboard User Guide — Kantox</p></footer>

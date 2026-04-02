@@ -80,7 +80,7 @@
                     <tr><td><strong>Date Granularity</strong></td><td>Toggle between Month / Quarter / Year aggregation for the time axis of charts</td></tr>
                     <tr><td><strong>Value Date range</strong></td><td>Filter to trades maturing within a specific window</td></tr>
                     <tr><td><strong>Buy/Sell Direction</strong></td><td>Isolate buy or sell side of the portfolio</td></tr>
-                    <tr><td><strong>Expressed in</strong></td><td>Select display currency — all amounts normalised at current rates (EUR, USD, GBP, CHF, SEK)</td></tr>
+                    <tr><td><strong>Expressed in</strong></td><td>Request display currency — all amounts normalised at current rates (EUR, USD, GBP, CHF, SEK, +)</td></tr>
                     <tr><td><strong>Entity / Account</strong></td><td>Filter to a specific entity or account</td></tr>
                 </tbody>
             </table>
@@ -114,9 +114,8 @@
     <section id="refresh" class="section">
         <h2 class="section-title"><span class="icon">🔄</span>Data Refresh</h2>
         <ul class="feature-list">
-            <li><span class="check">📅</span><div>MtM rates update daily using market forward rates as of the previous business day</div></li>
+            <li><span class="check">📅</span><div>MtM Dashboard refreshes multiple times a day adding new executed trades and taking into account the latest forward rates</div></li>
             <li><span class="check">📊</span><div>P&amp;L figures are indicative and will fluctuate with market movements</div></li>
-            <li><span class="check">⏰</span><div>New trades executed today will appear after the next daily refresh</div></li>
         </ul>
     </section>
 </main>

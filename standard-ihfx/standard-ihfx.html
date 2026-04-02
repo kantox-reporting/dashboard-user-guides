@@ -40,35 +40,60 @@
         .footer{background:var(--text-primary);color:white;padding:2rem;text-align:center;margin-top:2rem;}
         h3{margin:1.5rem 0 .75rem;color:var(--text-primary);}
         p{margin-bottom:.75rem;}
+        .flow-diagram{display:flex;align-items:center;gap:0;flex-wrap:wrap;margin:1.5rem 0;}
+        .flow-step{background:var(--bg-light);border:1px solid var(--border-color);border-radius:8px;padding:.75rem 1rem;font-size:.9rem;text-align:center;flex:1;min-width:130px;}
+        .flow-step strong{display:block;color:var(--kantox-teal);margin-bottom:.25rem;}
+        .flow-arrow{font-size:1.4rem;color:var(--kantox-teal);padding:0 .5rem;flex-shrink:0;}
     </style>
 </head>
 <body>
 <header class="header">
     <div class="header-logo">
         <div class="logo-icon">K</div>
-        <div><h1>Standard IHFX</h1><p>Internal Hedge FX — Inter-Entity Hedging Report</p></div>
+        <div><h1>Standard IHFX</h1><p>In-House FX — K2 to K1 Three-Stage Hedge Flow</p></div>
     </div>
     <span class="badge">User Guide</span>
 </header>
 <nav class="nav-tabs">
     <a href="#overview" class="active">Overview</a>
+    <a href="#how-it-works">How It Works</a>
     <a href="#filters">Filters</a>
-    <a href="#ihfx-view">IHFX View</a>
-    <a href="#k2-setup">K2 Setup</a>
+    <a href="#child-entries">Subsidiary Entries</a>
+    <a href="#parent-entries">HQ Internal Hedges</a>
+    <a href="#trade-detail">Trade Detail</a>
+    <a href="#performance">Performance</a>
     <a href="#refresh">Data Refresh</a>
 </nav>
 <main class="container">
     <section id="overview" class="section">
-        <h2 class="section-title"><span class="icon">🔁</span>What is the Standard IHFX Report?</h2>
-        <p>The <strong>Standard IHFX (Internal Hedge FX)</strong> report tracks inter-entity FX hedging activity within a multi-entity organisation. When one entity within the group hedges on behalf of another, or when internal hedges are used to transfer FX risk between legal entities, this report provides the audit trail and performance view for those internal transactions.</p>
-        <div class="info-box"><strong>💡 Key Value:</strong> Maintain full visibility over internal FX hedges between entities in your group — amounts, rates, directions, and performance — in one consolidated view.</div>
+        <h2 class="section-title"><span class="icon">🔁</span>What is the Standard IHFX Dashboard?</h2>
+        <p>The <strong>Standard IHFX (In-House FX)</strong> dashboard tracks the complete three-stage flow from K2 subsidiary exposure through to the external bank trade. It shows the subsidiary K2 entries that triggered the flow, the K1 internal hedges created as a result, and the bank trades that ultimately executed the hedging — all linked by a common <strong>Internal Hedge Reference</strong>.</p>
+        <div class="info-box"><strong>💡 Key Value:</strong> Follow every subsidiary exposure from its submission in the K2 bucket programme, through the internal K1 hedge it triggers, all the way to the external bank trade — with performance metrics and CHF-normalised amounts at each stage.</div>
         <h3>Key Benefits</h3>
         <ul class="feature-list">
-            <li><span class="check">✓</span><div><strong>Inter-Entity Transparency</strong> — see which entities are the source and destination of internal hedges</div></li>
-            <li><span class="check">✓</span><div><strong>Internal Rate Tracking</strong> — compare internal transfer rates against external market rates to ensure fair allocation</div></li>
-            <li><span class="check">✓</span><div><strong>Settlement Visibility</strong> — upcoming internal settlements by entity pair and currency</div></li>
-            <li><span class="check">✓</span><div><strong>Full Trade List</strong> — every internal hedge transaction with reference, amounts, and counterparty entity</div></li>
+            <li><span class="check">✓</span><div><strong>Three-Stage Traceability</strong> — K2 subsidiary entry → K1 internal hedge → bank-traded external hedge, all linked via Internal Hedge Reference</div></li>
+            <li><span class="check">✓</span><div><strong>Linked Parent–Child View</strong> — each K1 internal hedge (parent) is shown alongside the K2 subsidiary entries (children) that triggered it</div></li>
+            <li><span class="check">✓</span><div><strong>P&amp;L Visibility</strong> — Spot P&amp;L and Forward Point Savings shown at the K1 parent entry level, both realised and unrealised</div></li>
+            <li><span class="check">✓</span><div><strong>CHF Normalisation</strong> — all amounts are normalised to CHF for cross-currency comparison; an EUR-normalised view is also available</div></li>
+            <li><span class="check">✓</span><div><strong>Status Tracking</strong> — status and grouped status shown at every stage so you can see where each hedge stands in its lifecycle</div></li>
         </ul>
+    </section>
+
+    <section id="how-it-works" class="section">
+        <h2 class="section-title"><span class="icon">⚙️</span>How It Works</h2>
+        <p>The dashboard reflects a three-stage hedging process spanning the K2 and K1 programmes:</p>
+        <div class="flow-diagram">
+            <div class="flow-step"><strong>1 — Subsidiary (K2)</strong>Submits exposure entries into K2 buckets</div>
+            <div class="flow-arrow">→</div>
+            <div class="flow-step"><strong>2 — Bucket Executes</strong>Internal K1 hedge triggered; HQ receives the exposure</div>
+            <div class="flow-arrow">→</div>
+            <div class="flow-step"><strong>3 — HQ (K1)</strong>K1 DH programme processes the internal hedge entry</div>
+            <div class="flow-arrow">→</div>
+            <div class="flow-step"><strong>4 — External Trade</strong>Bank trade executed to hedge the K1 exposure in the market</div>
+        </div>
+        <p>The dashboard captures all three data sets: the <strong>Child Entries</strong> (stage 1), the <strong>Parent Entries</strong> (stage 2–3), and the <strong>Trade Detail</strong> (stage 4). They are linked by the <strong>Internal Hedge Reference</strong> — a single key that traces the chain from subsidiary entry to external bank trade.</p>
+        <div class="info-box purple"><strong>🔍 Internal Hedge Reference:</strong> This is the key field that links all three stages. A single Internal Hedge Reference can be associated with one or more child K2 entries (if multiple subsidiary exposures combined into one bucket execution) and one or more bank trades on the K1 side.</div>
+        <div class="info-box warning"><strong>⚠️ Status on each stage is independent:</strong> A K1 parent entry can be closed while its linked bank trade is still open, or vice versa. Each table shows the status at that specific stage of the flow.</div>
     </section>
 
     <section id="filters" class="section">
@@ -77,57 +102,108 @@
             <table>
                 <thead><tr><th>Filter</th><th>What it does</th></tr></thead>
                 <tbody>
-                    <tr><td><strong>Source Entity</strong></td><td>The entity that originated the internal hedge request</td></tr>
-                    <tr><td><strong>Counterparty Entity</strong></td><td>The entity on the other side of the internal hedge</td></tr>
-                    <tr><td><strong>Currency Pair</strong></td><td>Filter to a specific internal hedge currency pair</td></tr>
-                    <tr><td><strong>Execution Date</strong></td><td>When the internal hedge was executed</td></tr>
-                    <tr><td><strong>Value Date</strong></td><td>When the internal hedge settles between entities</td></tr>
-                    <tr><td><strong>Expressed in</strong></td><td>Normalisation currency for all amounts</td></tr>
+                    <tr><td><strong>Entity Group Name</strong></td><td>Select the entity group whose entries you want to view — filters all three tables simultaneously</td></tr>
+                    <tr><td><strong>Account Name</strong></td><td>Narrow down to a specific account within the selected entity group</td></tr>
+                    <tr><td><strong>Normalised CCY Pair</strong></td><td>Available on the Specific Currency page — focus the analysis on a single currency pair (e.g. EURUSD)</td></tr>
                 </tbody>
             </table>
         </div>
     </section>
 
-    <section id="ihfx-view" class="section">
-        <h2 class="section-title"><span class="icon">📊</span>IHFX View</h2>
-        <h3>Internal Hedge Transactions Table</h3>
-        <p>The core of the IHFX report is the transaction table, which shows each internal hedge with:</p>
+    <section id="child-entries" class="section">
+        <h2 class="section-title"><span class="icon">🏢</span>Subsidiary Entries (K2 Child)</h2>
+        <p>The <strong>Child Entries</strong> table shows the K2 exposure entries submitted by the subsidiary. These are the records that, once the bucket executes, trigger the internal K1 hedge. Rows are grouped by subsidiary entity and entry reference.</p>
         <div class="table-container">
             <table>
-                <thead><tr><th>Column</th><th>Description</th></tr></thead>
+                <thead><tr><th>Field</th><th>Description</th></tr></thead>
                 <tbody>
-                    <tr><td><strong>Trade Reference</strong></td><td>Unique internal trade identifier</td></tr>
-                    <tr><td><strong>Execution Date</strong></td><td>Date the internal hedge was booked</td></tr>
-                    <tr><td><strong>Value Date</strong></td><td>Settlement date between the two entities</td></tr>
-                    <tr><td><strong>Source Entity</strong></td><td>The entity whose exposure is being hedged</td></tr>
-                    <tr><td><strong>Counterparty Entity</strong></td><td>The treasury or central entity providing the internal hedge</td></tr>
-                    <tr><td><strong>Currency Pair</strong></td><td>The FX pair for this internal hedge</td></tr>
-                    <tr><td><strong>Direction</strong></td><td>Buy or sell from the source entity's perspective</td></tr>
-                    <tr><td><strong>Notional / Normalised Amount</strong></td><td>Original and reporting-currency-converted amounts</td></tr>
-                    <tr><td><strong>Internal Rate</strong></td><td>The rate agreed between entities for this internal transaction</td></tr>
+                    <tr><td><strong>Child Entity</strong></td><td>The subsidiary that submitted this K2 exposure entry</td></tr>
+                    <tr><td><strong>Child Entry Reference</strong></td><td>Unique identifier for the subsidiary's K2 exposure entry</td></tr>
+                    <tr><td><strong>Entry Date</strong></td><td>When the subsidiary submitted this entry to the K2 programme</td></tr>
+                    <tr><td><strong>Direction</strong></td><td>Buy or sell from the subsidiary's perspective</td></tr>
+                    <tr><td><strong>Amount / Currency</strong></td><td>Notional and base currency of the subsidiary exposure</td></tr>
+                    <tr><td><strong>Counter Amount / Counter Currency</strong></td><td>Counter currency side of the exposure</td></tr>
+                    <tr><td><strong>Value Date</strong></td><td>Settlement date of the subsidiary exposure</td></tr>
+                    <tr><td><strong>Status / Grouped Status</strong></td><td>Current lifecycle status of the K2 entry</td></tr>
+                    <tr><td><strong>Total Normalised Amount (CHF)</strong></td><td>Entry notional converted to CHF for cross-currency comparison</td></tr>
                 </tbody>
             </table>
         </div>
-        <div class="info-box"><strong>💡 Internal vs. External rates:</strong> The internal rate charged to the source entity typically includes a spread over the external market rate to cover the central treasury's cost of hedging. Review the internal rate vs. the market rate to understand the internal hedging cost allocated to each entity.</div>
+        <div class="info-box"><strong>💡 Grouped by parent:</strong> Child entries appear grouped under the Internal Hedge Reference of the K1 parent they triggered. Multiple K2 entries can share the same parent if they combined within the same bucket execution.</div>
     </section>
 
-    <section id="k2-setup" class="section">
-        <h2 class="section-title"><span class="icon">🔗</span>K2 to K1 Setup</h2>
-        <p>The IHFX report also covers the <strong>K2 to K1 internal hedge setup</strong>. In this configuration, K2 programme entries generate offsetting internal hedges that are passed to the K1 programme. This allows the two programmes to share liquidity and hedge positions without creating bilateral external trades.</p>
-        <ul class="feature-list">
-            <li><span class="check">•</span><div>K2 exposure entries create internal hedge requests in the K1 programme</div></li>
-            <li><span class="check">•</span><div>K1 executes the external hedge on behalf of both programmes</div></li>
-            <li><span class="check">•</span><div>The IHFX report tracks the internal leg of this flow — the K2 → K1 transfer</div></li>
-        </ul>
-        <div class="info-box purple"><strong>🔍 For K2 clients:</strong> If you are a K2 programme participant, the IHFX report shows the internal hedges your entries generated in K1. The external execution details (bank, rate, settlement) are visible in the K2 DH Report.</div>
+    <section id="parent-entries" class="section">
+        <h2 class="section-title"><span class="icon">🏦</span>HQ Internal Hedges (K1 Parent)</h2>
+        <p>The <strong>Parent Entries</strong> table shows the K1 internal hedge entries created when K2 bucket execution occurred. Each parent entry represents the HQ's exposure to be hedged externally, grouped by Internal Hedge Reference and subsidiary entity.</p>
+        <div class="table-container">
+            <table>
+                <thead><tr><th>Field</th><th>Description</th></tr></thead>
+                <tbody>
+                    <tr><td><strong>Internal Hedge Reference</strong></td><td>The key linking this K1 entry to the K2 child entries and the bank trade that covers it</td></tr>
+                    <tr><td><strong>Child Entity</strong></td><td>The subsidiary whose K2 entries triggered this internal hedge</td></tr>
+                    <tr><td><strong>Entry Reference</strong></td><td>The K1 entry reference created for this internal hedge</td></tr>
+                    <tr><td><strong>Entry Date</strong></td><td>When the K1 internal hedge entry was created</td></tr>
+                    <tr><td><strong>Direction</strong></td><td>Buy or sell from the HQ's perspective</td></tr>
+                    <tr><td><strong>Amount / Currency</strong></td><td>Notional and base currency of the K1 internal hedge</td></tr>
+                    <tr><td><strong>Counter Amount / Counter Currency</strong></td><td>Counter currency side of the internal hedge</td></tr>
+                    <tr><td><strong>Value Date</strong></td><td>Settlement date of the K1 internal hedge</td></tr>
+                    <tr><td><strong>Status / Grouped Status</strong></td><td>Current lifecycle status of the K1 entry (Ultimate Status)</td></tr>
+                    <tr><td><strong>External Hedge Reference</strong></td><td>Reference of the bank trade that was executed to cover this K1 entry, once available</td></tr>
+                    <tr><td><strong>Total Normalised Amount (CHF)</strong></td><td>Amount converted to CHF</td></tr>
+                    <tr><td><strong>Spot P&amp;L / Forward Point Savings</strong></td><td>Performance metrics — see the Performance section below</td></tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <section id="trade-detail" class="section">
+        <h2 class="section-title"><span class="icon">🏛️</span>Trade Detail (Bank Hedge)</h2>
+        <p>The <strong>Trade Detail</strong> table shows the external bank trades that K1 DH executed to hedge the internal entries. This is the final stage of the flow — the actual market transaction that closes the hedging loop. Rows are grouped by trade reference and linked back to the K1 parent via Internal Hedge Reference.</p>
+        <div class="table-container">
+            <table>
+                <thead><tr><th>Field</th><th>Description</th></tr></thead>
+                <tbody>
+                    <tr><td><strong>Trade Reference</strong></td><td>Unique identifier for the external bank trade</td></tr>
+                    <tr><td><strong>Create Date</strong></td><td>When the bank trade was executed</td></tr>
+                    <tr><td><strong>Direction</strong></td><td>Buy or sell from the HQ's perspective</td></tr>
+                    <tr><td><strong>Amount / Currency</strong></td><td>Notional and base currency of the external trade</td></tr>
+                    <tr><td><strong>Counter Amount / Counter Currency</strong></td><td>Counter currency side of the external trade</td></tr>
+                    <tr><td><strong>Value Date</strong></td><td>Settlement date of the external trade</td></tr>
+                    <tr><td><strong>Status</strong></td><td>Status of the bank trade</td></tr>
+                    <tr><td><strong>Internal Hedge Reference</strong></td><td>The link back to the K1 parent entry and K2 child entries this trade covers</td></tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="info-box warning"><strong>⚠️ One trade can cover multiple parents:</strong> A single bank trade can be linked to more than one Internal Hedge Reference if the K1 DH programme netted or combined multiple internal hedge entries into one external execution.</div>
+    </section>
+
+    <section id="performance" class="section">
+        <h2 class="section-title"><span class="icon">📈</span>Performance Metrics</h2>
+        <p>Performance metrics are shown at the <strong>K1 Parent Entry</strong> level. They reflect the programme's results on the HQ side, where the actual hedging against market rates takes place.</p>
+        <div class="table-container">
+            <table>
+                <thead><tr><th>Metric</th><th>Meaning</th></tr></thead>
+                <tbody>
+                    <tr><td><strong>Spot P&amp;L (Unrealised)</strong></td><td>Mark-to-market P&amp;L on open K1 entries based on today's spot rate vs. the hedge rate — changes daily until settled</td></tr>
+                    <tr><td><strong>Spot P&amp;L (Realised)</strong></td><td>Locked-in spot P&amp;L on settled K1 entries</td></tr>
+                    <tr><td><strong>Spot P&amp;L (Total)</strong></td><td>Sum of realised and unrealised spot P&amp;L</td></tr>
+                    <tr><td><strong>Forward Point Savings (Unrealised)</strong></td><td>Value of forward points embedded in open K1 positions — the carry benefit or cost of hedging at a term beyond spot</td></tr>
+                    <tr><td><strong>Forward Points Savings (Realised)</strong></td><td>Locked-in forward point value on settled positions</td></tr>
+                    <tr><td><strong>Forward Points (Total)</strong></td><td>Sum of realised and unrealised forward point savings</td></tr>
+                    <tr><td><strong>Total (Realised + Unrealised)</strong></td><td>Overall programme performance: Spot P&amp;L + Forward Points combined</td></tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="info-box warning"><strong>⚠️ Unrealised metrics change daily:</strong> Spot P&amp;L (Unrealised) and Forward Point Savings (Unrealised) update with every data refresh as market rates move. They become fixed only once the underlying K1 entry settles.</div>
+        <div class="info-box purple"><strong>🔍 Forward Point Savings:</strong> Forward points reflect the interest rate differential between the two currencies over the hedge tenor. A positive value means the forward rate is more favourable than spot for the HQ entity; a negative value means the opposite. This is a structural feature of term hedging, not a trading decision.</div>
     </section>
 
     <section id="refresh" class="section">
         <h2 class="section-title"><span class="icon">🔄</span>Data Refresh</h2>
         <ul class="feature-list">
             <li><span class="check">📅</span><div>IHFX data refreshes once per business day</div></li>
-            <li><span class="check">📊</span><div>New internal hedge transactions booked today will appear after the next refresh</div></li>
-            <li><span class="check">💱</span><div>Normalised amounts update with each refresh using latest spot rates</div></li>
+            <li><span class="check">💱</span><div>Unrealised P&amp;L and CHF-normalised amounts update with each refresh using the latest spot rates</div></li>
+            <li><span class="check">📊</span><div>New K2 entries and internal K1 hedges triggered today will appear after the next daily refresh</div></li>
         </ul>
     </section>
 </main>

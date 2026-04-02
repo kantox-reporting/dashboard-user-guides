@@ -46,41 +46,46 @@
 <header class="header">
     <div class="header-logo">
         <div class="logo-icon">K</div>
-        <div><h1>K2 DH Report</h1><p>K2 Dynamic Hedging Entry &amp; Performance Report</p></div>
+        <div><h1>K2 DH Report</h1><p>K2 Traceability Report — Entry &amp; Coverage Detail</p></div>
     </div>
     <span class="badge">User Guide</span>
 </header>
 <nav class="nav-tabs">
     <a href="#overview" class="active">Overview</a>
-    <a href="#k2-context">K2 Programme</a>
+    <a href="#buckets">K2 &amp; Buckets</a>
     <a href="#filters">Filters</a>
-    <a href="#entries">Entries &amp; Performance</a>
+    <a href="#entries-fields">Entries Fields</a>
+    <a href="#coverage-fields">Coverage Fields</a>
+    <a href="#metrics">Key Metrics</a>
     <a href="#refresh">Data Refresh</a>
 </nav>
 <main class="container">
     <section id="overview" class="section">
         <h2 class="section-title"><span class="icon">📋</span>What is the K2 DH Report?</h2>
-        <p>The <strong>K2 DH Report</strong> is the transaction-level Dynamic Hedging report for the <strong>K2 programme</strong>. It mirrors the structure of the standard DH Report but operates on a separate, dedicated set of hedging entries and coverage rules specific to the K2 programme configuration.</p>
-        <div class="info-box"><strong>💡 Key Value:</strong> Review and audit every individual K2 hedge entry — its amounts, rates, status, and performance — with the same level of detail as the standard programme, but scoped exclusively to K2 activity.</div>
+        <p>The <strong>K2 DH Report</strong> is the traceability tool for the K2 Dynamic Hedging programme. Its core purpose is to let you follow every exposure entry from submission to coverage — showing exactly which hedge or trade covered each entry, at what rate, and in what status.</p>
+        <p>The report presents a single flexible table with two selectable field groups: <strong>Entries</strong> (submission and booking detail) and <strong>Coverage</strong> (the hedge or trade that covered each entry). You choose which fields to display using the field selector panel on the left side of the report.</p>
+        <div class="info-box"><strong>💡 Key Value:</strong> Answer the question "what happened to this exposure?" — trace any entry through its full lifecycle, from the moment it was submitted to the programme to the moment it was covered by a trade, along with the rate and entity that executed the cover.</div>
         <h3>Key Benefits</h3>
         <ul class="feature-list">
-            <li><span class="check">✓</span><div><strong>K2-Scoped Entries</strong> — all data is filtered exclusively to K2 programme entries; no cross-contamination with K1 data</div></li>
-            <li><span class="check">✓</span><div><strong>Entry-Level Detail</strong> — creation dates, value dates, notional, execution rates, and current status for every K2 hedge entry</div></li>
-            <li><span class="check">✓</span><div><strong>Performance Attribution</strong> — DH Performance, Pricing P&amp;L, and Forward Points at the individual entry level</div></li>
-            <li><span class="check">✓</span><div><strong>Coverage &amp; Bucket Monitoring</strong> — see how K2 entries fill defined hedging buckets across the coverage horizon</div></li>
+            <li><span class="check">✓</span><div><strong>Full Traceability</strong> — follow each exposure entry from submission through coverage to execution, including the entity reference of the covering trade</div></li>
+            <li><span class="check">✓</span><div><strong>Selectable Field Groups</strong> — switch between Entries-focused and Coverage-focused views in the same table using the field selector</div></li>
+            <li><span class="check">✓</span><div><strong>Bucket-Aware View</strong> — exposure is grouped by bucket, reflecting the K2 programme's date-range grouping of exposures</div></li>
+            <li><span class="check">✓</span><div><strong>Coverage Metrics</strong> — see the covered ratio, managed and open amounts, and EUM % for each entry or group of entries</div></li>
+            <li><span class="check">✓</span><div><strong>WAHR at Entry Level</strong> — the Weighted Average Hedge Rate broken down by spot and forward components for each covered entry</div></li>
         </ul>
+        <div class="info-box warning"><strong>⚠️ One entry, multiple coverage rows:</strong> An entry can have more than one coverage row — for example, if it is partially executed in multiple trades. When you want to see entry-level totals without duplication, deselect all Coverage group fields from the field selector.</div>
     </section>
 
-    <section id="k2-context" class="section">
-        <h2 class="section-title"><span class="icon">🔑</span>The K2 Programme</h2>
-        <p>The K2 programme is a separate Dynamic Hedging configuration with its own exposure profile, coverage rules, and hedging parameters, distinct from the primary K1 programme. Key differences to be aware of:</p>
+    <section id="buckets" class="section">
+        <h2 class="section-title"><span class="icon">🪣</span>K2 &amp; Buckets</h2>
+        <p>The K2 programme introduces the concept of <strong>buckets</strong> — date ranges that group together exposures with different value dates. Instead of requiring every exposure to match an exact hedge value date, clients submit entries into a bucket, and the programme manages hedging at the bucket level.</p>
         <ul class="feature-list">
-            <li><span class="check">•</span><div><strong>Separate entry pool</strong> — K2 entries are created independently from K1 entries and have their own reference numbering</div></li>
-            <li><span class="check">•</span><div><strong>Own bucket structure</strong> — K2 may have a different set of hedging buckets or tenor bands compared to K1</div></li>
-            <li><span class="check">•</span><div><strong>Independent coverage rules</strong> — coverage ratios and rebalancing triggers are defined separately for K2</div></li>
-            <li><span class="check">•</span><div><strong>Consolidated view available</strong> — for a cross-programme view, use the standard DH Analytics Dashboard which can be configured to show both K1 and K2 exposure together</div></li>
+            <li><span class="check">•</span><div><strong>Bucket grouping</strong> — exposures with value dates within the same date range are automatically combined into one bucket for hedging purposes</div></li>
+            <li><span class="check">•</span><div><strong>Flexible value dates</strong> — clients do not need to match the exact value date of a hedge; entries within the bucket window are combined regardless of their specific date</div></li>
+            <li><span class="check">•</span><div><strong>Traceability within buckets</strong> — when new entries arrive in a bucket, the report helps determine whether existing hedges already cover the new exposure or whether additional hedging is needed</div></li>
+            <li><span class="check">•</span><div><strong>Hedge rate per entry</strong> — even though hedging is managed at bucket level, traceability assigns a hedge rate to each individual entry, giving you a per-entry view of the programme's performance</div></li>
         </ul>
-        <div class="info-box purple"><strong>💡 K1 vs K2:</strong> If you are unsure which programme an entry belongs to, check the entry reference prefix or the programme field in the entries table. This report will only ever show K2 entries.</div>
+        <div class="info-box purple"><strong>🔍 Buckets vs. standard DH:</strong> Buckets are a K2-specific feature. In the standard DH programme (K1), each exposure entry is matched to a specific value date. In K2, entries are grouped by date range into buckets, reducing the operational overhead of exact date matching.</div>
     </section>
 
     <section id="filters" class="section">
@@ -89,47 +94,99 @@
             <table>
                 <thead><tr><th>Filter</th><th>What it does</th></tr></thead>
                 <tbody>
-                    <tr><td><strong>Entity Group</strong></td><td>Select the K2 entity to analyse</td></tr>
-                    <tr><td><strong>Currency Pair</strong></td><td>Filter to specific K2 currency pairs</td></tr>
-                    <tr><td><strong>Creation Date</strong></td><td>Filter K2 entries by creation date window</td></tr>
-                    <tr><td><strong>Value Date</strong></td><td>Filter by the maturity date of K2 entries</td></tr>
-                    <tr><td><strong>Entry Status</strong></td><td>Open, closed, or all K2 entries</td></tr>
-                    <tr><td><strong>Direction</strong></td><td>Positive (buy) or negative (sell) K2 entries</td></tr>
-                    <tr><td><strong>Normalisation Currency</strong></td><td>Reporting currency for all normalised amounts</td></tr>
+                    <tr><td><strong>Entity Group / Account</strong></td><td>Select the entity or account whose entries you want to trace</td></tr>
+                    <tr><td><strong>Program Name</strong></td><td>Filter to a specific K2 hedging programme</td></tr>
+                    <tr><td><strong>Exposure Type</strong></td><td>Filter by the type of exposure (e.g. forecast, firm commitment)</td></tr>
+                    <tr><td><strong>Label</strong></td><td>Filter by the label assigned to the entry — useful for grouping entries by business unit or project</td></tr>
+                    <tr><td><strong>Value Date</strong></td><td>Filter entries by their maturity / settlement date</td></tr>
+                    <tr><td><strong>External Reference</strong></td><td>Search for a specific entry by its external reference identifier</td></tr>
                 </tbody>
             </table>
         </div>
     </section>
 
-    <section id="entries" class="section">
-        <h2 class="section-title"><span class="icon">📝</span>K2 Entries &amp; Performance</h2>
-        <p>The entries table and performance metrics in the K2 DH Report follow the same structure as the standard DH Report. Each K2 entry shows:</p>
+    <section id="entries-fields" class="section">
+        <h2 class="section-title"><span class="icon">📝</span>Entries Fields</h2>
+        <p>The <strong>Entries</strong> field group contains the submission and booking detail for each exposure entry. These fields describe what was sent to the programme, not how it was covered. Select these fields when you want to review entry volumes, dates, and amounts without the repetition that coverage rows can introduce.</p>
         <div class="table-container">
             <table>
                 <thead><tr><th>Field</th><th>Description</th></tr></thead>
                 <tbody>
-                    <tr><td><strong>Entry Reference</strong></td><td>Unique K2 entry identifier</td></tr>
-                    <tr><td><strong>Creation Date</strong></td><td>When the K2 entry was submitted to the programme</td></tr>
-                    <tr><td><strong>Value Date</strong></td><td>Settlement / maturity date of this K2 entry</td></tr>
-                    <tr><td><strong>Currency Pair</strong></td><td>FX pair for this entry</td></tr>
-                    <tr><td><strong>Notional / Normalised Amount</strong></td><td>Original and reporting-currency-converted amounts</td></tr>
-                    <tr><td><strong>Hedge Rate</strong></td><td>Execution rate for this K2 entry</td></tr>
-                    <tr><td><strong>DH Performance</strong></td><td>Value created vs. the unhedged benchmark at time of creation</td></tr>
-                    <tr><td><strong>Pricing P&amp;L</strong></td><td>P&amp;L from market movements since creation</td></tr>
-                    <tr><td><strong>Forward Points</strong></td><td>Cost-of-carry component of the hedge rate</td></tr>
-                    <tr><td><strong>Status</strong></td><td>Current state (open / closed)</td></tr>
+                    <tr><td><strong>Entry ID</strong></td><td>Unique identifier for the exposure entry in the K2 programme</td></tr>
+                    <tr><td><strong>External Reference</strong></td><td>Your own reference for this entry (e.g. invoice number or booking ID)</td></tr>
+                    <tr><td><strong>Creation Date</strong></td><td>When the entry was submitted to the programme</td></tr>
+                    <tr><td><strong>Program Name</strong></td><td>The K2 programme this entry belongs to</td></tr>
+                    <tr><td><strong>Exposure Type</strong></td><td>Classification of the exposure (e.g. forecast or firm commitment)</td></tr>
+                    <tr><td><strong>Label</strong></td><td>Optional tag assigned to the entry for internal categorisation</td></tr>
+                    <tr><td><strong>Market Direction</strong></td><td>Buy or sell from the entry's perspective</td></tr>
+                    <tr><td><strong>Amount Value / Counter Value</strong></td><td>Entry notional in base and counter currency</td></tr>
+                    <tr><td><strong>Currency / Counter Currency</strong></td><td>The FX pair for this entry</td></tr>
+                    <tr><td><strong>Value Date</strong></td><td>The settlement / maturity date of the entry</td></tr>
+                    <tr><td><strong>Execution Value Date</strong></td><td>The actual date on which the entry was executed</td></tr>
+                    <tr><td><strong>Exchange Rate</strong></td><td>The rate at which the entry was executed</td></tr>
+                    <tr><td><strong>Spot Rate</strong></td><td>The spot market rate at the time of execution</td></tr>
+                    <tr><td><strong>WAHR Spot / WAHR Forward</strong></td><td>Weighted Average Hedge Rate split into its spot and forward point components</td></tr>
+                    <tr><td><strong>Grouped Status</strong></td><td>Simplified status label grouping the entry's lifecycle state</td></tr>
+                    <tr><td><strong>Notes</strong></td><td>Any free-text notes associated with the entry</td></tr>
                 </tbody>
             </table>
         </div>
-        <div class="info-box warning"><strong>⚠️ Performance on open entries:</strong> DH Performance and Pricing P&amp;L on open K2 entries are indicative and will continue to change until the entry reaches its value date and is cash-settled.</div>
+    </section>
+
+    <section id="coverage-fields" class="section">
+        <h2 class="section-title"><span class="icon">🔗</span>Coverage Fields</h2>
+        <p>The <strong>Coverage</strong> field group shows how each entry was covered — which trade, at what rate, and with what status. One entry can have multiple coverage rows if it was covered in stages. These fields are relevant when you want to trace the specific hedge that covered an entry.</p>
+        <div class="table-container">
+            <table>
+                <thead><tr><th>Field</th><th>Description</th></tr></thead>
+                <tbody>
+                    <tr><td><strong>Entity Type</strong></td><td>Whether the covering entity is an internal trade or an external (bank) trade</td></tr>
+                    <tr><td><strong>Entity Reference</strong></td><td>The reference of the trade that covered this entry (e.g. <code>NSF-ZYL4T13W</code> for external, <code>K-0ABPQ37FM</code> for internal). Swap legs appear with a suffix (e.g. <code>NSF-X7GC9BMY-01</code>).</td></tr>
+                    <tr><td><strong>Entity Status</strong></td><td>Status of the covering trade (e.g. Executed, In_position, Cancelled, Expired)</td></tr>
+                    <tr><td><strong>Entity Execution Date</strong></td><td>When the covering trade was executed in the market</td></tr>
+                    <tr><td><strong>Entity Market Direction</strong></td><td>Buy or sell direction of the covering trade</td></tr>
+                    <tr><td><strong>Entity Amount / Counter Amount</strong></td><td>Notional of the covering trade in base and counter currency</td></tr>
+                    <tr><td><strong>Entity Exchange Rate</strong></td><td>The rate of the covering trade</td></tr>
+                    <tr><td><strong>Entity Value Date</strong></td><td>Settlement date of the covering trade</td></tr>
+                    <tr><td><strong>Cover Type</strong></td><td>The type of cover applied to this entry</td></tr>
+                    <tr><td><strong>Cover ID</strong></td><td>Identifier of the cover record</td></tr>
+                    <tr><td><strong>Covered Amount / Counter Amount</strong></td><td>The portion of the entry's notional that this coverage row accounts for</td></tr>
+                    <tr><td><strong>Liquidity Provider</strong></td><td>The bank or counterparty that executed the external trade</td></tr>
+                    <tr><td><strong>Covered Ratio</strong></td><td>Percentage of the entry's exposure that is covered by this coverage row</td></tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="info-box warning"><strong>⚠️ Statuses other than Executed:</strong> Coverage rows with status <em>In_position</em>, <em>Cancelled</em>, or <em>Expired</em> count as managed exposure but will not have a full set of execution fields populated (e.g. Entity Exchange Rate will be blank). This is expected behaviour.</div>
+        <div class="info-box"><strong>💡 Swap legs:</strong> If the Entity Reference shows a suffix like <code>-01</code>, this coverage row corresponds to a swap leg. The base reference without the suffix is the original trade.</div>
+    </section>
+
+    <section id="metrics" class="section">
+        <h2 class="section-title"><span class="icon">📈</span>Key Metrics</h2>
+        <p>The summary KPIs shown at the top of the report give a quick overview of the programme's coverage state for the selected filters:</p>
+        <div class="table-container">
+            <table>
+                <thead><tr><th>Metric</th><th>Meaning</th></tr></thead>
+                <tbody>
+                    <tr><td><strong>Amount Value</strong></td><td>Total notional of the selected entries in the entry's base currency</td></tr>
+                    <tr><td><strong>Open Exposure Value</strong></td><td>Portion of the entry notional that has not yet been covered by any hedge</td></tr>
+                    <tr><td><strong>Managed Exposure Value</strong></td><td>Portion of the entry notional under active coverage (including in-position, executed, or monitoring statuses)</td></tr>
+                    <tr><td><strong>Covered Value</strong></td><td>Portion of the entry notional fully covered by executed trades</td></tr>
+                    <tr><td><strong>In Position Value</strong></td><td>Portion of the entry notional where coverage exists but the trade has not yet been executed</td></tr>
+                    <tr><td><strong>Expired Value</strong></td><td>Portion of the entry notional where coverage expired before execution</td></tr>
+                    <tr><td><strong>Covered Ratio</strong></td><td>Covered Value ÷ Total Amount Value — the percentage of exposure that has been fully executed</td></tr>
+                    <tr><td><strong>EUM %</strong></td><td>Exposure Under Management — the percentage of total exposure that is actively managed by the programme (covered + in-position)</td></tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="info-box purple"><strong>🔍 EUM % vs Covered Ratio:</strong> EUM % includes all managed exposure (even if not yet executed), while Covered Ratio counts only entries where execution has actually completed. EUM % ≥ Covered Ratio at all times.</div>
     </section>
 
     <section id="refresh" class="section">
         <h2 class="section-title"><span class="icon">🔄</span>Data Refresh</h2>
         <ul class="feature-list">
-            <li><span class="check">📅</span><div>K2 data refreshes once per business day alongside the main programme data</div></li>
-            <li><span class="check">💱</span><div>Normalisation rates and performance metrics are recalculated at each refresh</div></li>
-            <li><span class="check">📊</span><div>New K2 entries created today will appear after the next daily refresh</div></li>
+            <li><span class="check">📅</span><div>K2 traceability data refreshes once per business day</div></li>
+            <li><span class="check">💱</span><div>Exchange rates and normalised amounts are recalculated at each refresh</div></li>
+            <li><span class="check">📊</span><div>New entries submitted today will appear after the next daily refresh</div></li>
         </ul>
     </section>
 </main>

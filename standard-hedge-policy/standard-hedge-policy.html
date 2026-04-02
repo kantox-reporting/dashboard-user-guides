@@ -60,12 +60,12 @@
 <main class="container">
     <section id="overview" class="section">
         <h2 class="section-title"><span class="icon">📜</span>What is the Standard Hedge Policy Dashboard?</h2>
-        <p>The <strong>Standard Hedge Policy Dashboard</strong> provides a structured view of how your hedging activity aligns with your organisation's FX hedge policy. It shows actual coverage ratios per currency pair and time horizon alongside the policy targets defined in your programme, making it easy to identify compliance gaps or excesses.</p>
+        <p>The <strong>Standard Hedge Policy Dashboard</strong> provides a structured view of how your hedging activity aligns with your organisation's FX hedge policy. It shows actual coverage ratios per currency pair and time horizon alongside the total exposure and the policy targets defined in your programme, making it easy to identify compliance gaps or excesses.</p>
         <div class="info-box"><strong>💡 Key Value:</strong> See at a glance whether your hedging programme is operating within policy — which buckets are on target, which are under-hedged, and which exceed the upper policy limit.</div>
         <h3>Key Benefits</h3>
         <ul class="feature-list">
             <li><span class="check">✓</span><div><strong>Policy Target vs. Actual</strong> — compare actual hedge coverage ratios against your defined policy minimums and maximums</div></li>
-            <li><span class="check">✓</span><div><strong>Bucket-Level Compliance</strong> — see policy status for each time bucket (short, medium, long tenor)</div></li>
+            <li><span class="check">✓</span><div><strong>Bin-Level Compliance</strong> — see policy status for each time bin (short, medium, long tenor)</div></li>
             <li><span class="check">✓</span><div><strong>Currency Pair Breakdown</strong> — policy compliance by each hedged currency pair</div></li>
             <li><span class="check">✓</span><div><strong>Trend View</strong> — how coverage ratios have evolved over time relative to policy</div></li>
             <li><span class="check">✓</span><div><strong>Alert Indicators</strong> — visual signals when coverage falls outside policy bands</div></li>
@@ -80,7 +80,7 @@
                 <tbody>
                     <tr><td><strong>Entity</strong></td><td>Select the entity whose hedge policy you want to review</td></tr>
                     <tr><td><strong>Currency Pair</strong></td><td>Filter to a specific currency pair</td></tr>
-                    <tr><td><strong>Time Bucket</strong></td><td>Focus on a specific tenor band (e.g. 1–3 months, 3–6 months)</td></tr>
+                    <tr><td><strong>Time Bin</strong></td><td>Focus on a specific tenor band (e.g. 1–3 months, 3–6 months)</td></tr>
                     <tr><td><strong>Date Range</strong></td><td>Review coverage history over a specific period</td></tr>
                     <tr><td><strong>Expressed in</strong></td><td>Normalisation currency for amounts (EUR, USD, GBP, CHF, SEK)</td></tr>
                 </tbody>
@@ -90,10 +90,10 @@
 
     <section id="coverage" class="section">
         <h2 class="section-title"><span class="icon">📊</span>Coverage View</h2>
-        <h3>Coverage Ratio by Bucket</h3>
+        <h3>Coverage Ratio by Bin</h3>
         <p>Each bucket (time horizon) shows three values side by side:</p>
         <ul class="feature-list">
-            <li><span class="check">📌</span><div><strong>Policy minimum:</strong> The minimum hedge coverage ratio required by your policy for this bucket (e.g. 40%)</div></li>
+            <li><span class="check">📌</span><div><strong>Policy minimum:</strong> The minimum hedge coverage ratio required by your policy for this bin (e.g. 40%)</div></li>
             <li><span class="check">📌</span><div><strong>Policy maximum:</strong> The upper bound — hedging above this level is outside policy (e.g. 90%)</div></li>
             <li><span class="check">▶</span><div><strong>Actual coverage:</strong> Your current hedge coverage ratio for this bucket, calculated as hedged notional ÷ gross exposure</div></li>
         </ul>
@@ -105,12 +105,12 @@
 
     <section id="compliance" class="section">
         <h2 class="section-title"><span class="icon">✅</span>Policy Compliance Summary</h2>
-        <p>The compliance summary shows the overall status of each currency pair and bucket combination:</p>
+        <p>The compliance summary shows the overall status of each currency pair and bin combination:</p>
         <div class="table-container">
             <table>
                 <thead><tr><th>Status</th><th>Meaning</th></tr></thead>
                 <tbody>
-                    <tr><td><strong style="color:var(--success-green)">✓ In Policy</strong></td><td>Actual coverage is within the defined minimum and maximum for this bucket</td></tr>
+                    <tr><td><strong style="color:var(--success-green)">✓ In Policy</strong></td><td>Actual coverage is within the defined minimum and maximum for this bin</td></tr>
                     <tr><td><strong style="color:var(--warning-red)">↓ Under-Hedged</strong></td><td>Coverage is below the policy minimum — action may be required to add hedges</td></tr>
                     <tr><td><strong style="color:var(--kantox-orange)">↑ Over-Hedged</strong></td><td>Coverage exceeds the policy maximum — review whether reduction or roll-forward is appropriate</td></tr>
                 </tbody>

@@ -61,13 +61,13 @@
     <section id="overview" class="section">
         <h2 class="section-title"><span class="icon">📋</span>What is the DH Report?</h2>
         <p>The <strong>DH Report</strong> is the detailed transaction-level companion to the DH Analytics Dashboard. While the Analytics Dashboard gives you aggregate KPIs and charts, the DH Report lets you inspect every individual hedge entry in your Dynamic Hedging programme — its status, amounts, rates, and performance contribution.</p>
-        <div class="info-box"><strong>💡 Key Value:</strong> Drill down into the individual entries that make up your portfolio. Understand which specific trades are performing well, which are consuming coverage, and how your bucket structure is being filled over time.</div>
+        <div class="info-box"><strong>💡 Key Value:</strong> Drill down into the individual entries that make up your portfolio. Understand which specific trades are performing well, which are in position, and how your coverage is building over time.</div>
         <h3>Key Benefits</h3>
         <ul class="feature-list">
             <li><span class="check">✓</span><div><strong>Entry-Level Transparency</strong> — every hedge entry with its creation date, value date, notional, currency pair, and execution rate</div></li>
             <li><span class="check">✓</span><div><strong>Status Tracking</strong> — see the current status of each entry (open, closed, partially filled, expired)</div></li>
-            <li><span class="check">✓</span><div><strong>Performance Attribution</strong> — DH Performance, Pricing P&amp;L, and Forward Points at the individual entry level</div></li>
-            <li><span class="check">✓</span><div><strong>Bucket Coverage</strong> — understand how entries are distributed across your defined hedging buckets</div></li>
+            <li><span class="check">✓</span><div><strong>Performance traceability</strong> — Follow the process from entry to execution in self-service tool</div></li>
+            <li><span class="check">✓</span><div><strong>Selectable Fields</strong> — customize your analysis by selecting only the fields you want to see</div></li>
             <li><span class="check">✓</span><div><strong>Currency Pair Detail</strong> — analyse the programme currency pair by currency pair</div></li>
         </ul>
     </section>
@@ -78,13 +78,12 @@
             <table>
                 <thead><tr><th>Filter</th><th>What it does</th></tr></thead>
                 <tbody>
-                    <tr><td><strong>Entity Group</strong></td><td>Select the client entity to view</td></tr>
+                    <tr><td><strong>Entity Name</strong></td><td>Select the entity to analyze</td></tr>
                     <tr><td><strong>Currency Pair</strong></td><td>Filter to one or more currency pairs (e.g. EUR/USD)</td></tr>
                     <tr><td><strong>Creation Date</strong></td><td>Filter entries by when they were created in the programme</td></tr>
                     <tr><td><strong>Value Date</strong></td><td>Filter by maturity / settlement date of each entry</td></tr>
                     <tr><td><strong>Entry Status</strong></td><td>Filter to open, closed, or all entries</td></tr>
                     <tr><td><strong>Direction</strong></td><td>Positive (buy) or negative (sell) entries</td></tr>
-                    <tr><td><strong>Normalisation Currency</strong></td><td>Select reporting currency for all normalised amounts</td></tr>
                 </tbody>
             </table>
         </div>
@@ -106,7 +105,6 @@
                     <tr><td><strong>Normalised Amount</strong></td><td>Notional converted to your selected reporting currency</td></tr>
                     <tr><td><strong>Hedge Rate</strong></td><td>The rate at which the entry was executed</td></tr>
                     <tr><td><strong>Status</strong></td><td>Current state of the entry</td></tr>
-                    <tr><td><strong>Bucket</strong></td><td>The hedging bucket or tenor band this entry belongs to</td></tr>
                 </tbody>
             </table>
         </div>
