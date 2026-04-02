@@ -706,56 +706,69 @@
                         <tr>
                             <th>Metric</th>
                             <th>Description</th>
+                            <th>Calculation example</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
                             <td><strong>Number of Quote Requests</strong></td>
                             <td>Total quotes requested from this bank</td>
+                            <td>COUNT of all bid requests sent to this bank in the period.<br>e.g. 500 requests sent → <strong>500</strong></td>
                         </tr>
                         <tr>
                             <td><strong>Number of Quote Requests Answered</strong></td>
                             <td>How many requests the bank actually responded to</td>
+                            <td>COUNT of requests where the bank returned a quote.<br>e.g. Bank responded to 480 of 500 requests → <strong>480</strong></td>
                         </tr>
                         <tr>
                             <td><strong>% Quote Requests Answered</strong></td>
                             <td>Response rate - banks that don't respond consistently may be less reliable</td>
+                            <td>Answered ÷ Requested × 100.<br>e.g. 480 ÷ 500 × 100 = <strong>96.0%</strong></td>
                         </tr>
                         <tr>
                             <td><strong>Number of Quotes WON</strong></td>
                             <td>Times this bank provided the best price and won the trade</td>
+                            <td>COUNT of competitions where this bank's quote was the best rate.<br>e.g. Best rate on 150 of 480 answered quotes → <strong>150</strong></td>
                         </tr>
                         <tr>
                             <td><strong>% WON Quotes</strong></td>
                             <td>Win rate - percentage of answered quotes that won</td>
+                            <td>Won ÷ Answered × 100.<br>e.g. 150 ÷ 480 × 100 = <strong>31.25%</strong></td>
                         </tr>
                         <tr>
                             <td><strong>Average FX Volume by WON Trade</strong></td>
                             <td>Average trade size when this bank wins</td>
+                            <td>Total volume on won trades ÷ Number of won trades.<br>e.g. 15,000,000 ÷ 150 = <strong>100,000</strong></td>
                         </tr>
                         <tr>
                             <td><strong>Total FX Volume on WON Quotes</strong></td>
                             <td>Total volume traded with this bank</td>
+                            <td>SUM of notional amounts across all won trades.</td>
                         </tr>
                         <tr>
                             <td><strong>Estimated Fees on WON Quotes</strong></td>
                             <td>Calculated cost (Volume × Spread) for trades won by this bank</td>
+                            <td>Avg spread ratio × total won volume (normalized).<br>e.g. Avg spread = 0.020% (see Spread formula below); total won volume = 10,000,000 → 0.00020 × 10,000,000 = <strong>2,000</strong></td>
                         </tr>
                         <tr>
                             <td><strong>Spread on ALL Quotes</strong></td>
                             <td>Average spread across all quotes (winning and losing)</td>
+                            <td>AVG(|quoted rate ÷ mid rate − 1|) for all non-blank quotes.<br>e.g. Bank quoted 1.1022 on a trade with mid rate 1.1000 → |1.1022 ÷ 1.1000 − 1| = 0.0020 = <strong>0.20%</strong>. Averaged across all quotes in the period.</td>
                         </tr>
                         <tr>
                             <td><strong>Extra Cost vs Winner on LOST Quotes</strong></td>
                             <td>Additional cost if you had traded exclusively with this bank instead of best price</td>
+                            <td>SUM((this bank's rate − winner's rate) × notional) for all lost trades.<br>e.g. Trade of 100,000: bank quoted 1.1005 vs winner 1.1010 → 100,000 × (1.1010 − 1.1005) = <strong>50</strong> per lost trade, summed across all losses</td>
                         </tr>
                         <tr>
                             <td><strong>Best Price Savings</strong></td>
-                            <td>Value generated when this bank won vs. the average rate of the basket</td>
+                            <td>Value generated when this bank won vs. the average rate of all quotes in the competition</td>
+                            <td>Per trade (winner row only): notional ÷ winner rate − notional ÷ avg(all quotes) for a buy; notional ÷ avg(all quotes) − notional ÷ winner rate for a sell. Summed and normalised to reporting currency.<br>e.g. Amount 100,000; quotes in competition: 1.10 and 1.12 → 100,000 ÷ 1.10 − 100,000 ÷ avg(1.10, 1.12) = 90,909.09 − 90,090.09 = <strong>819.00</strong></td>
                         </tr>
                         <tr>
-                            <td><strong>P&L on Won Trades</strong></td>
+                            <td><strong>P&amp;L on Won Trades</strong></td>
                             <td>Difference between final execution rate and initial winning quote rate (can be + or -)</td>
+                            <td>SUM(execution P&amp;L normalised) ÷ SUM(counter amount normalised). Displayed as a percentage.<br>e.g. Won trade quoted at 1.1010, executed at 1.1008 on 100,000 → P&amp;L = −20 counter units; as % of counter amount (110,100): −20 ÷ 110,100 = <strong>−0.018%</strong>. Aggregated across all won trades.</td>
                         </tr>
                     </tbody>
                 </table>
