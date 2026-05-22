@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Client Settings Dashboard — Field Source Reference</title>
+  <title>Client Settings Dashboard - Field Source Reference</title>
   <!-- updated -->
   <style>
     /* ── CSS Variables ── */
@@ -188,13 +188,13 @@
     }
     tbody tr:last-child td { border-bottom: none; }
 
-    /* ── Column widths — narrow Source System, wider Source Table ── */
+    /* ── Column widths - narrow Source System, wider Source Table ── */
     thead th:nth-last-child(2),
     tbody td:nth-last-child(2) { width: 110px; white-space: nowrap; }
     thead th:nth-last-child(1),
     tbody td:nth-last-child(1) { width: 32%; }
 
-    /* ── Client Attributes — equal 3 columns ── */
+    /* ── Client Attributes - equal 3 columns ── */
     .table-equal thead th,
     .table-equal tbody td { width: 33.33%; white-space: normal; }
 
@@ -270,7 +270,7 @@
 ══════════════════════════════════════════ -->
 <header class="site-header">
   <div class="header-badge">Internal Documentation</div>
-  <h1>Client Settings Dashboard — Field Source Reference</h1>
+  <h1>Client Settings Dashboard - Field Source Reference</h1>
   <p>
     One view across client segmentation, Dynamic Hedging usage, markup
     and fee settings, and revenue. This document covers the data lineage
@@ -296,11 +296,11 @@
 <main>
 
   <!-- ─────────────────────────────────────
-       SECTION 1 — CLIENT SETTINGS TABLE
+       SECTION 1 - CLIENT SETTINGS TABLE
   ───────────────────────────────────── -->
   <section id="section-client-settings">
     <div class="section-card">
-      <h2 class="section-title"><span class="icon">📋</span>Section 1 — Client Settings Table</h2>
+      <h2 class="section-title"><span class="icon">📋</span>Section 1 - Client Settings Table</h2>
 
       <!-- ── CLIENT ATTRIBUTES ── -->
       <div class="sub-section">
@@ -398,9 +398,9 @@
                 <td>Defines the liquidity model and execution framework for the account. <code>KL</code> = Kantox Liquidity (standard), <code>BL</code> = Bank Liquidity (via MDPs like 360T, FXAll, or BNPP Cortex), <code>InHouseFX</code> (HQ connects to the subsidiaries via a FIX-based connector)</td>
                 <td>PF</td>
                 <td>Settings tab → KaaS &amp; Fix Connector<br/>
-                  <code>KL</code> — KaaS off<br/>
-                  <code>InHouseFX</code> — KaaS on + Fix Connector = IHB<br/>
-                  <code>BL</code> — KaaS on + Fix Connector ≠ IHB</td>
+                  <code>KL</code> - KaaS off<br/>
+                  <code>InHouseFX</code> - KaaS on + Fix Connector = IHB<br/>
+                  <code>BL</code> - KaaS on + Fix Connector ≠ IHB</td>
               </tr>
               <tr>
                 <td>All-In</td>
@@ -419,8 +419,8 @@
                 <td>Specifies if the client uses best-execution logic and the venue responsible for bank selection: <code>Kantox BP (via Kantox Fix Relay)</code>, <code>360T BP (via 360T's native engine)</code></td>
                 <td>PF</td>
                 <td>Settings tab → Best Price flags<br/>
-                  <code>Kantox BP</code> — Enable use fix relay<br/>
-                  <code>360T BP</code> — Enable 360T Best Price</td>
+                  <code>Kantox BP</code> - Enable use fix relay<br/>
+                  <code>360T BP</code> - Enable 360T Best Price</td>
               </tr>
             </tbody>
           </table>
@@ -483,9 +483,9 @@
                 <td>The generation/version of dynamic hedging active for the account or entity group ; <code>K1</code> (first-gen), <code>K2</code> (second-gen), <code>K2B</code> (third-gen / K2v3). If every account in the entity group with a known DH Type shares the same type, that type is applied to accounts in the group with none ; the table reflects the actual DH Type at account level </td>
                 <td>PF</td>
                 <td>Settings tab → DH Type flags<br/>
-                  <code>K1</code> — Enable Dynamic Hedging<br/>
-                  <code>K2</code> — Enable K2<br/>
-                  <code>K2B</code> — Enable K2 V3</td>
+                  <code>K1</code> - Enable Dynamic Hedging<br/>
+                  <code>K2</code> - Enable K2<br/>
+                  <code>K2B</code> - Enable K2 V3</td>
               </tr>
               <tr>
                 <td>Dynamic Pricing</td>
@@ -600,11 +600,11 @@
   </section>
 
   <!-- ─────────────────────────────────────
-       SECTION 2 — MARK-UPS PER KIND
+       SECTION 2 - MARK-UPS PER KIND
   ───────────────────────────────────── -->
   <section id="section-markups">
     <div class="section-card">
-      <h2 class="section-title"><span class="icon">📊</span>Section 2 — Mark-Ups per Kind</h2>
+      <h2 class="section-title"><span class="icon">📊</span>Section 2 - Mark-Ups per Kind</h2>
 
       <div class="table-wrap">
         <table>
@@ -648,11 +648,11 @@
   </section>
 
   <!-- ─────────────────────────────────────
-       SECTION 3 — COMMISSION PER TYPE
+       SECTION 3 - COMMISSION PER TYPE
   ───────────────────────────────────── -->
   <section id="section-commissions">
     <div class="section-card">
-      <h2 class="section-title"><span class="icon">💶</span>Section 3 — Commission per Type</h2>
+      <h2 class="section-title"><span class="icon">💶</span>Section 3 - Commission per Type</h2>
 
       <div class="table-wrap">
         <table>
@@ -696,12 +696,12 @@
      FOOTER
 ══════════════════════════════════════════ -->
 <footer>
-  <strong>Client Settings Dashboard — Field Source Reference</strong><br/>
+  <strong>Client Settings Dashboard - Field Source Reference</strong><br/>
   Need help? Contact the support team
 </footer>
 
 <!-- ══════════════════════════════════════════
-     SCRIPT — Nav active state on scroll
+     SCRIPT - Nav active state on scroll
 ══════════════════════════════════════════ -->
 <script>
   (function () {
