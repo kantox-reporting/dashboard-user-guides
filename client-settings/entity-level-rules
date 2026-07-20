@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Entity Level Calculations - Reference Guide</title>
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Inter Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <!-- Phosphor Icons for modern minimalist icons -->
+  <script src="https://unpkg.com/@phosphor-icons/web"></script>
+  <style>
+    :root {
+      --surface-1: #f8fafc;
+      --surface-2: #ffffff;
+      --border: #e2e8f0;
+      --text-secondary: #475569;
+      --text-muted: #94a3b8;
+      --text-main: #0f172a;
+      --font-sans: 'Inter', sans-serif;
+    }
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: var(--surface-1);
+    }
+    .custom-scroll::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+    .custom-scroll::-webkit-scrollbar-track {
+      background: transparent;
+    }
+    .custom-scroll::-webkit-scrollbar-thumb {
+      background: #cbd5e1;
+      border-radius: 4px;
+    }
+  </style>
+</head>
+<body class="p-4 md:p-8 text-slate-800">
+
+  <div class="max-w-4xl mx-auto bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden">
+    
+    <!-- Top Decorative Gradient Header (Inspired by image_205600.png deep navy & image_205681.png vibrant brand blue) -->
+    <div class="bg-gradient-to-r from-[#0C2240] via-[#103D6F] to-[#2575D3] p-6 md:p-8 text-white relative overflow-hidden">
+      <!-- Decorative geometric accents to resemble brand guidelines structure -->
+      <div class="absolute right-0 top-0 w-32 h-32 bg-white/5 rounded-full blur-2xl transform translate-x-10 -translate-y-10"></div>
+      <div class="absolute right-12 bottom-0 w-24 h-24 bg-blue-400/10 rounded-full blur-xl"></div>
+
+      <div class="relative z-10">
+        <div class="flex items-center gap-2 text-blue-200 text-xs font-semibold uppercase tracking-wider mb-2">
+          <i class="ph ph-info-semibold text-sm"></i>
+          Reference Guide
+        </div>
+        <h1 class="text-2xl md:text-3xl font-bold tracking-tight">Entity Level Calculations</h1>
+        <p class="text-blue-100 text-sm md:text-base mt-2 max-w-2xl leading-relaxed">
+          Learn how Status, DH Type, and Dynamic Hedging are consolidated on Entity Group Level from the Account Level .
+        </p>
+      </div>
+    </div>
+
+    <!-- Content Body -->
+    <div class="p-6 md:p-8 space-y-8">
+      
+      <!-- Key Concept Summary Box / First Tip -->
+      <div class="bg-indigo-50 border-l-4 border-indigo-600 rounded-r-lg p-4 flex gap-3">
+        <div class="text-indigo-600 mt-0.5">
+          <i class="ph ph-lightbulb text-xl"></i>
+        </div>
+        <div>
+          <h3 class="text-sm font-semibold text-indigo-900">Understanding Views</h3>
+          <p class="text-xs md:text-sm text-indigo-700 mt-1 leading-relaxed">
+            In Entity View, Status, DH Type and Dynamic Hedging describe the client (the entity group) rather than the individual account. Account view always shows the raw account values. Here is how each one is derived, and where the two views can legitimately disagree.
+          </p>
+        </div>
+      </div>
+
+      <!-- Section 1: Status -->
+      <section class="space-y-4">
+        <div class="flex items-center gap-2.5 pb-2 border-b border-slate-100">
+          <span class="flex items-center justify-center w-6 h-6 rounded-full bg-indigo-100 text-indigo-700 text-xs font-bold">1</span>
+          <h2 class="text-lg font-bold text-slate-900">Workflow Status Hierarchy</h2>
+        </div>
+        
+        <p class="text-sm text-slate-600 leading-relaxed">
+          When multiple accounts belong to an entity group, the group inherits the <strong>highest-priority workflow status</strong>. This best status then propagates downward to every single account in that entity group.
+        </p>
+
+        <!-- Status Priority Pipeline with explicit Flow Arrows -->
+        <div class="bg-slate-50 rounded-xl p-4 border border-slate-100">
+          <div class="text-xs font-semibold text-slate-500 uppercase tracking-wider mb-3">Priority Order (Highest First)</div>
+          <div class="flex items-center gap-2 flex-wrap text-xs font-medium">
+            <span class="bg-emerald-100 text-emerald-800 px-2.5 py-1 rounded-full border border-emerald-200">Approved</span>
+            <i class="ph ph-caret-right text-slate-400 font-bold" aria-hidden="true"></i>
+            <span class="bg-slate-200 text-slate-700 px-2.5 py-1 rounded-full">Preapproved</span>
+            <i class="ph ph-caret-right text-slate-400 font-bold" aria-hidden="true"></i>
+            <span class="bg-slate-200 text-slate-700 px-2.5 py-1 rounded-full">Awaiting Activation</span>
+            <i class="ph ph-caret-right text-slate-400 font-bold" aria-hidden="true"></i>
+            <span class="bg-slate-200 text-slate-700 px-2.5 py-1 rounded-full">Fast Due Diligence</span>
+            <i class="ph ph-caret-right text-slate-400 font-bold" aria-hidden="true"></i>
+            <span class="bg-slate-200 text-slate-700 px-2.5 py-1 rounded-full">Due Diligence</span>
+            <i class="ph ph-caret-right text-slate-400 font-bold" aria-hidden="true"></i>
+            <span class="bg-slate-200 text-slate-700 px-2.5 py-1 rounded-full">Suspended</span>
+            <i class="ph ph-caret-right text-slate-400 font-bold" aria-hidden="true"></i>
+            <span class="bg-slate-200 text-slate-700 px-2.5 py-1 rounded-full">Expired</span>
+          </div>
+        </div>
+
+        <!-- Practical Example with updated flow arrow from image_20c3bc.png -->
+        <div class="bg-white rounded-xl p-4 border border-slate-200 shadow-sm space-y-3">
+          <div class="text-xs font-semibold text-indigo-600 uppercase tracking-wider">Practical Consolidation Example</div>
+          <div class="flex flex-col md:flex-row md:items-center gap-4 bg-slate-50 p-3 rounded-lg border border-slate-100">
+            <!-- Account inputs separated by sequential arrows -->
+            <div class="flex items-center gap-2 flex-wrap">
+              <span class="bg-indigo-100 text-indigo-800 text-xs px-2.5 py-1 rounded-lg font-medium">Account 1: Approved</span>
+              <i class="ph ph-arrow-right text-slate-400" aria-hidden="true"></i>
+              <span class="bg-indigo-100 text-indigo-800 text-xs px-2.5 py-1 rounded-lg font-medium">Account 2: Due Diligence</span>
+              <i class="ph ph-arrow-right text-slate-400" aria-hidden="true"></i>
+              <span class="bg-indigo-100 text-indigo-800 text-xs px-2.5 py-1 rounded-lg font-medium">Account 3: Suspended</span>
+            </div>
+            
+            <!-- Corrected Right Arrow Transition inspired by image_20c3bc.png red box -->
+            <div class="flex-shrink-0 flex items-center justify-center md:px-3 py-1">
+              <i class="ph ph-arrow-right text-indigo-600 text-xl font-bold" aria-label="Consolidates to"></i>
+            </div>
+            
+            <!-- Consolidated Output -->
+            <div class="bg-emerald-50 border border-emerald-200 text-emerald-800 px-3 py-1.5 rounded-lg text-xs font-semibold flex items-center gap-1.5">
+              <i class="ph ph-check-circle text-emerald-600 text-sm"></i>
+              All 3 accounts report: Approved
+            </div>
+          </div>
+          <p class="text-xs text-slate-500 leading-relaxed italic">
+            Rationale: If any part of a client has reached approved, the client relationship is an approved one. Describing the client by a lower status would understate the relationship.
+          </p>
+        </div>
+      </section>
+
+      <!-- Section 2: DH Type -->
+      <section class="space-y-4">
+        <div class="flex items-center gap-2.5 pb-2 border-b border-slate-100">
+          <span class="flex items-center justify-center w-6 h-6 rounded-full bg-indigo-100 text-indigo-700 text-xs font-bold">2</span>
+          <h2 class="text-lg font-bold text-slate-900">DH Type Consolidations (K1, K2, K2B)</h2>
+        </div>
+        
+        <p class="text-sm text-slate-600 leading-relaxed">
+          DH Type tracks which dynamic hedging programs are running. In Entity view, a single program label is assigned to the whole group only when it represents a dominant description. This is verified using operational rules depending on the scenario:
+        </p>
+
+        <!-- Redesigned Scenarios Grid (Replacing confusing large chevrons in image_206143.png with clean layouts) -->
+        <div class="grid md:grid-cols-3 gap-4">
+          
+          <!-- Scenario 1 Card -->
+          <div class="bg-slate-50 p-4 rounded-xl border border-slate-200 flex flex-col justify-between">
+            <div>
+              <div class="text-xs font-semibold text-slate-400 uppercase tracking-wider mb-1">Scenario 1</div>
+              <h4 class="text-sm font-bold text-slate-900 mb-2">Unanimous Account Types</h4>
+              <p class="text-xs text-slate-600 leading-relaxed mb-4">
+                Every account with a populated type has the exact same program type. Accounts with missing types inherit this consolidated type.
+              </p>
+            </div>
+            
+            <div class="bg-white p-3 rounded-lg border border-slate-200 space-y-3">
+              <div class="flex flex-col gap-2">
+                <!-- Transition Pills linked clearly by arrows -->
+                <div class="flex items-center justify-between bg-slate-50/50 p-1.5 rounded border border-slate-100 text-[10px]">
+                  <span class="bg-indigo-100 text-indigo-800 px-1.5 py-0.5 rounded font-medium">K1</span>
+                  <i class="ph ph-arrow-right text-slate-400"></i>
+                  <span class="bg-indigo-100 text-indigo-800 px-1.5 py-0.5 rounded font-medium">K1</span>
+                  <i class="ph ph-arrow-right text-slate-400"></i>
+                  <span class="bg-slate-100 text-slate-500 px-1.5 py-0.5 rounded font-medium">No Type</span>
+                </div>
+                <!-- Final outcome -->
+                <div class="bg-emerald-50 text-emerald-800 p-1.5 rounded text-center text-xs font-bold border border-emerald-100">
+                  Group: K1
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Scenario 2 Card -->
+          <div class="bg-slate-50 p-4 rounded-xl border border-slate-200 flex flex-col justify-between">
+            <div>
+              <div class="text-xs font-semibold text-slate-400 uppercase tracking-wider mb-1">Scenario 2</div>
+              <h4 class="text-sm font-bold text-slate-900 mb-2">The 90% Revenue Rule</h4>
+              <p class="text-xs text-slate-600 leading-relaxed mb-4">
+                If multiple active types exist, one type must claim 90% or more of the overall revenue on both All-Time and Year-To-Date (YTD) timelines.
+              </p>
+            </div>
+            
+            <div class="bg-white p-3 rounded-lg border border-slate-200 space-y-3">
+              <div class="flex flex-col gap-2">
+                <!-- Transition Pills linked clearly by arrows -->
+                <div class="flex items-center justify-between bg-slate-50/50 p-1.5 rounded border border-slate-100 text-[10px] gap-1">
+                  <span class="bg-indigo-100 text-indigo-800 px-1.5 py-0.5 rounded font-medium truncate" title="K1 (95% All-Time, 93% YTD)">K1: 95% / 93%</span>
+                  <i class="ph ph-arrow-right text-slate-400 flex-shrink-0"></i>
+                  <span class="bg-indigo-100 text-indigo-800 px-1.5 py-0.5 rounded font-medium truncate" title="K2 (5% All-Time, 7% YTD)">K2: 5% / 7%</span>
+                </div>
+                <!-- Final outcome -->
+                <div class="bg-emerald-50 text-emerald-800 p-1.5 rounded text-center text-xs font-bold border border-emerald-100">
+                  Group: K1
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Scenario 3 Card -->
+          <div class="bg-slate-50 p-4 rounded-xl border border-slate-200 flex flex-col justify-between">
+            <div>
+              <div class="text-xs font-semibold text-slate-400 uppercase tracking-wider mb-1">Scenario 3</div>
+              <h4 class="text-sm font-bold text-slate-900 mb-2">Mixed Groups</h4>
+              <p class="text-xs text-slate-600 leading-relaxed mb-4">
+                When neither rule applies: no single type reaches the 90% threshold, or YTD/All-Time leaders disagree. No label is forced.
+              </p>
+            </div>
+            
+            <div class="bg-white p-3 rounded-lg border border-slate-200 space-y-3">
+              <div class="flex flex-col gap-2">
+                <!-- Transition Pills linked clearly by arrows -->
+                <div class="flex items-center justify-between bg-slate-50/50 p-1.5 rounded border border-slate-100 text-[10px] gap-1">
+                  <span class="bg-indigo-100 text-indigo-800 px-1.5 py-0.5 rounded font-medium truncate" title="K1 (55% revenue)">K1: 55% Rev</span>
+                  <i class="ph ph-arrow-right text-slate-400 flex-shrink-0"></i>
+                  <span class="bg-indigo-100 text-indigo-800 px-1.5 py-0.5 rounded font-medium truncate" title="K2 (45% revenue)">K2: 45% Rev</span>
+                </div>
+                <!-- Final outcome -->
+                <div class="bg-amber-50 text-amber-800 p-1.5 rounded text-center text-xs font-bold border border-amber-100">
+                  Mixed: Retain Raw Types
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <p class="text-xs text-slate-500 leading-relaxed italic">
+          Note: Requiring 90% on both time windows prevents temporary shifts or historical residue from over-riding the active main program structure.
+        </p>
+      </section>
+
+      <!-- Section 3: Dynamic Hedging -->
+      <section class="space-y-4">
+        <div class="flex items-center gap-2.5 pb-2 border-b border-slate-100">
+          <span class="flex items-center justify-center w-6 h-6 rounded-full bg-indigo-100 text-indigo-700 text-xs font-bold">3</span>
+          <h2 class="text-lg font-bold text-slate-900">Dynamic Hedging Indicator (Yes / No)</h2>
+        </div>
+        
+        <p class="text-sm text-slate-600 leading-relaxed">
+          This indicator highlights if any active dynamic hedging occurs across the entity group. 
+          If <strong>at least one</strong> sister account has a defined DH Type, then the entire client group shows <strong>Yes</strong> across all accounts.
+        </p>
+
+        <!-- Comparison Table / Visual Component -->
+        <div class="border border-slate-200 rounded-xl overflow-hidden shadow-sm">
+          <div class="bg-slate-50 px-4 py-3 border-b border-slate-200 flex justify-between items-center">
+            <span class="text-xs font-semibold text-slate-500 uppercase tracking-wider">Indicator Status for an Unhedged Account</span>
+          </div>
+          <div class="p-4 space-y-3 bg-white">
+            <div class="flex flex-col md:flex-row md:items-center gap-3">
+              <div class="flex-1 bg-indigo-50/50 p-3 rounded-lg border border-indigo-100">
+                <div class="text-xs text-indigo-500 font-medium mb-1">Account View</div>
+                <span class="text-xs font-semibold text-indigo-900 bg-indigo-100/60 px-2 py-0.5 rounded">No</span>
+                <span class="text-xs text-indigo-700 block mt-1">This specific account has no hedging.</span>
+              </div>
+              <div class="flex-shrink-0 flex items-center justify-center">
+                <i class="ph ph-swap text-xl text-indigo-600 rotate-90 md:rotate-0"></i>
+              </div>
+              <div class="flex-1 bg-emerald-50 p-3 rounded-lg border border-emerald-200">
+                <div class="text-xs text-emerald-600 font-medium mb-1">Entity View</div>
+                <span class="text-xs font-semibold text-emerald-900 bg-emerald-100 px-2 py-0.5 rounded">Yes</span>
+                <span class="text-xs text-emerald-800 block mt-1">A sister account hedges. The client relationship hedges.</span>
+              </div>
+            </div>
+            
+            <div class="bg-slate-50 p-3 rounded-lg border border-slate-100 mt-2">
+              <p class="text-xs text-slate-600 leading-relaxed">
+                <strong>Important Edge-Case:</strong> If the group is Mixed and a particular account has no assigned program type, it can safely display Dynamic Hedging = Yes alongside an empty DH Type. The client demonstrably hedges, only the attribution of a specific program to this specific account is unknown.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </div>
+
+    <!-- Brand Info Footer -->
+    <div class="bg-slate-50 border-t border-slate-100 p-4 text-center text-xs text-slate-400">
+      Kantox Reference Guide &copy; 2026. All rights reserved.
+    </div>
+  </div>
+
+</body>
+</html>
