@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
+    <title>PnL Selection - User Guide</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400;500;700&display=swap');
+
+        :root {
+            --blue: #007ACC;
+            --blue-hover: #0C4A6E;
+            --blue-light: #A9DFF4;
+            --gray-50: #F9FAFB;
+            --gray-100: #F3F4F6;
+            --gray-200: #E5E7EB;
+            --gray-300: #D1D5DB;
+            --gray-500: #6B7280;
+            --gray-600: #4B5563;
+            --gray-700: #374151;
+            --gray-800: #1F2937;
+            --green-500: #22C55E;
+            --green-100: #DCFCE7;
+            --amber-500: #F59E0B;
+            --amber-100: #FEF3C7;
+            --amber-700: #B45309;
+            --red-500: #EF4444;
+            --red-100: #FEE2E2;
+            --sky-500: #0EA5E9;
+            --sky-100: #E0F2FE;
+            --sky-700: #0369A1;
+            --violet: #6D28D9;
+            --violet-light: #EDE4FB;
+            --radius-medium: 1rem;
+            --radius-small: 0.5rem;
+            --shadow-overlay: 0 4px 6px 0.1px rgb(0 0 0 / 0.1), 0 2px 4px 0.2px rgb(0 0 0 / 0.1);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Noto Sans', sans-serif;
+            background-color: var(--gray-50);
+            color: var(--gray-800);
+            line-height: 1.5rem;
+            font-size: 1rem;
+        }
+
+        .header {
+            background: linear-gradient(135deg, var(--blue) 0%, var(--blue-hover) 100%);
+            color: white;
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .header-logo {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .header-logo .logo-icon {
+            width: 50px;
+            height: 50px;
+            background: white;
+            border-radius: var(--radius-small);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            color: var(--blue);
+            font-size: 1.5rem;
+        }
+
+        .header h1 { font-size: 2rem; font-weight: 500; margin-bottom: 0.5rem; }
+        .header p { opacity: 0.9; font-size: 1.125rem; }
+
+        .badge {
+            display: inline-block;
+            background: rgba(255,255,255,0.18);
+            border: 1px solid rgba(255,255,255,0.4);
+            padding: 0.25rem 0.875rem;
+            border-radius: 20px;
+            font-size: 0.875rem;
+            margin-top: 0.5rem;
+        }
+
+        .nav-tabs {
+            background: white;
+            padding: 1rem 2rem;
+            border-bottom: 1px solid var(--gray-200);
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+            justify-content: center;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+
+        .nav-tabs a {
+            color: var(--gray-600);
+            text-decoration: none;
+            padding: 0.5rem 0.875rem;
+            border-radius: var(--radius-small);
+            transition: all 0.2s;
+            font-size: 0.875rem;
+            font-weight: 500;
+        }
+
+        .nav-tabs a:hover, .nav-tabs a.active { background: var(--blue); color: white; }
+
+        .container { max-width: 1200px; margin: 0 auto; padding: 2rem; }
+
+        .section {
+            background: white;
+            border-radius: var(--radius-medium);
+            padding: 2rem;
+            margin-bottom: 1.5rem;
+            box-shadow: var(--shadow-overlay);
+            border: 1px solid var(--gray-200);
+        }
+
+        .section-title {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            color: var(--blue);
+            font-size: 1.375rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.75rem;
+            border-bottom: 2px solid var(--blue);
+        }
+
+        .section-title .icon {
+            width: 32px;
+            height: 32px;
+            background: var(--blue);
+            border-radius: var(--radius-small);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1rem;
+            flex-shrink: 0;
+        }
+
+        p { margin-bottom: 1rem; }
+        p:last-child { margin-bottom: 0; }
+
+        .feature-list { list-style: none; }
+        .feature-list li {
+            padding: 0.75rem 0;
+            border-bottom: 1px solid var(--gray-200);
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+        }
+        .feature-list li:last-child { border-bottom: none; }
+        .feature-list .check { color: var(--blue); font-weight: bold; font-size: 1.1rem; }
+
+        .info-box {
+            background: var(--sky-100);
+            border-left: 4px solid var(--blue);
+            padding: 1rem 1.25rem;
+            border-radius: 0 var(--radius-small) var(--radius-small) 0;
+            margin: 1rem 0;
+        }
+        .info-box.warning { background: var(--amber-100); border-left-color: var(--amber-500); }
+        .info-box.purple { background: var(--violet-light); border-left-color: var(--violet); }
+        .info-box strong { color: var(--blue); }
+        .info-box.warning strong { color: var(--amber-700); }
+        .info-box.purple strong { color: var(--violet); }
+
+        .table-container { overflow-x: auto; margin: 1rem 0; }
+        table { width: 100%; border-collapse: collapse; font-size: 0.875rem; }
+        th { background: var(--blue); color: white; padding: 0.75rem 1rem; text-align: left; font-weight: 700; }
+        td { padding: 0.75rem 1rem; border-bottom: 1px solid var(--gray-200); vertical-align: top; }
+        tr:hover { background: var(--gray-50); }
+        td strong { color: var(--gray-800); }
+
+        .pill-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin: 1rem 0 1.5rem;
+        }
+        .pill {
+            background: var(--blue);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 999px;
+            font-size: 0.875rem;
+            font-weight: 500;
+        }
+        .pill.alt { background: var(--sky-700); }
+
+        .footer {
+            background: var(--gray-800);
+            color: white;
+            padding: 2rem;
+            text-align: center;
+            margin-top: 1rem;
+        }
+        .footer a { color: var(--blue-light); text-decoration: none; }
+        .footer a:hover { text-decoration: underline; }
+
+        @media (max-width: 768px) {
+            .container { padding: 1rem; }
+            .section { padding: 1.25rem; }
+            .header h1 { font-size: 1.5rem; }
+            .nav-tabs a { padding: 0.4rem 0.6rem; font-size: 0.8rem; }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="header-logo">
+            <div class="logo-icon">K</div>
+            <div>
+                <h1>PnL Selection</h1>
+                <p>Standard FX Exposure Monitoring</p>
+            </div>
+        </div>
+        <span class="badge">User Guide</span>
+    </header>
+
+    <nav class="nav-tabs">
+        <a href="#overview" class="active">Overview</a>
+        <a href="#picker">The PnL Picker</a>
+        <a href="#evolution">Evolution Chart</a>
+        <a href="#by-status">Total PnL by Status</a>
+        <a href="#table">Detail Table</a>
+        <a href="#filters">Filters</a>
+    </nav>
+
+    <main class="container">
+        <!-- Overview -->
+        <section id="overview" class="section">
+            <h2 class="section-title">
+                <span class="icon">🎯</span>
+                What is PnL Selection?
+            </h2>
+            <p>
+                This page lets you focus on <strong>one PnL component at a time</strong> and see how it's
+                trended over time, while a table below always shows every component side by side for full
+                context.
+            </p>
+            <div class="info-box purple">
+                <strong>🔍 Top KPI ribbon:</strong> The six tiles across the top of this page are the same on
+                every page of this report — see the <strong>Exposure Overview</strong> guide for what they mean.
+            </div>
+        </section>
+
+        <!-- Picker -->
+        <section id="picker" class="section">
+            <h2 class="section-title">
+                <span class="icon">🎛️</span>
+                The PnL Picker
+            </h2>
+            <p>
+                The row of buttons labeled <strong>"PnL Selection"</strong> lets you choose which PnL component
+                the evolution chart below focuses on:
+            </p>
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Option</th>
+                            <th>Group</th>
+                            <th>Basis</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td><strong>Pricing PnL</strong></td><td rowspan="3">Pricing + Spot PnL</td><td>Realized</td></tr>
+                        <tr><td><strong>Spot Realized PnL</strong></td><td>Realized</td></tr>
+                        <tr><td><strong>Spot Unrealized PnL</strong></td><td>Unrealized</td></tr>
+                        <tr><td><strong>Forward Points PnL (Realized)</strong></td><td rowspan="2">Forward Points Impact</td><td>Realized</td></tr>
+                        <tr><td><strong>Forward Points PnL (Unrealized)</strong></td><td>Unrealized</td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <p>Only one option is active at a time, and it drives the evolution chart directly below the picker.</p>
+        </section>
+
+        <!-- Evolution chart -->
+        <section id="evolution" class="section">
+            <h2 class="section-title">
+                <span class="icon">📈</span>
+                PnL Evolution Chart
+            </h2>
+            <p>
+                A combo chart showing whichever PnL component you picked above, by month, stacked and colored
+                by status (e.g. Monitoring, Canceled, Closed - Executed, Expired, Open (CR), Expired (CR),
+                Closed - netted).
+            </p>
+            <div class="info-box">
+                <strong>💡 Tip:</strong> Switch the picker to compare how each PnL component trends over time —
+                for example, whether unrealized spot movement or forward-points impact is driving recent
+                changes.
+            </div>
+        </section>
+
+        <!-- Total PnL by status -->
+        <section id="by-status" class="section">
+            <h2 class="section-title">
+                <span class="icon">📊</span>
+                Total PnL by Status
+            </h2>
+            <p>
+                A bar chart showing <strong>Total PnL</strong> — all five components combined — broken down by
+                status. Unlike the evolution chart, this one always shows the full total regardless of what's
+                selected in the picker above.
+            </p>
+        </section>
+
+        <!-- Detail table -->
+        <section id="table" class="section">
+            <h2 class="section-title">
+                <span class="icon">📋</span>
+                Detail Table
+            </h2>
+            <p>
+                One row per currency pair and direction, showing every PnL component side by side — this table
+                is always fully expanded and doesn't change with the picker above:
+            </p>
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Column</th>
+                            <th>Description</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td><strong>Currency Pair / Direction</strong></td><td>The currency pair and buy/sell direction for this row</td></tr>
+                        <tr><td><strong>Original Amount / Counter Amount</strong></td><td>The entry amount and its counter-side equivalent, shown at the direction level</td></tr>
+                        <tr><td><strong>Currency / Counter Currency</strong></td><td>The base and quote currencies</td></tr>
+                        <tr><td><strong>Normalized Amount</strong></td><td>The unnetted entry amount converted to the display currency</td></tr>
+                        <tr><td><strong>Pricing / Spot Realized / Spot Unrealized / Fwd Realized / Fwd Unrealized PnL</strong></td><td>Each of the five PnL components — see the <strong>Entry Detailed Analysis</strong> guide for what each one means</td></tr>
+                        <tr><td><strong>Total PnL</strong></td><td>Sum of all five components for this row</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- Filters -->
+        <section id="filters" class="section">
+            <h2 class="section-title">
+                <span class="icon">🔧</span>
+                Filters
+            </h2>
+            <p>
+                Click the filter icon in the top-right corner to open a filter panel over the page. It offers:
+            </p>
+            <div class="pill-row">
+                <span class="pill">Create Date</span>
+                <span class="pill">Value Date</span>
+                <span class="pill alt">Entity Group</span>
+                <span class="pill alt">Company Name</span>
+                <span class="pill">Currency Pair</span>
+                <span class="pill">Standardized Status</span>
+                <span class="pill alt">Position Reference</span>
+                <span class="pill alt">Order Reference</span>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>PnL Selection - User Documentation</p>
+        <p style="margin-top: 0.5rem; opacity: 0.8;">Need help? Contact the support team</p>
+    </footer>
+
+    <script>
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    document.querySelectorAll('.nav-tabs a').forEach(a => a.classList.remove('active'));
+                    this.classList.add('active');
+                }
+            });
+        });
+
+        window.addEventListener('scroll', () => {
+            const sections = document.querySelectorAll('section[id]');
+            let current = '';
+            sections.forEach(section => {
+                if (scrollY >= section.offsetTop - 200) current = section.getAttribute('id');
+            });
+            document.querySelectorAll('.nav-tabs a').forEach(a => {
+                a.classList.remove('active');
+                if (a.getAttribute('href') === '#' + current) a.classList.add('active');
+            });
+        });
+    </script>
+</body>
+</html>
