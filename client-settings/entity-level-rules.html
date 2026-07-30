@@ -41,17 +41,16 @@
 
   <div class="max-w-4xl mx-auto bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden">
     
-    <!-- Top Decorative Gradient Header (Inspired by brand guidelines) -->
+    <!-- Top Decorative Gradient Header (Inspired by image_205600.png deep navy & image_205681.png vibrant brand blue) -->
     <div class="bg-gradient-to-r from-[#0C2240] via-[#103D6F] to-[#2575D3] p-6 md:p-8 text-white relative overflow-hidden">
-      <!-- Decorative geometric accents -->
+      <!-- Decorative geometric accents to resemble brand guidelines structure -->
       <div class="absolute right-0 top-0 w-32 h-32 bg-white/5 rounded-full blur-2xl transform translate-x-10 -translate-y-10"></div>
       <div class="absolute right-12 bottom-0 w-24 h-24 bg-blue-400/10 rounded-full blur-xl"></div>
 
       <div class="relative z-10">
-        <!-- Badge with Tooltip -->
-        <div class="inline-flex items-center gap-1.5 bg-white/10 hover:bg-white/15 px-2.5 py-1 rounded-full border border-white/10 text-xs font-semibold tracking-wide mb-3 transition-all cursor-help" title="Entity Level consolidation details">
-          <i class="ph ph-info text-sm"></i>
-          Entity Level consolidation details
+        <div class="flex items-center gap-2 text-blue-200 text-xs font-semibold uppercase tracking-wider mb-2">
+          <i class="ph ph-info-semibold text-sm"></i>
+          Reference Guide
         </div>
         <h1 class="text-2xl md:text-3xl font-bold tracking-tight">Entity Level Calculations</h1>
         <p class="text-blue-100 text-sm md:text-base mt-2 max-w-2xl leading-relaxed">
@@ -71,7 +70,7 @@
         <div>
           <h3 class="text-sm font-semibold text-indigo-900">Understanding Views</h3>
           <p class="text-xs md:text-sm text-indigo-700 mt-1 leading-relaxed">
-            In Entity View, Status, DH Type and Dynamic Hedging describe the client (the entity group) rather than the individual account. Account view always shows the raw account values. Here is how each one is derived, and where the two views can legitimately disagree.
+            In Entity View, Status, DH Type and Dynamic Hedging describe the client (the entity group) rather than the individual account. For DH Type specifically, the entity doesn't collapse to a single winning label, it carries every live type running anywhere in the group. Here's how each one is derived, and where the two views can legitimately differ.
           </p>
         </div>
       </div>
@@ -107,7 +106,7 @@
           </div>
         </div>
 
-        <!-- Practical Example -->
+        <!-- Practical Example with updated flow arrow from image_20c3bc.png -->
         <div class="bg-white rounded-xl p-4 border border-slate-200 shadow-sm space-y-3">
           <div class="text-xs font-semibold text-indigo-600 uppercase tracking-wider">Practical Consolidation Example</div>
           <div class="flex flex-col md:flex-row md:items-center gap-4 bg-slate-50 p-3 rounded-lg border border-slate-100">
@@ -120,6 +119,7 @@
               <span class="bg-indigo-100 text-indigo-800 text-xs px-2.5 py-1 rounded-lg font-medium">Account 3: Suspended</span>
             </div>
             
+            <!-- Corrected Right Arrow Transition inspired by image_20c3bc.png red box -->
             <div class="flex-shrink-0 flex items-center justify-center md:px-3 py-1">
               <i class="ph ph-arrow-right text-indigo-600 text-xl font-bold" aria-label="Consolidates to"></i>
             </div>
@@ -144,113 +144,92 @@
         </div>
         
         <p class="text-sm text-slate-600 leading-relaxed">
-          DH Type tracks which dynamic hedging programs are running. In Entity view, untyped accounts can inherit program types based on group-level operational rules:
+          DH Type tracks which dynamic hedging programs are running. In Entity view, the group carries <strong>every</strong> program type that any of its live accounts run, not a single dominant winner. There is no revenue-share tiebreak: K1, K2 and K2B can all apply to the same group at once.
         </p>
 
-        <!-- Stacked Spacious Scenarios Layout -->
-        <div class="space-y-4">
-          
+        <!-- Redesigned Scenarios Grid -->
+        <div class="grid md:grid-cols-3 gap-4">
+
           <!-- Scenario 1 Card -->
-          <div class="bg-slate-50 p-4 md:p-5 rounded-xl border border-slate-200 space-y-3">
+          <div class="bg-slate-50 p-4 rounded-xl border border-slate-200 flex flex-col justify-between">
             <div>
               <div class="text-xs font-semibold text-slate-400 uppercase tracking-wider mb-1">Scenario 1</div>
-              <h4 class="text-sm md:text-base font-bold text-slate-900 mb-1">Unanimous Account Types</h4>
-              <p class="text-xs md:text-sm text-slate-600 leading-relaxed">
-                Every account with a populated type has the exact same program type. Accounts with missing types inherit this consolidated type.
+              <h4 class="text-sm font-bold text-slate-900 mb-2">Every Live Type Counts</h4>
+              <p class="text-xs text-slate-600 leading-relaxed mb-4">
+                If any account in the group runs K1, the group carries K1. If any account runs K2, the group also carries K2. A group can hold both at once - there's no single "winning" type.
               </p>
             </div>
-            
-            <!-- Example Box -->
-            <div class="bg-white p-3.5 rounded-lg border border-slate-200">
-              <div class="text-[11px] font-semibold text-slate-400 uppercase tracking-wider mb-2">Example Consolidation</div>
-              <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
-                <div class="flex items-center gap-2 flex-wrap text-xs">
-                  <span class="bg-indigo-100 text-indigo-800 px-2.5 py-1 rounded-md font-medium">K1</span>
-                  <i class="ph ph-arrow-right text-slate-400 text-xs"></i>
-                  <span class="bg-indigo-100 text-indigo-800 px-2.5 py-1 rounded-md font-medium">K1</span>
-                  <i class="ph ph-arrow-right text-slate-400 text-xs"></i>
-                  <span class="bg-slate-100 text-slate-600 px-2.5 py-1 rounded-md font-medium">No Type</span>
+
+            <div class="bg-white p-3 rounded-lg border border-slate-200 space-y-3">
+              <div class="flex flex-col gap-2">
+                <!-- Transition Pills linked clearly by arrows -->
+                <div class="flex items-center justify-between bg-slate-50/50 p-1.5 rounded border border-slate-100 text-[10px]">
+                  <span class="bg-indigo-100 text-indigo-800 px-1.5 py-0.5 rounded font-medium">K1</span>
+                  <i class="ph ph-arrow-right text-slate-400"></i>
+                  <span class="bg-indigo-100 text-indigo-800 px-1.5 py-0.5 rounded font-medium">K2</span>
+                  <i class="ph ph-arrow-right text-slate-400"></i>
+                  <span class="bg-slate-100 text-slate-500 px-1.5 py-0.5 rounded font-medium">No Type</span>
                 </div>
-                
-                <div class="flex items-center gap-2 flex-shrink-0">
-                  <i class="ph ph-arrow-right text-indigo-600 text-base font-bold hidden sm:inline-block"></i>
-                  <span class="bg-emerald-50 text-emerald-800 border border-emerald-200 px-3 py-1.5 rounded-md text-xs font-bold">
-                    Untyped Inherits: K1
-                  </span>
+                <!-- Final outcome -->
+                <div class="bg-emerald-50 text-emerald-800 p-1.5 rounded text-center text-xs font-bold border border-emerald-100">
+                  Group: K1, K2
                 </div>
               </div>
             </div>
           </div>
 
           <!-- Scenario 2 Card -->
-          <div class="bg-slate-50 p-4 md:p-5 rounded-xl border border-slate-200 space-y-3">
+          <div class="bg-slate-50 p-4 rounded-xl border border-slate-200 flex flex-col justify-between">
             <div>
               <div class="text-xs font-semibold text-slate-400 uppercase tracking-wider mb-1">Scenario 2</div>
-              <h4 class="text-sm md:text-base font-bold text-slate-900 mb-1">The 90% Revenue Rule</h4>
-              <p class="text-xs md:text-sm text-slate-600 leading-relaxed">
-                If one program type clears 90% of revenue among the typed accounts on both All-Time and YTD, the untyped accounts inherit that winning type, on the logic that they're most likely running the same dominant program the rest of the group is on.
+              <h4 class="text-sm font-bold text-slate-900 mb-2">Suspended Accounts Are Ignored</h4>
+              <p class="text-xs text-slate-600 leading-relaxed mb-4">
+                An account with Account Level Status = Suspended never contributes its type to the group, even if it's the only account with a type set.
               </p>
             </div>
-            
-            <!-- Example Box -->
-            <div class="bg-white p-3.5 rounded-lg border border-slate-200">
-              <div class="text-[11px] font-semibold text-slate-400 uppercase tracking-wider mb-2">Example Consolidation</div>
-              <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-3">
-                <div class="flex items-center gap-2 flex-wrap text-xs">
-                  <span class="bg-indigo-100 text-indigo-800 px-2.5 py-1 rounded-md font-medium">K1: 95% All-Time / 93% YTD</span>
-                  <i class="ph ph-arrow-right text-slate-400 text-xs"></i>
-                  <span class="bg-indigo-100 text-indigo-800 px-2.5 py-1 rounded-md font-medium">K2: 5% All-Time / 7% YTD</span>
-                  <i class="ph ph-arrow-right text-slate-400 text-xs"></i>
-                  <span class="bg-slate-100 text-slate-600 px-2.5 py-1 rounded-md font-medium">No Type</span>
+
+            <div class="bg-white p-3 rounded-lg border border-slate-200 space-y-3">
+              <div class="flex flex-col gap-2">
+                <!-- Transition Pills linked clearly by arrows -->
+                <div class="flex items-center justify-between bg-slate-50/50 p-1.5 rounded border border-slate-100 text-[10px] gap-1">
+                  <span class="bg-indigo-100 text-indigo-800 px-1.5 py-0.5 rounded font-medium truncate" title="K1, active">K1 (active)</span>
+                  <i class="ph ph-arrow-right text-slate-400 flex-shrink-0"></i>
+                  <span class="bg-slate-200 text-slate-500 px-1.5 py-0.5 rounded font-medium truncate line-through" title="K2, suspended">K2 (suspended)</span>
                 </div>
-                
-                <div class="flex items-center gap-2 flex-shrink-0">
-                  <i class="ph ph-arrow-right text-indigo-600 text-base font-bold hidden lg:inline-block"></i>
-                  <span class="bg-emerald-50 text-emerald-800 border border-emerald-200 px-3 py-1.5 rounded-md text-xs font-bold">
-                    Untyped Inherits: K1
-                  </span>
+                <!-- Final outcome -->
+                <div class="bg-emerald-50 text-emerald-800 p-1.5 rounded text-center text-xs font-bold border border-emerald-100">
+                  Group: K1 only
                 </div>
               </div>
             </div>
           </div>
 
           <!-- Scenario 3 Card -->
-          <div class="bg-slate-50 p-4 md:p-5 rounded-xl border border-slate-200 space-y-3">
+          <div class="bg-slate-50 p-4 rounded-xl border border-slate-200 flex flex-col justify-between">
             <div>
               <div class="text-xs font-semibold text-slate-400 uppercase tracking-wider mb-1">Scenario 3</div>
-              <h4 class="text-sm md:text-base font-bold text-slate-900 mb-1">Mixed Groups</h4>
-              <p class="text-xs md:text-sm text-slate-600 leading-relaxed">
-                If no type reaches that bar, we leave those accounts unlabeled.
+              <h4 class="text-sm font-bold text-slate-900 mb-2">Blank Never Overrides</h4>
+              <p class="text-xs text-slate-600 leading-relaxed mb-4">
+                An untyped account is simply left out of the calculation. It never blanks out a type that a sister account already established.
               </p>
             </div>
-            
-            <!-- Example Box -->
-            <div class="bg-white p-3.5 rounded-lg border border-slate-200">
-              <div class="text-[11px] font-semibold text-slate-400 uppercase tracking-wider mb-2">Example Consolidation</div>
-              <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-3">
-                <div class="flex items-center gap-2 flex-wrap text-xs">
-                  <span class="bg-indigo-100 text-indigo-800 px-2.5 py-1 rounded-md font-medium">K1: 55% Revenue</span>
-                  <i class="ph ph-arrow-right text-slate-400 text-xs"></i>
-                  <span class="bg-indigo-100 text-indigo-800 px-2.5 py-1 rounded-md font-medium">K2: 45% Revenue</span>
-                  <i class="ph ph-arrow-right text-slate-400 text-xs"></i>
-                  <span class="bg-slate-100 text-slate-600 px-2.5 py-1 rounded-md font-medium">No Type</span>
+
+            <div class="bg-white p-3 rounded-lg border border-slate-200 space-y-3">
+              <div class="flex flex-col gap-2">
+                <!-- Transition Pills linked clearly by arrows -->
+                <div class="flex items-center justify-between bg-slate-50/50 p-1.5 rounded border border-slate-100 text-[10px] gap-1">
+                  <span class="bg-indigo-100 text-indigo-800 px-1.5 py-0.5 rounded font-medium truncate" title="K1">K1</span>
+                  <i class="ph ph-arrow-right text-slate-400 flex-shrink-0"></i>
+                  <span class="bg-slate-100 text-slate-500 px-1.5 py-0.5 rounded font-medium truncate" title="No Type">No Type</span>
                 </div>
-                
-                <div class="flex items-center gap-2 flex-shrink-0">
-                  <i class="ph ph-arrow-right text-amber-600 text-base font-bold hidden lg:inline-block"></i>
-                  <span class="bg-amber-50 text-amber-800 border border-amber-200 px-3 py-1.5 rounded-md text-xs font-bold">
-                    Untyped Accounts: Unlabeled
-                  </span>
+                <!-- Final outcome -->
+                <div class="bg-emerald-50 text-emerald-800 p-1.5 rounded text-center text-xs font-bold border border-emerald-100">
+                  Group: K1
                 </div>
               </div>
             </div>
           </div>
-
         </div>
-
-        <p class="text-xs text-slate-500 leading-relaxed italic">
-          Note: Requiring 90% on both time windows prevents temporary shifts or historical residue from over-riding the active main program structure.
-        </p>
       </section>
 
       <!-- Section 3: Dynamic Hedging -->
