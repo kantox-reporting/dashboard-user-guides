@@ -215,6 +215,7 @@
 
     <nav class="nav-tabs">
         <a href="#overview" class="active">Overview</a>
+        <a href="#related">Related Pages</a>
         <a href="#filters">Filters</a>
         <a href="#table">Position Table</a>
         <a href="#drillthrough">Entry-Level Detail</a>
@@ -235,11 +236,31 @@
             </p>
             <div class="info-box">
                 <strong>💡 Key value:</strong> Use this page to find a specific position and see its full
-                picture at a glance, then right-click it to drill into the entries behind it.
+                picture at a glance, then drill into the entries behind it.
             </div>
             <div class="info-box purple">
                 <strong>🔍 Top KPI ribbon:</strong> The six tiles across the top of this page are the same on
                 every page of this report — see the <strong>Exposure Overview</strong> guide for what they mean.
+            </div>
+        </section>
+
+        <!-- Related pages -->
+        <section id="related" class="section">
+            <h2 class="section-title">
+                <span class="icon">🧭</span>
+                Related Pages
+            </h2>
+            <p>
+                This page isn't one of the report's main tabs — you won't find it in the top navigation bar
+                (Exposure Overview, Forward Point Savings, PnL Overview). Instead, it's reached from the
+                vertical panel on the right edge of the <strong>PnL Overview</strong> page, alongside
+                <strong>PnL by Status</strong>. All three pages link to each other through that same panel —
+                think of them as one connected view of PnL at increasing levels of granularity: overview →
+                drill-down by type → position-by-position detail here.
+            </p>
+            <div class="info-box">
+                <strong>💡 Tip:</strong> See the <strong>PnL Overview</strong> guide for the full picture of how
+                these three pages relate.
             </div>
         </section>
 
@@ -307,14 +328,16 @@
                 Getting to Entry-Level Detail
             </h2>
             <p>
-                Right-click any row in the position table and choose <strong>Drill through → Entry Detailed
-                Analysis</strong> to see every individual entry behind that position — the exact trades that
-                make it up, netted or not.
+                Select a position row in the table. A small preview appears showing the selected position and
+                its entries, and the <strong>→ arrow button</strong> above the table becomes active — click it
+                to open Entry Detailed Analysis for that position: every individual entry behind it, the exact
+                trades that make it up, netted or not.
             </p>
             <div class="info-box">
-                <strong>💡 Tip:</strong> Everything you had filtered here (client, date range, currency pair,
-                status, etc.) carries over automatically to the entry-level page. Use the back arrow there to
-                return to this table.
+                <strong>💡 Tip:</strong> You can also right-click a row and choose <strong>Drill through → Entry
+                Detailed Analysis</strong> as an alternative to the arrow button. Either way, everything you had
+                filtered here (client, date range, currency pair, status, etc.) carries over automatically. Use
+                the back arrow there to return to this table.
             </div>
         </section>
     </main>
