@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="robots" content="noindex, nofollow">
-    <title>Performance Analysis - User Guide</title>
+    <title>PnL Overview - User Guide</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400;500;700&display=swap');
 
@@ -234,7 +234,7 @@
         <div class="header-logo">
             <div class="logo-icon">K</div>
             <div>
-                <h1>Performance Analysis</h1>
+                <h1>PnL Overview</h1>
                 <p>Standard FX Exposure Monitoring</p>
             </div>
         </div>
@@ -243,6 +243,7 @@
 
     <nav class="nav-tabs">
         <a href="#overview" class="active">Overview</a>
+        <a href="#related">Related Pages</a>
         <a href="#tree">PnL Breakdown</a>
         <a href="#picker">Interactive Picker</a>
         <a href="#filters">Filters</a>
@@ -253,7 +254,7 @@
         <section id="overview" class="section">
             <h2 class="section-title">
                 <span class="icon">🧭</span>
-                What is Performance Analysis?
+                 What is PnL Overview?
             </h2>
             <p>
                 This page breaks Total PnL down as a visual tree — showing how the two big drivers (pricing
@@ -263,6 +264,41 @@
             <div class="info-box purple">
                 <strong>🔍 Top KPI ribbon:</strong> The six tiles across the top of this page are the same on
                 every page of this report — see the <strong>Exposure Overview</strong> guide for what they mean.
+            </div>
+        </section>
+
+        <!-- Related pages -->
+        <section id="related" class="section">
+            <h2 class="section-title">
+                <span class="icon">🧭</span>
+                Related Pages
+            </h2>
+            <p>
+                The report's top navigation only shows three tabs: <strong>Exposure Overview</strong>,
+                <strong>Forward Point Savings</strong>, and this page. Everything else lives one level deeper,
+                reached from a panel of buttons on the right edge of this page:
+            </p>
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr><th>Page</th><th>What it adds</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>PnL by Status</strong></td>
+                            <td>The same PnL, broken out by currency pair and by month instead of the tree/picker view here.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Position Detailed Analysis</strong></td>
+                            <td>PnL and exposure at the individual position level — one row per position, with its own path down to entry-level detail.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="info-box">
+                <strong>💡 Tip:</strong> Think of these three pages as one connected view of PnL at increasing
+                granularity — overview here, then by pair/month, then position-by-position. The same side panel
+                appears on all three so you can move between them without going back to the top navigation.
             </div>
         </section>
 
@@ -344,7 +380,7 @@
     </main>
 
     <footer class="footer">
-        <p>Performance Analysis - User Documentation</p>
+        <p>PnL Overview - User Documentation</p>
         <p style="margin-top: 0.5rem; opacity: 0.8;">Need help? Contact the support team</p>
     </footer>
 
