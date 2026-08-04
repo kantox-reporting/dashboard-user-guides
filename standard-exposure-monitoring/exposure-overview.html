@@ -404,8 +404,9 @@
                 Total Netted Exposure Evolution
             </h2>
             <p>
-                A combo chart showing Total Netted Exposure by month, stacked and colored by status, with a
-                second line overlaid: the <strong>weighted average rate</strong> for the period.
+                A combo chart showing Total Netted Exposure by month, stacked and colored by status, with two
+                rate lines overlaid so you can compare them directly: <strong>WAER</strong> and
+                <strong>WAHR</strong>.
             </p>
             <div class="visual-grid">
                 <div class="visual-card">
@@ -413,12 +414,20 @@
                     <p>Total Netted Exposure per month, broken down by status — read the trend of how much exposure builds up or winds down over time.</p>
                 </div>
                 <div class="visual-card">
-                    <h4>📉 Weighted average rate line</h4>
-                    <p>Shows the hedge execution rate for exposure that's closed, or the position's running average rate for exposure that's still open — whichever applies to the status you're looking at.</p>
+                    <h4>📉 WAER</h4>
+                    <p>Weighted average entry rate — the position's running average rate at creation.</p>
+                </div>
+                <div class="visual-card">
+                    <h4>📉 WAHR</h4>
+                    <p>Weighted average hedge rate — the actual rate positions were hedged at.</p>
                 </div>
             </div>
+            <div class="info-box">
+                <strong>💡 Why both:</strong> Showing WAER and WAHR side by side makes it easy to compare where
+                you entered against where you actually hedged — useful for judging execution performance.
+            </div>
             <div class="info-box warning">
-                <strong>⚠️ Note:</strong> The rate line only appears when a single currency pair is selected in
+                <strong>⚠️ Note:</strong> The rate lines only appear when a single currency pair is selected in
                 the filter panel — averaging a rate across different currency pairs wouldn't be meaningful.
             </div>
         </section>
@@ -427,12 +436,12 @@
         <section id="by-pair" class="section">
             <h2 class="section-title">
                 <span class="icon">🔀</span>
-                Total Netted Exposure by Currency Pair
+                Exposure by Currency Pair
             </h2>
             <p>
-                A bar chart with one bar per directional currency pair (e.g. EUR/USD, GBP/USD), showing Total
-                Netted Exposure for each. Use it to spot exactly which pairs are carrying the exposure you saw
-                summarized in the currency breakdown above.
+                A bar chart with one pair of bars per directional currency pair (e.g. EUR/USD, GBP/USD) —
+                <strong>Unnetted Exposure</strong> next to <strong>Netted Exposure</strong> for each. Comparing
+                the two side by side shows exactly how much netting is reducing your exposure, pair by pair.
             </p>
         </section>
     </main>
