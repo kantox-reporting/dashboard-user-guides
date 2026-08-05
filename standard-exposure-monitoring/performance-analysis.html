@@ -245,6 +245,7 @@
         <a href="#overview" class="active">Overview</a>
         <a href="#related">Related Pages</a>
         <a href="#tree">PnL Breakdown</a>
+        <a href="#how-calculated">How It's Calculated</a>
         <a href="#picker">Interactive Picker</a>
         <a href="#filters">Filters</a>
     </nav>
@@ -319,6 +320,61 @@
                 <strong>💡 Reading the cards:</strong> Each card shows its PnL value alongside that value as a
                 percentage of your total unnetted exposure — a quick read on how much of your trading volume
                 that PnL component represents.
+            </div>
+        </section>
+
+        <!-- How each type is calculated -->
+        <section id="how-calculated" class="section">
+            <h2 class="section-title">
+                <span class="icon">📐</span>
+                How Each PnL Type Is Calculated
+            </h2>
+            <p>
+                Each of the five PnL types only applies in a specific situation, and compares a different pair
+                of rates. This is the general logic behind each one — for the Gross / Net / (CR) breakdown of
+                any of them, see the <strong>Entry Detailed Analysis</strong> guide.
+            </p>
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>PnL Type</th>
+                            <th>When it applies</th>
+                            <th>Rates compared</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Pricing PnL</strong></td>
+                            <td>Every entry, regardless of status</td>
+                            <td>The rate the entry was priced at vs. the mid-market spot rate at the moment it was created — the pricing markup built in at inception.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Spot Realized PnL</strong></td>
+                            <td>Only once an entry has closed, netted, been cancelled, or expired</td>
+                            <td>The historic spot rate on the day it closed vs. the rate it was actually hedged at (if closed/netted), or vs. its valuation rate at that time (if cancelled/expired).</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Spot Unrealized PnL</strong></td>
+                            <td>Only while an entry is still open with a future value date</td>
+                            <td>The mid-market spot rate at creation vs. today's live spot rate — a mark-to-market snapshot, not yet realized.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Fwd Realized PnL</strong></td>
+                            <td>Only once an entry has closed or netted</td>
+                            <td>The spot rate at hedge execution vs. the contracted hedge (forward) rate — the forward-points value locked in by hedging.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Fwd Unrealized PnL</strong></td>
+                            <td>Only while an entry is still open with a future value date</td>
+                            <td>Today's live spot rate vs. today's live forward rate — the mark-to-market forward-points movement on a trade that hasn't closed yet.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="info-box warning">
+                <strong>⚠️ Note:</strong> A PnL type shows as zero outside its applicable situation — e.g. Spot
+                Realized PnL is 0 for an entry that's still open, since nothing has closed yet to realize.
             </div>
         </section>
 
